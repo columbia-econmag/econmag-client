@@ -11,3 +11,19 @@
     transform: scale(1) rotate(360deg);
   }
 }
+.spin.glyphicon {
+  margin-right: 7px;
+  top: 2px;
+  animation: spin 1s infinite linear;
+}
+.item {
+  width: 100%;
+  margin: 0 auto;
+  height: 150px;
+  text-align: center;
+}
+
+.item span {
+  font-size: large;
+  line-height: 150px;
+}

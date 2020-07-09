@@ -46,11 +46,11 @@ export default function NewArticle() {
     }
   }
 
-  function createArticle(note) {
+  function createArticle(article) {
     return API.post("posts", "posts", {
       body: {
         post_title: "temp title",
-        post_content: note.content,
+        post_content: article.content,
         post_date: Date.now(),
       },
     });
