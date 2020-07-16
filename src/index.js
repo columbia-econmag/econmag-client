@@ -26,6 +26,7 @@ Amplify.configure({
         name: "posts",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION,
+        authorizationType: "NONE",
       },
     ],
   },

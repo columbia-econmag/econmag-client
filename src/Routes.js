@@ -4,21 +4,45 @@ import asyncComponent from "./components/AsyncComponent";
 // import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
+import { Auth } from "aws-amplify";
 
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
+// const AsyncEdit = asyncComponent(() => import("./containers/EditPost")); //TOADD
+// const AsyncAuthor = asyncComponent(() => import("./containers/Author")); //TOADD
+const AsyncEditorHome = asyncComponent(() => import("./containers/UserHome")); //TOADD
+// const AsyncCategory = asyncComponent(() => import("./containers/Category")); //TOADD
 const AsyncLogin = asyncComponent(() => import("./containers/Login"));
 const AsyncNotes = asyncComponent(() => import("./containers/Articles"));
 const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
-const AsyncNewNote = asyncComponent(() => import("./containers/NewArticle"));
+const AsyncNewArticle = asyncComponent(() => import("./containers/NewArticle"));
 const AsyncNotFound = asyncComponent(() => import("./containers/NotFound"));
 
 export default ({ childProps }) => (
   <Switch>
     <Route path="/" exact component={AsyncHome} />
+    <AuthenticatedRoute path="/editor" exact component={AsyncEditorHome} />
+
+    {/* <UnauthenticatedRoute
+      path="/author/:post_author"
+      exact
+      component={AsyncAuthor}
+    />
+     */}
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <UnauthenticatedRoute path="/signup" exact component={AsyncSignup} />
-    <AuthenticatedRoute path="/articles/new" exact component={AsyncNewNote} />
-    <AuthenticatedRoute path="/post/:_id" exact component={AsyncNotes} />
+    <Route path="/post/:_id" exact component={AsyncNotes} />
+
+    <AuthenticatedRoute
+      path="/articles/new"
+      exact
+      component={AsyncNewArticle}
+    />
+
+    {/* <AuthenticatedRoute
+      path="/post/:_id/edit"
+      exact
+      component={AsyncEdit}
+    /> */}
     {/* Finally, catch all unmatched routes */}
     <Route component={AsyncNotFound} />
   </Switch>

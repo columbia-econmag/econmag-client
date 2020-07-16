@@ -1,0 +1,12 @@
+.Articles form {
+  padding-bottom: 15px;
+}
+
+.Articles form textarea {
+  height: 500px;
+  font-size: 24px;
+}
+
+.journal {
+  white-space: pre-line;
+}

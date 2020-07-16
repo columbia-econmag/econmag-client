@@ -19,20 +19,19 @@ function App() {
   async function onLoad() {
     try {
       await Auth.currentSession();
-      const currentUserInfo = await Auth.currentUserInfo();
-      console.log(currentUserInfo);
+      // const currentUserInfo = await Auth.currentUserInfo();
+      // console.log(currentUserInfo);
       userHasAuthenticated(true);
     } catch (e) {
       if (e !== "No current user") {
         onError(e);
       }
     }
-
     setIsAuthenticating(false);
   }
   async function handleLogout() {
-    const currentUserInfo = await Auth.currentUserInfo();
-    console.log(currentUserInfo);
+    // const currentUserInfo = await Auth.currentUserInfo();
+    // console.log(currentUserInfo);
     await Auth.signOut();
 
     userHasAuthenticated(false);
@@ -51,7 +50,12 @@ function App() {
           <Navbar.Collapse>
             <Nav pullRight>
               {isAuthenticated ? (
-                <NavItem onClick={handleLogout}>Logout</NavItem>
+                <>
+                  <LinkContainer to="/editor">
+                    <NavItem>Editor</NavItem>
+                  </LinkContainer>
+                  <NavItem onClick={handleLogout}>Logout</NavItem>
+                </>
               ) : (
                 <>
                   <LinkContainer to="/signup">
