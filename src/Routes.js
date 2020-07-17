@@ -7,7 +7,7 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 import { Auth } from "aws-amplify";
 
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
-// const AsyncEdit = asyncComponent(() => import("./containers/EditPost")); //TOADD
+const AsyncEdit = asyncComponent(() => import("./containers/EditArticle")); //TOADD
 // const AsyncAuthor = asyncComponent(() => import("./containers/Author")); //TOADD
 const AsyncEditorHome = asyncComponent(() => import("./containers/UserHome")); //TOADD
 // const AsyncCategory = asyncComponent(() => import("./containers/Category")); //TOADD
@@ -38,11 +38,7 @@ export default ({ childProps }) => (
       component={AsyncNewArticle}
     />
 
-    {/* <AuthenticatedRoute
-      path="/post/:_id/edit"
-      exact
-      component={AsyncEdit}
-    /> */}
+    <AuthenticatedRoute path="/post/:_id/edit" exact component={AsyncEdit} />
     {/* Finally, catch all unmatched routes */}
     <Route component={AsyncNotFound} />
   </Switch>

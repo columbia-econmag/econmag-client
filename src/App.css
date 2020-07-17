@@ -1,7 +1,22 @@
 .App {
-  margin-top: 15px;
+  /* margin-top: 15px; */
+  margin-right: 0;
+  margin-left: 0;
+  width: 100%;
+  width: -moz-available; /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .App .navbar-brand {
   font-weight: bold;
+}
+
+.App .navbar {
+  padding: 10px 20px;
+  margin-bottom: 0;
+  background-color: white;
+  border-color: white;
 }

@@ -30,3 +30,7 @@ input.form-control {
 input[type="file"] {
   width: 100%;
 }
+#root {
+  /* display: flex;
+  justify-content: center; */
+}

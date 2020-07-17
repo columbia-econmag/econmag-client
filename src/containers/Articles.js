@@ -119,56 +119,10 @@ export default function Articles() {
   return (
     <div className="Articles">
       {article && (
-        <form onSubmit={handleSubmit}>
-          <FormGroup controlId="content">
-            <FormControl
-              value={content}
-              componentClass="textarea"
-              onChange={(e) => setContent(e.target.value)}
-            />
-          </FormGroup>
-          <div
-            className="journal"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-          {article.attachment && (
-            <FormGroup>
-              <ControlLabel>Attachment</ControlLabel>
-              <FormControl.Static>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={article.attachmentURL}
-                >
-                  {formatFilename(article.attachment)}
-                </a>
-              </FormControl.Static>
-            </FormGroup>
-          )}
-          <FormGroup controlId="file">
-            {!article.attachment && <ControlLabel>Attachment</ControlLabel>}
-            <FormControl onChange={handleFileChange} type="file" />
-          </FormGroup>
-          <LoaderButton
-            block
-            type="submit"
-            bsSize="large"
-            bsStyle="primary"
-            isLoading={isLoading}
-            disabled={!validateForm()}
-          >
-            Save
-          </LoaderButton>
-          <LoaderButton
-            block
-            bsSize="large"
-            bsStyle="danger"
-            onClick={handleDelete}
-            isLoading={isDeleting}
-          >
-            Delete
-          </LoaderButton>
-        </form>
+        <div
+          className="journal"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       )}
     </div>
   );

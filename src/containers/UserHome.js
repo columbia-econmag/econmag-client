@@ -37,7 +37,7 @@ export default function Home() {
   function renderArticlesList(posts) {
     return [{}].concat(posts.data).map((post, i) =>
       i !== 0 ? (
-        <LinkContainer key={post._id} to={`/post/${post._id}`}>
+        <LinkContainer key={post._id} to={`/post/${post._id}/edit`}>
           <ListGroupItem header={post.post_title}>
             {post.post_content.trim().split("\n")[0]}
             {"Created: " + new Date(post.post_date).toLocaleString()}

@@ -7,6 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
+import Example from "./components/TestComponent";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -40,13 +41,11 @@ function App() {
   return (
     !isAuthenticating && (
       <div className="App container">
-        <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Columbia Econ Review</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
+        <Navbar bg="light" variant="light" fluid collapseOnSelect>
+          <Navbar.Brand>
+            <Link to="/">Columbia Econ Review</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav pullRight>
               {isAuthenticated ? (

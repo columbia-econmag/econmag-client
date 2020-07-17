@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import makePretty, { randomImage } from "../libs/articleLib";
+import styled from "styled-components";
+import SimpleSlider from "../components/Slider";
+import RecentArticles from "../components/RecentArticles";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 import "./Home.css";
+
+const SliderSection = styled.section`
+  padding: 5px 50px;
+  background-color: aliceblue;
+`;
+
+const RecentHeader = styled.h2`
+  padding: 30px 0px 0px 50px;
+  // background-color: aliceblue;
+`;
 
 export default function Home() {
   const [articles, setArticles] = useState([]);
@@ -35,18 +48,13 @@ export default function Home() {
       } catch (e) {
         onError(e);
       }
-      console.log(articles);
-      var x = await loadArticles();
-      console.log(x);
-      console.log(renderArticlesList(x));
       setIsLoading(false);
     }
-
     onLoad();
-  }, [isAuthenticated]);
+  }, []);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/limit/3");
+    var x = API.get("posts", "posts/limit/11");
     return x;
   }
   function renderArticlesList(posts) {
@@ -73,34 +81,16 @@ export default function Home() {
     );
   }
 
-  function renderArticlesCarousel(posts) {
-    console.log(posts);
-
-    const articles = posts.data.map((post) => (
-      <div key={post._id}>
-        <h3 className="carouselCaption">{post.post_title}</h3>
-        <p>{post.post_content.trim().split("\n")[0]}</p>
-      </div>
-    ));
-    return articles;
-  }
-
-  function renderCarousel() {
-    var temp = settings;
-    temp["arrows"] = true;
-    console.log(settings);
-    return (
-      <div className="carouselContainer">
-        <Slider {...temp}>
-          {!isLoading && renderArticlesCarousel(articles)}
-        </Slider>
-      </div>
-    );
-  }
-
   return (
     <div>
-      {renderCarousel()}
+      <SliderSection>
+        <h2>Popular Articles</h2>
+        <SimpleSlider />
+      </SliderSection>
+
+      <RecentHeader>Recent Articles</RecentHeader>
+      <RecentArticles />
+
       <div className="Home">{renderArticlesLists()}</div>
     </div>
   );

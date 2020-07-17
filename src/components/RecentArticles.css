@@ -1,0 +1,26 @@
+.flex {
+  /* display: flex !important; */
+  justify-content: center;
+  border-right-style: solid;
+  border-right-color: rgb(38, 38, 38, 0.3);
+  border-width: 2px;
+}
+
+.topLeft {
+  border-bottom-style: solid;
+  border-bottom-color: rgb(38, 38, 38, 0.3);
+  border-width: 2px;
+  padding-bottom: 5px;
+}
+.bottomLeft {
+  padding-top: 10px;
+}
+.padding {
+  padding: 0px 50px;
+}
+.container {
+  margin: 0;
+}
+.width {
+  width: auto;
+}

@@ -2,11 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { API, Storage } from "aws-amplify";
 import { onError } from "../libs/errorLib";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
 import { s3Upload } from "../libs/awsLib";
-import "./EditArticles.css";
+import "./Articles.css";
 
 export default function Articles() {
   const file = useRef(null);
@@ -123,7 +123,7 @@ export default function Articles() {
           <FormGroup controlId="content">
             <FormControl
               value={content}
-              componentClass="textarea"
+              componentclass="textarea"
               onChange={(e) => setContent(e.target.value)}
             />
           </FormGroup>
@@ -133,7 +133,7 @@ export default function Articles() {
           />
           {article.attachment && (
             <FormGroup>
-              <ControlLabel>Attachment</ControlLabel>
+              <FormLabel>Attachment</FormLabel>
               <FormControl.Static>
                 <a
                   target="_blank"
@@ -146,7 +146,7 @@ export default function Articles() {
             </FormGroup>
           )}
           <FormGroup controlId="file">
-            {!article.attachment && <ControlLabel>Attachment</ControlLabel>}
+            {!article.attachment && <FormLabel>Attachment</FormLabel>}
             <FormControl onChange={handleFileChange} type="file" />
           </FormGroup>
           <LoaderButton
