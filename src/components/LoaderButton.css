@@ -11,7 +11,7 @@
     transform: scale(1) rotate(360deg);
   }
 }
-.spin.glyphicon {
+.spin {
   margin-right: 7px;
   top: 2px;
   animation: spin 1s infinite linear;

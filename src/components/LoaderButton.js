@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Glyphicon } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./LoaderButton.css";
+import { FcSynchronize } from "react-icons/fc";
 
 export default function LoaderButton({
   isLoading,
@@ -14,7 +15,7 @@ export default function LoaderButton({
       disabled={disabled || isLoading}
       {...props}
     >
-      {isLoading && <Glyphicon glyph="refresh" className="spin" />}
+      {isLoading && <FcSynchronize className="spin" />}
       {props.children}
     </Button>
   );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Glyphicon } from "react-bootstrap";
+import { FcSynchronize } from "react-icons/fc";
 import "./LoaderButton.css";
 
 export default function asyncComponent(importComponent) {
@@ -27,7 +27,7 @@ export default function asyncComponent(importComponent) {
         <C {...this.props} />
       ) : (
         <div className="item">
-          <Glyphicon glyph="refresh" className="spin" />
+          <FcSynchronize className="spin" />
         </div>
       );
     }

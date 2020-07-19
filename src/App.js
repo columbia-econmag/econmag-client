@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
 import { Link } from "react-router-dom";
-import { Nav, NavItem, Navbar } from "react-bootstrap";
+import {
+  Nav,
+  NavItem,
+  Navbar,
+  NavDropdown,
+  Button,
+  Form,
+  FormControl,
+} from "react-bootstrap";
 import "./App.css";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
-import Example from "./components/TestComponent";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -41,27 +48,33 @@ function App() {
   return (
     !isAuthenticating && (
       <div className="App container">
-        <Navbar bg="light" variant="light" fluid collapseOnSelect>
-          <Navbar.Brand>
-            <Link to="/">Columbia Econ Review</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse>
-            <Nav pullRight>
+        <Navbar
+          bg="light"
+          variant="light"
+          expand="lg"
+          fluid="true"
+          collapseOnSelect="true"
+        >
+          <LinkContainer to="/">
+            <Navbar.Brand>Columbia Econ Review</Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ml-auto">
               {isAuthenticated ? (
                 <>
                   <LinkContainer to="/editor">
-                    <NavItem>Editor</NavItem>
+                    <Nav.Link>Editor</Nav.Link>
                   </LinkContainer>
-                  <NavItem onClick={handleLogout}>Logout</NavItem>
+                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                 </>
               ) : (
                 <>
                   <LinkContainer to="/signup">
-                    <NavItem>Signup</NavItem>
+                    <Nav.Link>Signup</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/login">
-                    <NavItem>Login</NavItem>
+                    <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
                 </>
               )}
