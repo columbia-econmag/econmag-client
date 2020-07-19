@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import { Container, Row, Col } from "react-bootstrap";
@@ -10,11 +9,11 @@ import "./RecentArticles.css";
 import { useMediaQuery } from "react-responsive";
 
 const Mobile = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 900 });
   return isMobile ? children : null;
 };
 const Default = ({ children }) => {
-  const isNotMobile = useMediaQuery({ minWidth: 768 });
+  const isNotMobile = useMediaQuery({ minWidth: 901 });
   return isNotMobile ? children : null;
 };
 
@@ -69,6 +68,11 @@ const RightImage = styled.img`
 const OuterDiv = styled.div`
   margin-top: 30px;
   display: flex !important;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(38, 38, 38, 0.1);
+  border-width: 1px;
+  margin: 20px 40px 0px 40px;
+  padding: 0px 10px;
 `;
 
 const RightHeader = styled.h3`
@@ -109,7 +113,6 @@ export default function RecentArticles() {
       try {
         const articles = await loadArticles();
         setArticles(articles);
-        makePretty(articles, 300);
       } catch (e) {
         onError(e);
       }
@@ -140,11 +143,20 @@ export default function RecentArticles() {
     return articles[2].post_excerpt;
   }
 
+  function descriptionControl(articles, maxLength) {
+    for (var i = 0; i < articles.data.length; i++) {
+      articles.data[i].post_excerpt = "";
+    }
+
+    var test = makePretty(articles, maxLength);
+    return test;
+  }
+
   function renderRecentArticles(posts) {
-    var articles = posts.data;
+    var articles = descriptionControl(posts, 300);
     var HTML = (
       <>
-        <Col className="flex" key={articles[0].post_date} xs={7}>
+        <Col className="leftCol" key={articles[0].post_date} xs={7}>
           <Row className="topLeft">
             <TextHolder>
               <LinkContainer to={`/post/${articles[0]._id}`}>
@@ -200,7 +212,8 @@ export default function RecentArticles() {
   }
 
   function renderRecentMobile(posts) {
-    var HTML = posts.data.map((post) => (
+    var articles = descriptionControl(posts, 300);
+    var HTML = articles.map((post) => (
       <div key={post._id}>
         <LinkContainer to={`/post/${post._id}`}>
           <MobileImage src={showImage(post)} />
@@ -229,9 +242,7 @@ export default function RecentArticles() {
       <Default>
         <OuterDiv>
           <Container className="width">
-            <Row className="padding">
-              {!isLoading && renderRecentArticles(articles)}
-            </Row>
+            <Row>{!isLoading && renderRecentArticles(articles)}</Row>
           </Container>
         </OuterDiv>
       </Default>

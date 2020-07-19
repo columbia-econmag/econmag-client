@@ -53,7 +53,7 @@ export function randomImage() {
     "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F144663665%2F0x0.jpg%3Ffit%3Dscale",
     "https://static01.nyt.com/images/2020/03/08/nyregion/08xp-columbia1/08xp-columbia1-videoSixteenByNineJumbo1600.jpg",
     "https://gs.columbia.edu/sites/default/files/styles/cu_crop/public/content/News/columbia-gs-news-campus-shot-alma-butler-library.png?itok=_pjYOX-8",
-    "https://static01.nyt.com/images/2020/03/08/nyregion/08xp-columbia1/08xp-columbia1-mediumSquareAt3X.jpg",
+
     "https://cloudfront-us-east-1.images.arcpublishing.com/spectator/BMSFKGOSQJCRZGLLXTP2SKB2VE.jpg",
   ];
   return randomImage[Math.floor(Math.random() * randomImage.length)];

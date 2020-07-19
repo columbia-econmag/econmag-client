@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import makePretty, { randomImage } from "../libs/articleLib";
 import styled from "styled-components";
 import SimpleSlider from "../components/Slider";
 import RecentArticles from "../components/RecentArticles";
+import CategoriesView from "../components/HomeCategory";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
@@ -110,6 +110,12 @@ export default function Home() {
 
         <MobileHeader>Recent Articles</MobileHeader>
         <RecentArticles key="mobileRecentArticles" />
+        <MobileHeader>On Campus</MobileHeader>
+        <CategoriesView category="On Campus" />
+        <MobileHeader>U.S.</MobileHeader>
+        <CategoriesView category="U.S." />
+        <MobileHeader>World</MobileHeader>
+        <CategoriesView category="World" />
       </Mobile>
       <Default key="defaultHome">
         <SliderSection>
@@ -119,8 +125,14 @@ export default function Home() {
 
         <RecentHeader>Recent Articles</RecentHeader>
         <RecentArticles />
+        <RecentHeader>On Campus</RecentHeader>
+        <CategoriesView category="On Campus" />
+        <RecentHeader>U.S.</RecentHeader>
+        <CategoriesView category="U.S." />
+        <RecentHeader>World</RecentHeader>
+        <CategoriesView category="World" />
       </Default>
-      <div className="Home">{renderArticlesLists()}</div>
+      {/* <div className="Home">{renderArticlesLists()}</div> */}
     </>
   );
 }

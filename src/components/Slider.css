@@ -1,4 +1,4 @@
-@media only screen and (max-device-width: 1100px) {
+@media only screen and (max-device-width: 1100px) and (orientation: portrait) {
   .slick-track {
     display: flex !important;
     max-height: 600px !important;

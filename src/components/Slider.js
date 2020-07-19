@@ -159,23 +159,15 @@ export default function SimpleSlider({ ...props }) {
   }
 
   function descriptionControl(articles, maxLength) {
-    console.log(articles);
     for (var i = 0; i < articles.data.length; i++) {
       articles.data[i].post_excerpt = "";
     }
 
     var test = makePretty(articles, maxLength);
-    console.log(test);
     return test;
   }
 
   function renderMobileCarousel(posts) {
-    // console.log(posts);
-    // var temp = posts.data;
-    // for (var i = 0; i < temp.length; i++) {
-    //   temp[i].post_excerpt = "";
-    // }
-    // console.log(temp);
     var smallPosts = descriptionControl(posts, 300);
     console.log(smallPosts);
     var temporary = smallPosts.map((post) => (
