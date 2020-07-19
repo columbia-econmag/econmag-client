@@ -1,9 +1,8 @@
-export default function makePretty(articles) {
-  const maxLength = 500;
+export default function makePretty(articles, maxLength = 500) {
   const newData = articles.data.map((post) => {
-    let p = post;
+    var p = post;
     if (p.post_excerpt === "") {
-      let excerpt = p.post_content.trim().split("\n")[0];
+      var excerpt = p.post_content.trim().split("\n")[0];
       var i = 0;
       while (hasImage(excerpt) != null || excerpt.length < 10) {
         i++;
@@ -11,7 +10,6 @@ export default function makePretty(articles) {
       }
       i = 0;
       while (excerptJunk(excerpt)) {
-        console.log("EPIC");
         i++;
         excerpt = p.post_content.trim().split("\n")[i];
       }
@@ -19,9 +17,8 @@ export default function makePretty(articles) {
       // let excerpt = p.post_content.trim().split("\n")[0];
       // .replace(/(<([^>]+)>)/gi, "");
       if (excerpt.length > maxLength) {
-        let tempExcerpt = excerpt.substring(0, maxLength);
-        console.log();
-        excerpt = tempExcerpt.substring(0, tempExcerpt.lastIndexOf("."));
+        var tempExcerpt = excerpt.substring(0, maxLength);
+        excerpt = tempExcerpt.substring(0, tempExcerpt.lastIndexOf(".")) + ".";
       }
       p.post_excerpt = excerpt;
     }

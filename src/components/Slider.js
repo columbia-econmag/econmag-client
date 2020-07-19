@@ -7,15 +7,6 @@ import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Slider.css";
 import { useMediaQuery } from "react-responsive";
-
-const Desktop = ({ children }) => {
-  const isDesktop = useMediaQuery({ minWidth: 992 });
-  return isDesktop ? children : null;
-};
-const Tablet = ({ children }) => {
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-  return isTablet ? children : null;
-};
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return isMobile ? children : null;
@@ -24,13 +15,46 @@ const Default = ({ children }) => {
   const isNotMobile = useMediaQuery({ minWidth: 768 });
   return isNotMobile ? children : null;
 };
-
+const settings = {
+  dots: true,
+  arrows: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
+const mobileSettings = {
+  dots: true,
+  arrows: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 const SliderTitle = styled.h3`
   text-align: center;
   // width: 50%;
   // float: right;
   color: palevioletred;
   cursor: pointer;
+`;
+
+const MobileImage = styled.img`
+  max-height: 50%;
+  max-width: 95%;
+  border-radius: 2px;
+  display: block;
+  margin: auto;
+  vertical-align: middle;
+  cursor: pointer;
+`;
+const MobileHeader = styled.h3`
+  text-align: center;
+  color: palevioletred;
+  cursor: pointer;
+`;
+const MobileText = styled.p`
+  text-align: center;
 `;
 
 const SliderCaption = styled.p`
@@ -70,6 +94,10 @@ const OuterDiv = styled.div`
   display: flex !important;
 `;
 
+const OuterMobile = styled.div`
+  display: block;
+`;
+
 export default function SimpleSlider({ ...props }) {
   console.log(props.children);
   const [articles, setArticles] = useState([]);
@@ -80,7 +108,6 @@ export default function SimpleSlider({ ...props }) {
       try {
         const articles = await loadArticles();
         setArticles(articles);
-        makePretty(articles);
       } catch (e) {
         onError(e);
       }
@@ -93,23 +120,26 @@ export default function SimpleSlider({ ...props }) {
     var x = API.get("posts", "posts/limit/5");
     return x;
   }
-
   function showImage(post) {
     var item = randomImage();
     if (post.cover_image) {
-      return <SliderImage src={post.cover_image.src} />;
+      return post.cover_image.src;
     } else {
-      return <SliderImage src={item} />;
+      return item;
     }
   }
 
   function renderArticlesCarousel(posts) {
     console.log(posts);
 
-    const articles = posts.data.map((post) => (
+    const bigPosts = descriptionControl(posts, 600);
+
+    const articles = bigPosts.map((post) => (
       <OuterDiv key={post._id}>
         <LinkContainer to={`/post/${post._id}`}>
-          <ImgHolder key={post.post_author}>{showImage(post)}</ImgHolder>
+          <ImgHolder key={post.post_author}>
+            <SliderImage src={showImage(post)} />
+          </ImgHolder>
         </LinkContainer>
         <TextHolder>
           <LinkContainer to={`/post/${post._id}`}>
@@ -128,28 +158,51 @@ export default function SimpleSlider({ ...props }) {
     return articles;
   }
 
+  function descriptionControl(articles, maxLength) {
+    console.log(articles);
+    for (var i = 0; i < articles.data.length; i++) {
+      articles.data[i].post_excerpt = "";
+    }
+
+    var test = makePretty(articles, maxLength);
+    console.log(test);
+    return test;
+  }
+
+  function renderMobileCarousel(posts) {
+    // console.log(posts);
+    // var temp = posts.data;
+    // for (var i = 0; i < temp.length; i++) {
+    //   temp[i].post_excerpt = "";
+    // }
+    // console.log(temp);
+    var smallPosts = descriptionControl(posts, 300);
+    console.log(smallPosts);
+    var temporary = smallPosts.map((post) => (
+      <OuterMobile key={post._id}>
+        <LinkContainer to={`/post/${post._id}`}>
+          <MobileImage src={showImage(post)} />
+        </LinkContainer>
+        <LinkContainer to={`/post/${post._id}`}>
+          <MobileHeader>{post.post_title}</MobileHeader>
+        </LinkContainer>
+        <MobileText
+          dangerouslySetInnerHTML={{
+            __html: post.post_excerpt,
+          }}
+        />
+      </OuterMobile>
+    ));
+    return temporary;
+  }
+
   // loadArticles(props.children);
-  const settings = {
-    dots: true,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  const mobileSettings = {
-    dots: true,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+
   return (
     <>
       <Mobile>
         <Slider {...mobileSettings}>
-          {!isLoading && renderArticlesCarousel(articles)}
+          {!isLoading && renderMobileCarousel(articles)}
         </Slider>
       </Mobile>
       <Default>

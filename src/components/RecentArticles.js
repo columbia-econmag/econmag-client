@@ -2,11 +2,21 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
 import "./RecentArticles.css";
+import { useMediaQuery } from "react-responsive";
+
+const Mobile = ({ children }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  return isMobile ? children : null;
+};
+const Default = ({ children }) => {
+  const isNotMobile = useMediaQuery({ minWidth: 768 });
+  return isNotMobile ? children : null;
+};
 
 const RecentTitle = styled.h3`
   text-align: left;
@@ -70,6 +80,26 @@ const RightText = styled.p`
   text-align: right;
 `;
 
+const MobileDiv = styled.div`
+  margin: 0px 10px;
+`;
+const MobileHeader = styled(RightHeader)`
+  text-align: center;
+`;
+
+const MobileText = styled(RightText)`
+  text-align: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(38, 38, 38, 0.3);
+  border-width: 1px;
+`;
+
+const MobileImage = styled(RightImage)`
+  max-width: 95%;
+`;
+
 export default function RecentArticles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,7 +109,7 @@ export default function RecentArticles() {
       try {
         const articles = await loadArticles();
         setArticles(articles);
-        makePretty(articles);
+        makePretty(articles, 300);
       } catch (e) {
         onError(e);
       }
@@ -102,10 +132,16 @@ export default function RecentArticles() {
     }
   }
 
+  function renderRight(articles) {
+    console.log(articles);
+    articles[2].post_excerpt = "";
+    var test = makePretty({ data: articles });
+    console.log(test);
+    return articles[2].post_excerpt;
+  }
+
   function renderRecentArticles(posts) {
     var articles = posts.data;
-    console.log(articles[0].post_title);
-    console.log(articles[0]);
     var HTML = (
       <>
         <Col className="flex" key={articles[0].post_date} xs={7}>
@@ -114,7 +150,11 @@ export default function RecentArticles() {
               <LinkContainer to={`/post/${articles[0]._id}`}>
                 <RecentTitle>{articles[0].post_title}</RecentTitle>
               </LinkContainer>
-              <RecentCaption>{articles[0].post_excerpt}</RecentCaption>
+              <RecentCaption
+                dangerouslySetInnerHTML={{
+                  __html: articles[0].post_excerpt,
+                }}
+              />
             </TextHolder>
             <LinkContainer to={`/post/${articles[0]._id}`}>
               <ImgHolder>
@@ -127,7 +167,11 @@ export default function RecentArticles() {
               <LinkContainer to={`/post/${articles[1]._id}`}>
                 <RecentTitle>{articles[1].post_title}</RecentTitle>
               </LinkContainer>
-              <RecentCaption>{articles[1].post_excerpt}</RecentCaption>
+              <RecentCaption
+                dangerouslySetInnerHTML={{
+                  __html: articles[1].post_excerpt,
+                }}
+              />
             </TextHolder>
             <LinkContainer to={`/post/${articles[1]._id}`}>
               <ImgHolder>
@@ -143,7 +187,11 @@ export default function RecentArticles() {
           <LinkContainer to={`/post/${articles[2]._id}`}>
             <RightHeader>{articles[2].post_title}</RightHeader>
           </LinkContainer>
-          <RightText>{articles[2].post_excerpt}</RightText>
+          <RightText
+            dangerouslySetInnerHTML={{
+              __html: renderRight(articles),
+            }}
+          />
         </Col>
       </>
     );
@@ -151,13 +199,42 @@ export default function RecentArticles() {
     return HTML;
   }
 
+  function renderRecentMobile(posts) {
+    var HTML = posts.data.map((post) => (
+      <div key={post._id}>
+        <LinkContainer to={`/post/${post._id}`}>
+          <MobileImage src={showImage(post)} />
+        </LinkContainer>
+        <LinkContainer to={`/post/${post._id}`}>
+          <MobileHeader>{post.post_title}</MobileHeader>
+        </LinkContainer>
+        <MobileText
+          dangerouslySetInnerHTML={{
+            __html: post.post_excerpt,
+          }}
+        />
+      </div>
+    ));
+
+    return HTML;
+  }
+
   return (
-    <OuterDiv>
-      <Grid className="width">
-        <Row className="padding">
-          {!isLoading && renderRecentArticles(articles)}
-        </Row>
-      </Grid>
-    </OuterDiv>
+    <>
+      <Mobile>
+        <MobileDiv key="MobileRecentArticles">
+          {!isLoading && renderRecentMobile(articles)}
+        </MobileDiv>
+      </Mobile>
+      <Default>
+        <OuterDiv>
+          <Container className="width">
+            <Row className="padding">
+              {!isLoading && renderRecentArticles(articles)}
+            </Row>
+          </Container>
+        </OuterDiv>
+      </Default>
+    </>
   );
 }
