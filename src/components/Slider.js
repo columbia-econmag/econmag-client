@@ -113,7 +113,8 @@ export default function SimpleSlider({ ...props }) {
       setIsLoading(false);
     }
     onLoad();
-  }, []);
+    return () => isLoading;
+  }, [isLoading]);
 
   function loadArticles() {
     var x = API.get("posts", "posts/limit/5");

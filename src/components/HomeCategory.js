@@ -33,7 +33,7 @@ const OuterDiv = styled.div`
   border-bottom-style: solid;
   border-bottom-color: rgb(38, 38, 38, 0.1);
   border-width: 1px;
-  margin: 20px 40px 0px 40px;
+  // margin: 20px 40px 0px 40px;
 `;
 
 const Header = styled.h3`
@@ -71,6 +71,7 @@ export default function CategoriesView(...props) {
   const newProp = props[0].category;
 
   useEffect(() => {
+    let loading = true;
     async function onLoad() {
       try {
         const articles = await loadArticles(newProp);
@@ -82,6 +83,7 @@ export default function CategoriesView(...props) {
       setIsLoading(false);
     }
     onLoad();
+    return () => (loading = false);
   }, [newProp]);
 
   function loadArticles(category) {

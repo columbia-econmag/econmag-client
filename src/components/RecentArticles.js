@@ -71,7 +71,7 @@ const OuterDiv = styled.div`
   border-bottom-style: solid;
   border-bottom-color: rgb(38, 38, 38, 0.1);
   border-width: 1px;
-  margin: 20px 40px 0px 40px;
+  // margin: 20px 40px 0px 40px;
   padding: 0px 10px;
 `;
 
@@ -119,7 +119,8 @@ export default function RecentArticles() {
       setIsLoading(false);
     }
     onLoad();
-  }, []);
+    return () => isLoading;
+  }, [isLoading]);
 
   function loadArticles() {
     var x = API.get("posts", "posts/category/World/limit/3");

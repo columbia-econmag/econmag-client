@@ -25,13 +25,19 @@ const SliderSection = styled.section`
   padding: 5px 50px;
   background-color: aliceblue;
 `;
+const InnerSection = styled.section`
+  margin: auto;
+  padding: 0px 2%;
+  max-width: 1200px;
+  // background-color: aliceblue;
+`;
 
 const SliderMobile = styled(SliderSection)`
   padding: 5px 5px;
 `;
 
 const Header = styled.h2`
-  padding: 30px 0px 0px 50px;
+  padding: 30px 0px 0px 0px;
   font-weight: 600;
   // background-color: aliceblue;
 `;
@@ -110,18 +116,21 @@ export default function Home() {
       </Mobile>
       <Default key="defaultHome">
         <SliderSection>
-          <h2 style={{ fontWeight: 600 }}>Popular Articles</h2>
-          <SimpleSlider />
+          <InnerSection>
+            <h2 style={{ fontWeight: 600 }}>Popular Articles</h2>
+            <SimpleSlider />
+          </InnerSection>
         </SliderSection>
-
-        <Header>Recent Articles</Header>
-        <RecentArticles />
-        <Header>On Campus</Header>
-        <CategoriesView category="On Campus" />
-        <Header>U.S.</Header>
-        <CategoriesView category="U.S." />
-        <Header>World</Header>
-        <CategoriesView category="World" />
+        <InnerSection>
+          <Header>Recent Articles</Header>
+          <RecentArticles />
+          <Header>On Campus</Header>
+          <CategoriesView category="On Campus" />
+          <Header>U.S.</Header>
+          <CategoriesView category="U.S." />
+          <Header>World</Header>
+          <CategoriesView category="World" />
+        </InnerSection>
       </Default>
       {/* <div className="Home">{renderArticlesLists()}</div> */}
     </>

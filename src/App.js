@@ -3,6 +3,7 @@ import Routes from "./Routes";
 import { Link } from "react-router-dom";
 import {
   Nav,
+  Image,
   NavItem,
   Navbar,
   NavDropdown,
