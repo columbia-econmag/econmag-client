@@ -44,6 +44,26 @@ export function hasImage(content) {
   }
 }
 
+export function removeHome(content) {
+  var div = document.createElement("div");
+  var uglyDiv = document.createElement("div");
+  div.innerHTML = content;
+  if (div.childNodes[0].nodeName !== "#text") {
+    uglyDiv.innerHTML = content;
+    div.innerHTML = null;
+  } else {
+    var a_s = div.getElementsByTagName("a");
+
+    for (var i = 0; i < a_s.length; i++) {
+      if (a_s[i].href === "http://columbiaeconreview.com/") {
+        div.removeChild(a_s[i]);
+      }
+    }
+  }
+
+  return { uglyDiv: uglyDiv.innerHTML, prettyDiv: div.innerHTML };
+}
+
 export function randomImage() {
   const randomImage = [
     "https://media-exp1.licdn.com/dms/image/C511BAQFuptKQFmdDMQ/company-background_10000/0?e=2159024400&v=beta&t=LL5-QWwjotGxNdT8uVoNp6WQmgMDOnVy490S5PnEluM",
@@ -59,7 +79,7 @@ export function randomImage() {
   return randomImage[Math.floor(Math.random() * randomImage.length)];
 }
 function excerptJunk(content) {
-  if (content == "&nbsp;") {
+  if (content === "&nbsp;") {
     return true;
   }
   return false;

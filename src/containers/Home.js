@@ -6,7 +6,6 @@ import SimpleSlider from "../components/Slider";
 import RecentArticles from "../components/RecentArticles";
 import CategoriesView from "../components/HomeCategory";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
@@ -31,28 +30,21 @@ const SliderMobile = styled(SliderSection)`
   padding: 5px 5px;
 `;
 
-const RecentHeader = styled.h2`
+const Header = styled.h2`
   padding: 30px 0px 0px 50px;
+  font-weight: 600;
   // background-color: aliceblue;
 `;
 
 const MobileHeader = styled.h2`
   padding: 35px 0px 0px 0px;
+  font-weight: 600;
   text-align: center;
 `;
 
 export default function Home() {
   const [articles, setArticles] = useState([]);
-  const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
-  const settings = {
-    dots: true,
-    // arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   useEffect(() => {
     async function onLoad() {
@@ -77,7 +69,6 @@ export default function Home() {
     return x;
   }
   function renderArticlesList(posts) {
-    console.log(posts.data);
     // for()
     return [{}].concat(posts.data).map((post, i) =>
       i !== 0 ? (
@@ -119,17 +110,17 @@ export default function Home() {
       </Mobile>
       <Default key="defaultHome">
         <SliderSection>
-          <h2>Popular Articles</h2>
+          <h2 style={{ fontWeight: 600 }}>Popular Articles</h2>
           <SimpleSlider />
         </SliderSection>
 
-        <RecentHeader>Recent Articles</RecentHeader>
+        <Header>Recent Articles</Header>
         <RecentArticles />
-        <RecentHeader>On Campus</RecentHeader>
+        <Header>On Campus</Header>
         <CategoriesView category="On Campus" />
-        <RecentHeader>U.S.</RecentHeader>
+        <Header>U.S.</Header>
         <CategoriesView category="U.S." />
-        <RecentHeader>World</RecentHeader>
+        <Header>World</Header>
         <CategoriesView category="World" />
       </Default>
       {/* <div className="Home">{renderArticlesLists()}</div> */}

@@ -20,7 +20,7 @@ const Default = ({ children }) => {
 const RecentTitle = styled.h3`
   text-align: left;
   margin-top: 5px;
-  color: palevioletred;
+  // color: palevioletred;
   cursor: pointer;
 `;
 
@@ -77,7 +77,7 @@ const OuterDiv = styled.div`
 
 const RightHeader = styled.h3`
   text-align: right;
-  color: palevioletred;
+  // color: palevioletred;
   cursor: pointer;
 `;
 const RightText = styled.p`
@@ -136,10 +136,9 @@ export default function RecentArticles() {
   }
 
   function renderRight(articles) {
-    console.log(articles);
     articles[2].post_excerpt = "";
-    var test = makePretty({ data: articles });
-    console.log(test);
+    makePretty({ data: articles });
+
     return articles[2].post_excerpt;
   }
 

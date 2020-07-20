@@ -38,7 +38,7 @@ const OuterDiv = styled.div`
 
 const Header = styled.h3`
   text-align: center;
-  color: palevioletred;
+  // color: palevioletred;
   cursor: pointer;
 `;
 const CatText = styled.p`
@@ -66,14 +66,14 @@ const MobileImage = styled(CatImage)`
 `;
 
 export default function CategoriesView(...props) {
-  console.log(props[0].category);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const newProp = props[0].category;
 
   useEffect(() => {
     async function onLoad() {
       try {
-        const articles = await loadArticles(props[0].category);
+        const articles = await loadArticles(newProp);
         setArticles(articles);
         makePretty(articles, 300);
       } catch (e) {
@@ -82,10 +82,9 @@ export default function CategoriesView(...props) {
       setIsLoading(false);
     }
     onLoad();
-  }, []);
+  }, [newProp]);
 
   function loadArticles(category) {
-    console.log(category);
     var x = API.get("posts", "posts/category/" + category + "/limit/3");
     return x;
   }
@@ -97,14 +96,6 @@ export default function CategoriesView(...props) {
     } else {
       return item;
     }
-  }
-
-  function renderRight(articles) {
-    console.log(articles);
-    articles[2].post_excerpt = "";
-    var test = makePretty({ data: articles });
-    console.log(test);
-    return articles[2].post_excerpt;
   }
 
   function renderRecentArticles(posts) {

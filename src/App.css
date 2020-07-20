@@ -9,6 +9,7 @@
 
 .App .navbar-brand {
   font-weight: bold;
+  color: #5cafdb !important;
 }
 
 .App .navbar {

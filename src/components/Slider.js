@@ -35,7 +35,7 @@ const SliderTitle = styled.h3`
   text-align: center;
   // width: 50%;
   // float: right;
-  color: palevioletred;
+  // color: palevioletred;
   cursor: pointer;
 `;
 
@@ -50,7 +50,7 @@ const MobileImage = styled.img`
 `;
 const MobileHeader = styled.h3`
   text-align: center;
-  color: palevioletred;
+  // color: palevioletred;
   cursor: pointer;
 `;
 const MobileText = styled.p`
@@ -99,7 +99,6 @@ const OuterMobile = styled.div`
 `;
 
 export default function SimpleSlider({ ...props }) {
-  console.log(props.children);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -130,8 +129,6 @@ export default function SimpleSlider({ ...props }) {
   }
 
   function renderArticlesCarousel(posts) {
-    console.log(posts);
-
     const bigPosts = descriptionControl(posts, 600);
 
     const articles = bigPosts.map((post) => (
@@ -169,7 +166,6 @@ export default function SimpleSlider({ ...props }) {
 
   function renderMobileCarousel(posts) {
     var smallPosts = descriptionControl(posts, 300);
-    console.log(smallPosts);
     var temporary = smallPosts.map((post) => (
       <OuterMobile key={post._id}>
         <LinkContainer to={`/post/${post._id}`}>

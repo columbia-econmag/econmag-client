@@ -1,3 +1,14 @@
+@media only screen and (max-device-width: 1100px) {
+  .journal {
+    padding: 0px 2% !important;
+  }
+  .uglyJournal {
+    padding: 0px 2% !important;
+  }
+  .margins {
+    margin: 30px 3% !important;
+  }
+}
 .Articles form {
   padding-bottom: 15px;
 }
@@ -9,4 +20,30 @@
 
 .journal {
   white-space: pre-line;
+  padding: 0px 5%;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+.uglyJournal {
+  white-space: pre-line;
+  padding: 0px 5%;
+}
+
+.journal::first-letter {
+  float: left;
+  font-family: Georgia;
+  font-size: 50px;
+  line-height: 40px;
+  padding-top: 4px;
+  padding-right: 4px;
+  padding-left: 3px;
+}
+
+.margins {
+  margin: 50px 10%;
 }
