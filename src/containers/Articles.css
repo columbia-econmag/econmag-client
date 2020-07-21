@@ -21,6 +21,7 @@
 .journal {
   white-space: pre-line;
   padding: 0px 5%;
+  overflow: auto;
 }
 
 img {
@@ -32,6 +33,7 @@ img {
 .uglyJournal {
   white-space: pre-line;
   padding: 0px 5%;
+  overflow: auto;
 }
 
 .journal::first-letter {

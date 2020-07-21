@@ -1,0 +1,24 @@
+.leftCol {
+  /* display: flex !important; */
+  justify-content: center;
+  border-right-style: solid;
+  border-right-color: rgb(38, 38, 38, 0.1);
+  border-width: 1px;
+  padding-bottom: 10px;
+}
+
+.topLeft {
+  border-bottom-style: solid;
+  border-bottom-color: rgb(38, 38, 38, 0.1);
+  border-width: 1px;
+  padding-bottom: 5px;
+}
+.bottomLeft {
+  padding-top: 10px;
+}
+.container {
+  margin: 0;
+}
+.width {
+  max-width: inherit;
+}

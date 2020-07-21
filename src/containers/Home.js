@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import SimpleSlider from "../components/Slider";
-import RecentArticles from "../components/RecentArticles";
-import CategoriesView from "../components/HomeCategory";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { ListGroup, ListGroupItem, Spinner } from "react-bootstrap";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
+const CategoriesView = lazy(() => import("../components/HomeCategory"));
+const RecentArticles = lazy(() => import("../components/RecentArticles"));
+const SimpleSlider = lazy(() => import("../components/Slider"));
+const OnCampus = lazy(() => import("../components/OnCampusBlock"));
 
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -25,6 +26,12 @@ const SliderSection = styled.section`
   padding: 5px 50px;
   background-color: aliceblue;
 `;
+
+const IssueSection = styled.section`
+  padding: 5px 50px;
+  background-color: #a0bbd3;
+`;
+
 const InnerSection = styled.section`
   margin: auto;
   padding: 0px 2%;
@@ -102,34 +109,114 @@ export default function Home() {
       <Mobile key="mobileHome">
         <SliderMobile>
           <h2>Popular Articles</h2>
-          <SimpleSlider />
+          <Suspense
+            fallback={
+              <div style={{ textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <SimpleSlider />
+          </Suspense>
         </SliderMobile>
 
         <MobileHeader>Recent Articles</MobileHeader>
-        <RecentArticles key="mobileRecentArticles" />
+        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+          <RecentArticles key="mobileRecentArticles" />
+        </Suspense>
         <MobileHeader>On Campus</MobileHeader>
-        <CategoriesView category="On Campus" />
+        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+          <CategoriesView category="On Campus" />
+        </Suspense>
         <MobileHeader>U.S.</MobileHeader>
-        <CategoriesView category="U.S." />
+        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+          <CategoriesView category="U.S." />
+        </Suspense>
         <MobileHeader>World</MobileHeader>
-        <CategoriesView category="World" />
+        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+          <CategoriesView category="World" />
+        </Suspense>
       </Mobile>
       <Default key="defaultHome">
         <SliderSection>
           <InnerSection>
             <h2 style={{ fontWeight: 600 }}>Popular Articles</h2>
-            <SimpleSlider />
+            <Suspense
+              fallback={
+                <div style={{ height: "500px", textAlign: "center" }}>
+                  <Spinner animation="border" variant="primary" />
+                </div>
+              }
+            >
+              <SimpleSlider />
+            </Suspense>
           </InnerSection>
         </SliderSection>
         <InnerSection>
           <Header>Recent Articles</Header>
-          <RecentArticles />
+          <Suspense
+            fallback={
+              <div style={{ height: "600px", textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <RecentArticles />
+          </Suspense>
+        </InnerSection>
+        <IssueSection>
+          <InnerSection>
+            <h2 style={{ fontWeight: 600 }}>Current Issue</h2>
+            <div style={{ height: "300px", textAlign: "center" }}>
+              <img
+                style={{ height: "250px" }}
+                alt="currentissueImage"
+                src="https://columbiaeconreview.com/econmag/wp-content/uploads/2018/05/Screen-Shot-2018-05-04-at-10.33.53-PM.png"
+              />
+              {/* <h4 style={{ float: "right" }}>Relevant Sections:</h4> */}
+            </div>
+          </InnerSection>
+        </IssueSection>
+        <InnerSection>
+          {/* <Suspense
+            fallback={
+              <div style={{ textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <OnCampus />
+          </Suspense> */}
           <Header>On Campus</Header>
-          <CategoriesView category="On Campus" />
+          <Suspense
+            fallback={
+              <div style={{ textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <CategoriesView category="On Campus" />
+          </Suspense>
           <Header>U.S.</Header>
-          <CategoriesView category="U.S." />
+          <Suspense
+            fallback={
+              <div style={{ textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <CategoriesView category="U.S." />
+          </Suspense>
           <Header>World</Header>
-          <CategoriesView category="World" />
+          <Suspense
+            fallback={
+              <div style={{ textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <CategoriesView category="World" />
+          </Suspense>
         </InnerSection>
       </Default>
       {/* <div className="Home">{renderArticlesLists()}</div> */}

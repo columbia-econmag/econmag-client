@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { Spinner } from "react-bootstrap";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import styled from "styled-components";
@@ -92,6 +93,11 @@ const SliderImage = styled.img`
 
 const OuterDiv = styled.div`
   display: flex !important;
+`;
+
+const LoaderDiv = styled.div`
+  height: 350px !important;
+  text-align: center;
 `;
 
 const OuterMobile = styled.div`
@@ -190,14 +196,29 @@ export default function SimpleSlider({ ...props }) {
   return (
     <>
       <Mobile>
-        <Slider {...mobileSettings}>
-          {!isLoading && renderMobileCarousel(articles)}
-        </Slider>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <Slider {...mobileSettings}>
+            {/* {!isLoading && renderMobileCarousel(articles)} */}
+
+            {renderMobileCarousel(articles)}
+          </Slider>
+        )}
       </Mobile>
       <Default>
-        <Slider {...settings}>
-          {!isLoading && renderArticlesCarousel(articles)}
-        </Slider>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <Slider {...settings}>
+            {/* {!isLoading && renderArticlesCarousel(articles)} */}
+            {renderArticlesCarousel(articles)}
+          </Slider>
+        )}
       </Default>
     </>
   );
