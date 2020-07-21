@@ -1,0 +1,39 @@
+.leftColumn {
+  /* display: flex !important; */
+  justify-content: center;
+  border-left-style: solid;
+  border-left-color: rgb(38, 38, 38, 0.1);
+  border-width: 1px;
+}
+
+.rightCol {
+  padding: 0px 6px;
+  border-right-style: solid;
+  border-right-color: rgb(38, 38, 38, 0.1);
+  border-width: 1px;
+}
+
+.topLeft {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.rightmostCol {
+  padding-right: 0px;
+  padding-left: 6px;
+}
+
+.leftBottom {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.leftBottom img {
+  padding-top: 10px;
+}
+.container {
+  margin: 0;
+}
+.width {
+  max-width: inherit;
+}

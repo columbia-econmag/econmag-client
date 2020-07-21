@@ -1,57 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import styled from "styled-components";
 import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
-import "./OnCampusBlock.css";
+import "./FiveViewBlock.css";
 import { useMediaQuery } from "react-responsive";
 
 const Mobile = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 900 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return isMobile ? children : null;
 };
 const Default = ({ children }) => {
-  const isNotMobile = useMediaQuery({ minWidth: 901 });
+  const isNotMobile = useMediaQuery({ minWidth: 768 });
   return isNotMobile ? children : null;
 };
 
-const RecentTitle = styled.h3`
-  text-align: left;
-  margin-top: 5px;
-  // color: palevioletred;
-  cursor: pointer;
+const LoaderDiv = styled.div`
+  height: 705px !important;
+  text-align: center;
 `;
 
-const RecentCaption = styled.p`
+const LeftHeader = styled.h2`
   text-align: left;
-  color: black;
-`;
-const ImgHolder = styled.div`
-  text-align: center;
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  float: left;
-  overflow: auto;
-`;
-const TextHolder = styled.div`
-  text-align: center;
-  display: block;
-  width: 50%;
-  justify-content: center;
-  float: left;
-  overflow: auto;
+  margin-bottom: 0px;
+  cursor: pointer;
 `;
 const LeftImage = styled.img`
-  max-height: 90%;
-  max-width: 90%;
+  height: auto;
+  max-width: 100%;
   border-radius: 2px;
   display: block;
   margin: auto;
   vertical-align: middle;
-  float: right;
   cursor: pointer;
 `;
 
@@ -69,19 +51,30 @@ const OuterDiv = styled.div`
   margin-top: 30px;
   display: flex !important;
   border-bottom-style: solid;
-  border-bottom-color: rgb(38, 38, 38, 0.1);
+  border-bottom-color: rgb(38, 38, 38, 0.3);
   border-width: 1px;
   // margin: 20px 40px 0px 40px;
   padding: 0px 10px;
 `;
 
-const RightHeader = styled.h3`
-  text-align: right;
+const RightHeader = styled.h4`
+  text-align: left;
   // color: palevioletred;
   cursor: pointer;
+  margin-bottom: 0px;
 `;
 const RightText = styled.p`
-  text-align: right;
+  text-align: left;
+`;
+
+const RightCaption = styled.p`
+  text-align: left;
+  color: grey;
+  margin-bottom: 4px;
+`;
+
+const LeftCaption = styled(RightCaption)`
+  margin-bottom: 16px !important;
 `;
 
 const MobileDiv = styled.div`
@@ -123,7 +116,7 @@ export default function OnCampus() {
   }, [isLoading]);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/category/World/limit/3");
+    var x = API.get("posts", "posts/category/On Campus/limit/5");
     return x;
   }
 
@@ -137,10 +130,10 @@ export default function OnCampus() {
   }
 
   function renderRight(articles) {
-    articles[2].post_excerpt = "";
+    articles[0].post_excerpt = "";
     makePretty({ data: articles });
 
-    return articles[2].post_excerpt;
+    return articles[0].post_excerpt;
   }
 
   function descriptionControl(articles, maxLength) {
@@ -152,49 +145,65 @@ export default function OnCampus() {
     return test;
   }
 
+  function articleContainer(post1, post2) {
+    return (
+      <>
+        <Col className="rightCol">
+          <LinkContainer to={`/post/${post1._id}`}>
+            <RightImage src={showImage(post1)} />
+          </LinkContainer>
+          <LinkContainer to={`/post/${post1._id}`}>
+            <RightHeader>{post1.post_title}</RightHeader>
+          </LinkContainer>
+          <RightCaption>{post1.post_author}</RightCaption>
+          <RightText
+            dangerouslySetInnerHTML={{
+              __html: post1.post_excerpt,
+            }}
+          />
+        </Col>
+        <Col className="rightmostCol">
+          <LinkContainer to={`/post/${post2._id}`}>
+            <RightImage src={showImage(post2)} />
+          </LinkContainer>
+          <LinkContainer to={`/post/${post2._id}`}>
+            <RightHeader>{post2.post_title}</RightHeader>
+          </LinkContainer>
+          <RightCaption>{post2.post_author}</RightCaption>
+          <RightText
+            dangerouslySetInnerHTML={{
+              __html: post2.post_excerpt,
+            }}
+          />
+        </Col>
+      </>
+    );
+  }
+
   function renderRecentArticles(posts) {
-    var articles = descriptionControl(posts, 300);
+    var articles = descriptionControl(posts, 200);
     var HTML = (
       <>
-        <Col key={articles[2].post_date} xs={7}>
-          <LinkContainer to={`/post/${articles[2]._id}`}>
-            <RightImage src={showImage(articles[2])} />
+        <Col xs={5}>
+          <LinkContainer to={`/post/${articles[0]._id}`}>
+            <LeftImage src={showImage(articles[0])} />
           </LinkContainer>
-          <LinkContainer to={`/post/${articles[2]._id}`}>
-            <RightHeader>{articles[2].post_title}</RightHeader>
+          <LinkContainer to={`/post/${articles[0]._id}`}>
+            <LeftHeader>{articles[0].post_title}</LeftHeader>
           </LinkContainer>
+          <LeftCaption>{articles[0].post_author}</LeftCaption>
           <RightText
             dangerouslySetInnerHTML={{
               __html: renderRight(articles),
             }}
           />
         </Col>
-        <Col className="leftCol" key={articles[0].post_date} xs={5}>
+        <Col className="leftColumn" xs={7}>
           <Row className="topLeft">
-            <LinkContainer to={`/post/${articles[2]._id}`}>
-              <RightImage src={showImage(articles[2])} />
-            </LinkContainer>
-            <LinkContainer to={`/post/${articles[2]._id}`}>
-              <RightHeader>{articles[2].post_title}</RightHeader>
-            </LinkContainer>
-            <RightText
-              dangerouslySetInnerHTML={{
-                __html: articles[1].post_excerpt,
-              }}
-            />
+            {articleContainer(articles[1], articles[2])}
           </Row>
-          <Row className="bottomLeft">
-            <LinkContainer to={`/post/${articles[2]._id}`}>
-              <RightImage src={showImage(articles[2])} />
-            </LinkContainer>
-            <LinkContainer to={`/post/${articles[2]._id}`}>
-              <RightHeader>{articles[2].post_title}</RightHeader>
-            </LinkContainer>
-            <RightText
-              dangerouslySetInnerHTML={{
-                __html: articles[0].post_excerpt,
-              }}
-            />
+          <Row className="leftBottom">
+            {articleContainer(articles[3], articles[4])}
           </Row>
         </Col>
       </>
@@ -232,11 +241,17 @@ export default function OnCampus() {
         </MobileDiv>
       </Mobile>
       <Default>
-        <OuterDiv>
-          <Container className="width">
-            <Row>{!isLoading && renderRecentArticles(articles)}</Row>
-          </Container>
-        </OuterDiv>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <OuterDiv>
+            <Container className="width">
+              <Row>{renderRecentArticles(articles)}</Row>
+            </Container>
+          </OuterDiv>
+        )}
       </Default>
     </>
   );

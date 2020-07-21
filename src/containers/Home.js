@@ -11,7 +11,7 @@ import { useMediaQuery } from "react-responsive";
 const CategoriesView = lazy(() => import("../components/HomeCategory"));
 const RecentArticles = lazy(() => import("../components/RecentArticles"));
 const SimpleSlider = lazy(() => import("../components/Slider"));
-const OnCampus = lazy(() => import("../components/OnCampusBlock"));
+const FiveViewBlock = lazy(() => import("../components/FiveViewBlock"));
 
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -177,16 +177,8 @@ export default function Home() {
             </div>
           </InnerSection>
         </IssueSection>
+
         <InnerSection>
-          {/* <Suspense
-            fallback={
-              <div style={{ textAlign: "center" }}>
-                <Spinner animation="border" variant="primary" />
-              </div>
-            }
-          >
-            <OnCampus />
-          </Suspense> */}
           <Header>On Campus</Header>
           <Suspense
             fallback={
@@ -195,7 +187,7 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView category="On Campus" />
+            <FiveViewBlock />
           </Suspense>
           <Header>U.S.</Header>
           <Suspense
@@ -205,8 +197,9 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView category="U.S." />
+            <CategoriesView category="On Campus" />
           </Suspense>
+
           <Header>World</Header>
           <Suspense
             fallback={

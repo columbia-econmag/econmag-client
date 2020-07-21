@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import styled from "styled-components";
 import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
@@ -31,7 +31,7 @@ const OuterDiv = styled.div`
   margin-top: 30px;
   display: flex !important;
   border-bottom-style: solid;
-  border-bottom-color: rgb(38, 38, 38, 0.1);
+  border-bottom-color: rgb(38, 38, 38, 0.3);
   border-width: 1px;
   // margin: 20px 40px 0px 40px;
 `;
@@ -65,12 +65,18 @@ const MobileImage = styled(CatImage)`
   max-width: 95%;
 `;
 
+const LoaderDiv = styled.div`
+  height: 440px !important;
+  text-align: center;
+`;
+
 export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const newProp = props[0].category;
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     let loading = true;
     async function onLoad() {
       try {
@@ -144,9 +150,15 @@ export default function CategoriesView(...props) {
   return (
     <>
       <Mobile>
-        <MobileDiv key="MobileCategory">
-          {!isLoading && renderRecentMobile(articles)}
-        </MobileDiv>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <MobileDiv key="MobileCategory">
+            {renderRecentMobile(articles)}
+          </MobileDiv>
+        )}
       </Mobile>
       <Default>
         <OuterDiv>

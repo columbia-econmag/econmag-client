@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import styled from "styled-components";
 import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
@@ -102,6 +102,11 @@ const MobileText = styled(RightText)`
 
 const MobileImage = styled(RightImage)`
   max-width: 95%;
+`;
+
+const LoaderDiv = styled.div`
+  height: 535px !important;
+  text-align: center;
 `;
 
 export default function RecentArticles() {
@@ -240,11 +245,17 @@ export default function RecentArticles() {
         </MobileDiv>
       </Mobile>
       <Default>
-        <OuterDiv>
-          <Container className="width">
-            <Row>{!isLoading && renderRecentArticles(articles)}</Row>
-          </Container>
-        </OuterDiv>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <OuterDiv>
+            <Container className="width">
+              <Row>{renderRecentArticles(articles)}</Row>
+            </Container>
+          </OuterDiv>
+        )}
       </Default>
     </>
   );
