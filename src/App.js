@@ -49,18 +49,47 @@ function App() {
   return (
     !isAuthenticating && (
       <div className="App container">
+        {/* <Navbar.Brand
+          style={{ width: "100%", margin: "auto", textAlign: "center" }}
+        >
+          Columbia Econ Review
+        </Navbar.Brand> */}
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <LinkContainer to="/">
+            <img
+              className="headerImage"
+              alt="CER Header"
+              src="https://econmag-bucket.s3.amazonaws.com/public/2015/10/CER_LOGO_BANNER-e1444933900847.png"
+            />
+          </LinkContainer>
+        </div>
         <Navbar
+          style={{ maxWidth: "1300px", margin: "auto" }}
           bg="light"
           variant="light"
           expand="lg"
           fluid="true"
           collapseOnSelect="true"
         >
-          <LinkContainer to="/">
-            <Navbar.Brand>Columbia Econ Review</Navbar.Brand>
-          </LinkContainer>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <LinkContainer to="/">
+                <Nav.Link>Current Issue</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link>World</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link>U.S.</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link>On Campus</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/">
+                <Nav.Link>Business</Nav.Link>
+              </LinkContainer>
+            </Nav>
             <Nav className="ml-auto">
               {isAuthenticated ? (
                 <>

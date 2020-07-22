@@ -12,6 +12,18 @@
   color: #5cafdb !important;
 }
 
+.App .headerImage {
+  max-width: 50%;
+  cursor: pointer;
+}
+
+.App .nav-link {
+  border-right-style: solid;
+  border-right-color: rgb(38, 38, 38, 0.1);
+  border-width: 0.5px;
+  padding: 8px 16px !important;
+}
+
 .App .navbar {
   padding: 10px 20px;
   margin-bottom: 0;
