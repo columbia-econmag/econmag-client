@@ -31,7 +31,7 @@ export default function Home() {
   }, [isAuthenticated]);
 
   function loadArticles(limit = 20) {
-    var x = API.get("posts", "posts/limit/" + limit);
+    var x = API.get("posts", "posts?limit=" + limit);
     return x;
   }
   function renderArticlesList(posts) {

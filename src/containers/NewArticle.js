@@ -62,7 +62,7 @@ export default function NewArticle() {
         <FormGroup controlId="content">
           <FormControl
             value={content}
-            componentClass="textarea"
+            componentclass="textarea"
             onChange={(e) => setContent(e.target.value)}
           />
         </FormGroup>
@@ -73,8 +73,8 @@ export default function NewArticle() {
         <LoaderButton
           block
           type="submit"
-          bsSize="large"
-          bsStyle="primary"
+          bssize="large"
+          bsstyle="primary"
           isLoading={isLoading}
           disabled={!validateForm()}
         >

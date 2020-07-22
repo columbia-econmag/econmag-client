@@ -100,6 +100,11 @@ const LoaderDiv = styled.div`
   text-align: center;
 `;
 
+const MobileLoaderDiv = styled.div`
+  height: 500px !important;
+  text-align: center;
+`;
+
 const OuterMobile = styled.div`
   display: block;
 `;
@@ -123,7 +128,7 @@ export default function SimpleSlider({ ...props }) {
   }, [isLoading]);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/limit/5");
+    var x = API.get("posts", "posts?limit=5");
     return x;
   }
   function showImage(post) {
@@ -137,7 +142,6 @@ export default function SimpleSlider({ ...props }) {
 
   function renderArticlesCarousel(posts) {
     const bigPosts = descriptionControl(posts, 600);
-
     const articles = bigPosts.map((post) => (
       <OuterDiv key={post._id}>
         <LinkContainer to={`/post/${post._id}`}>
@@ -197,9 +201,9 @@ export default function SimpleSlider({ ...props }) {
     <>
       <Mobile>
         {isLoading ? (
-          <LoaderDiv>
+          <MobileLoaderDiv>
             <Spinner animation="border" variant="primary" />
-          </LoaderDiv>
+          </MobileLoaderDiv>
         ) : (
           <Slider {...mobileSettings}>
             {/* {!isLoading && renderMobileCarousel(articles)} */}

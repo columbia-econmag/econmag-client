@@ -59,28 +59,28 @@ export default function Home() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    async function onLoad() {
-      // if (!isAuthenticated) {
-      //   const articles = await loadArticles();
-      //   return;
-      // }
+  // useEffect(() => {
+  //   async function onLoad() {
+  //     // if (!isAuthenticated) {
+  //     //   const articles = await loadArticles();
+  //     //   return;
+  //     // }
 
-      try {
-        const articles = await loadArticles();
-        setArticles(articles);
-      } catch (e) {
-        onError(e);
-      }
-      setIsLoading(false);
-    }
-    onLoad();
-  }, []);
+  //     try {
+  //       const articles = await loadArticles();
+  //       setArticles(articles);
+  //     } catch (e) {
+  //       onError(e);
+  //     }
+  //     setIsLoading(false);
+  //   }
+  //   onLoad();
+  // }, []);
 
-  function loadArticles() {
-    var x = API.get("posts", "posts/limit/11");
-    return x;
-  }
+  // function loadArticles() {
+  //   var x = API.get("posts", "posts?limit=11");
+  //   return x;
+  // }
   function renderArticlesList(posts) {
     // for()
     return [{}].concat(posts.data).map((post, i) =>
@@ -169,9 +169,9 @@ export default function Home() {
             <h2 style={{ fontWeight: 600 }}>Current Issue</h2>
             <div style={{ height: "300px", textAlign: "center" }}>
               <img
-                style={{ height: "250px" }}
+                style={{ height: "280px" }}
                 alt="currentissueImage"
-                src="https://columbiaeconreview.com/econmag/wp-content/uploads/2018/05/Screen-Shot-2018-05-04-at-10.33.53-PM.png"
+                src="https://image.isu.pub/200612230156-36b641323d72cc38825fbe8b98b520dd/jpg/page_1_thumb_large.jpg"
               />
               {/* <h4 style={{ float: "right" }}>Relevant Sections:</h4> */}
             </div>

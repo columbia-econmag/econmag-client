@@ -70,6 +70,11 @@ const LoaderDiv = styled.div`
   text-align: center;
 `;
 
+const MobileLoaderDiv = styled.div`
+  height: 1350px !important;
+  text-align: center;
+`;
+
 export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -151,9 +156,9 @@ export default function CategoriesView(...props) {
     <>
       <Mobile>
         {isLoading ? (
-          <LoaderDiv>
+          <MobileLoaderDiv>
             <Spinner animation="border" variant="primary" />
-          </LoaderDiv>
+          </MobileLoaderDiv>
         ) : (
           <MobileDiv key="MobileCategory">
             {renderRecentMobile(articles)}

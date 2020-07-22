@@ -109,6 +109,11 @@ const LoaderDiv = styled.div`
   text-align: center;
 `;
 
+const MobileLoaderDiv = styled.div`
+  height: 1350px !important;
+  text-align: center;
+`;
+
 export default function RecentArticles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -240,9 +245,15 @@ export default function RecentArticles() {
   return (
     <>
       <Mobile>
-        <MobileDiv key="MobileRecentArticles">
-          {!isLoading && renderRecentMobile(articles)}
-        </MobileDiv>
+        {isLoading ? (
+          <MobileLoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </MobileLoaderDiv>
+        ) : (
+          <MobileDiv key="MobileRecentArticles">
+            {renderRecentMobile(articles)}
+          </MobileDiv>
+        )}
       </Mobile>
       <Default>
         {isLoading ? (

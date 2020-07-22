@@ -18,7 +18,7 @@ const Default = ({ children }) => {
 };
 
 const LoaderDiv = styled.div`
-  height: 705px !important;
+  height: 690px !important;
   text-align: center;
 `;
 
@@ -95,6 +95,11 @@ const MobileText = styled(RightText)`
 
 const MobileImage = styled(RightImage)`
   max-width: 95%;
+`;
+
+const MobileLoaderDiv = styled.div`
+  height: 1350px !important;
+  text-align: center;
 `;
 
 export default function OnCampus() {
@@ -184,7 +189,7 @@ export default function OnCampus() {
     var articles = descriptionControl(posts, 200);
     var HTML = (
       <>
-        <Col xs={5}>
+        <Col style={{ paddingLeft: "0" }} xs={5}>
           <LinkContainer to={`/post/${articles[0]._id}`}>
             <LeftImage src={showImage(articles[0])} />
           </LinkContainer>
@@ -236,9 +241,15 @@ export default function OnCampus() {
   return (
     <>
       <Mobile>
-        <MobileDiv key="MobileRecentArticles">
-          {!isLoading && renderRecentMobile(articles)}
-        </MobileDiv>
+        {isLoading ? (
+          <MobileLoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </MobileLoaderDiv>
+        ) : (
+          <MobileDiv key="MobileRecentArticles">
+            {renderRecentMobile(articles)}
+          </MobileDiv>
+        )}
       </Mobile>
       <Default>
         {isLoading ? (
