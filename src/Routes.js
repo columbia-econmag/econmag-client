@@ -4,13 +4,13 @@ import asyncComponent from "./components/AsyncComponent";
 // import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
-import { Auth } from "aws-amplify";
+// import { Auth } from "aws-amplify";
 
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
 const AsyncEdit = asyncComponent(() => import("./containers/EditArticle")); //TOADD
 // const AsyncAuthor = asyncComponent(() => import("./containers/Author")); //TOADD
 const AsyncEditorHome = asyncComponent(() => import("./containers/UserHome")); //TOADD
-// const AsyncCategory = asyncComponent(() => import("./containers/Category")); //TOADD
+const AsyncCategory = asyncComponent(() => import("./containers/Category")); //TOADD
 const AsyncLogin = asyncComponent(() => import("./containers/Login"));
 const AsyncNotes = asyncComponent(() => import("./containers/Articles"));
 const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
@@ -28,6 +28,8 @@ export default ({ childProps }) => (
       component={AsyncAuthor}
     />
      */}
+    <Route path="/category/:post_category" exact component={AsyncCategory} />
+
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <UnauthenticatedRoute path="/signup" exact component={AsyncSignup} />
     <Route path="/post/:_id" exact component={AsyncNotes} />

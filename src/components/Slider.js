@@ -109,14 +109,14 @@ const OuterMobile = styled.div`
   display: block;
 `;
 
-export default function SimpleSlider({ ...props }) {
+export default function SimpleSlider(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const propQuery = props[0].query;
   useEffect(() => {
     async function onLoad() {
       try {
-        const articles = await loadArticles();
+        const articles = await loadArticles(propQuery);
         setArticles(articles);
       } catch (e) {
         onError(e);
@@ -125,10 +125,10 @@ export default function SimpleSlider({ ...props }) {
     }
     onLoad();
     return () => isLoading;
-  }, [isLoading]);
+  }, [propQuery, isLoading]);
 
-  function loadArticles() {
-    var x = API.get("posts", "posts?limit=5");
+  function loadArticles(propQuery = "") {
+    var x = API.get("posts", "posts/" + propQuery);
     return x;
   }
   function showImage(post) {

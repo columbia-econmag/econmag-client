@@ -114,14 +114,14 @@ const MobileLoaderDiv = styled.div`
   text-align: center;
 `;
 
-export default function RecentArticles() {
+export default function RecentArticles(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const propQuery = props[0].query;
   useEffect(() => {
     async function onLoad() {
       try {
-        const articles = await loadArticles();
+        const articles = await loadArticles(propQuery);
         setArticles(articles);
       } catch (e) {
         onError(e);
@@ -129,11 +129,11 @@ export default function RecentArticles() {
       setIsLoading(false);
     }
     onLoad();
-    return () => isLoading;
-  }, [isLoading]);
+    return () => false;
+  }, [propQuery]);
 
-  function loadArticles() {
-    var x = API.get("posts", "posts/category/World/limit/3");
+  function loadArticles(propQuery = "") {
+    var x = API.get("posts", "posts/" + propQuery);
     return x;
   }
 

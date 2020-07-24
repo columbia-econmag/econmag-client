@@ -78,14 +78,14 @@ const MobileLoaderDiv = styled.div`
 export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const newProp = props[0].category;
+  const propQuery = props[0].query;
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     let loading = true;
     async function onLoad() {
       try {
-        const articles = await loadArticles(newProp);
+        const articles = await loadArticles(propQuery);
         setArticles(articles);
         makePretty(articles, 300);
       } catch (e) {
@@ -94,11 +94,11 @@ export default function CategoriesView(...props) {
       setIsLoading(false);
     }
     onLoad();
-    return () => (loading = false);
-  }, [newProp]);
+    return () => false;
+  }, [propQuery]);
 
-  function loadArticles(category) {
-    var x = API.get("posts", "posts/category/" + category + "/limit/3");
+  function loadArticles(query = "") {
+    var x = API.get("posts", "posts/" + query);
     return x;
   }
 

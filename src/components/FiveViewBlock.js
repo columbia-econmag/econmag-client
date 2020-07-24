@@ -102,14 +102,15 @@ const MobileLoaderDiv = styled.div`
   text-align: center;
 `;
 
-export default function OnCampus() {
+export default function FiveViewBlock(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const propQuery = props[0].query;
 
   useEffect(() => {
     async function onLoad() {
       try {
-        const articles = await loadArticles();
+        const articles = await loadArticles(propQuery);
         setArticles(articles);
       } catch (e) {
         onError(e);
@@ -117,11 +118,11 @@ export default function OnCampus() {
       setIsLoading(false);
     }
     onLoad();
-    return () => isLoading;
-  }, [isLoading]);
+    return () => false;
+  }, [propQuery]);
 
-  function loadArticles() {
-    var x = API.get("posts", "posts/category/On Campus/limit/5");
+  function loadArticles(propQuery = "") {
+    var x = API.get("posts", "posts/" + propQuery);
     return x;
   }
 
@@ -186,7 +187,7 @@ export default function OnCampus() {
   }
 
   function renderRecentArticles(posts) {
-    var articles = descriptionControl(posts, 200);
+    var articles = descriptionControl(posts, 300);
     var HTML = (
       <>
         <Col style={{ paddingLeft: "0" }} xs={5}>

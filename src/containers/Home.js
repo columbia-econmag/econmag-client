@@ -116,25 +116,25 @@ export default function Home() {
               </div>
             }
           >
-            <SimpleSlider />
+            <SimpleSlider query="/category/World/limit/5" />
           </Suspense>
         </SliderMobile>
 
         <MobileHeader>Recent Articles</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <RecentArticles key="mobileRecentArticles" />
+          <RecentArticles query="" />
         </Suspense>
         <MobileHeader>On Campus</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView category="On Campus" />
+          <CategoriesView query="/category/On Campus/limit/3" />
         </Suspense>
         <MobileHeader>U.S.</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView category="U.S." />
+          <CategoriesView query="/category/U.S./limit/3" />
         </Suspense>
         <MobileHeader>World</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView category="World" />
+          <CategoriesView query="/category/World/limit/3" />
         </Suspense>
       </Mobile>
       <Default key="defaultHome">
@@ -148,7 +148,7 @@ export default function Home() {
                 </div>
               }
             >
-              <SimpleSlider />
+              <SimpleSlider query="/category/World/limit/5" />
             </Suspense>
           </InnerSection>
         </SliderSection>
@@ -161,7 +161,7 @@ export default function Home() {
               </div>
             }
           >
-            <RecentArticles />
+            <RecentArticles query="" />
           </Suspense>
         </InnerSection>
         <IssueSection>
@@ -187,7 +187,7 @@ export default function Home() {
               </div>
             }
           >
-            <FiveViewBlock />
+            <FiveViewBlock query="/category/On Campus/limit/5" />
           </Suspense>
           <Header>U.S.</Header>
           <Suspense
@@ -197,7 +197,7 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView category="On Campus" />
+            <CategoriesView query="/category/U.S./limit/3" />
           </Suspense>
 
           <Header>World</Header>
@@ -208,7 +208,7 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView category="World" />
+            <CategoriesView query="/category/World/limit/3" />
           </Suspense>
         </InnerSection>
       </Default>
