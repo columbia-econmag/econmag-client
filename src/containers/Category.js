@@ -2,11 +2,19 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { ListGroup, ListGroupItem, Spinner } from "react-bootstrap";
+import {
+  ListGroup,
+  ListGroupItem,
+  Spinner,
+  Card,
+  CardGroup,
+} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
+import { chunk } from "lodash";
+import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
 const CategoriesView = lazy(() => import("../components/HomeCategory"));
@@ -56,11 +64,13 @@ const MobileHeader = styled.h2`
   text-align: center;
 `;
 
-export default function Category() {
+export default function Category(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { post_category } = useParams();
   console.log(post_category);
+  console.log(props[0].location.search);
+  const query = props[0].location.search;
 
   useEffect(() => {
     async function onLoad() {
@@ -70,7 +80,9 @@ export default function Category() {
       // }
 
       try {
-        const articles = await loadArticles();
+        const articles = await loadArticles(query);
+        console.log(articles);
+        makePretty(articles, 500);
         setArticles(articles);
       } catch (e) {
         onError(e);
@@ -78,33 +90,53 @@ export default function Category() {
       setIsLoading(false);
     }
     onLoad();
-  }, []);
+  }, [query, post_category]);
 
-  function loadArticles() {
-    var x = API.get("posts", "posts?limit=11");
+  function loadArticles(query) {
+    var x = API.get("posts", "posts/category/" + post_category + query);
     return x;
   }
-  function renderArticlesList(posts) {
-    // for()
-    return [{}].concat(posts.data).map((post, i) =>
-      i !== 0 ? (
-        <LinkContainer key={post._id} to={`/post/${post._id}`}>
-          <ListGroupItem header={post.post_title}>
-            {post.post_content.trim().split("\n")[0]}
-            {"Created: " + new Date(post.post_date).toLocaleString()}
-          </ListGroupItem>
-        </LinkContainer>
-      ) : null
+
+  function showImage(post) {
+    var item = randomImage();
+    if (post.cover_image) {
+      return post.cover_image.src;
+    } else {
+      return item;
+    }
+  }
+  function renderArticlesList(post) {
+    var html = (
+      <>
+        <Card.Img variant="top" src={showImage(post)} />
+        <Card.Body>
+          <Card.Title>{post.post_title}</Card.Title>
+          <Card.Text>{[post.post_excerpt]}</Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </>
     );
+    return html;
   }
 
-  function renderArticlesLists() {
-    return (
-      <div className="articles">
-        <h2>Your Articles</h2>
-        <ListGroup>{!isLoading && renderArticlesList(articles)}</ListGroup>
-      </div>
-    );
+  function renderArticlesLists(articles) {
+    const sections = chunk(articles.data, 3);
+    console.log(sections);
+    // for (var i = 0; i < articles.length; i++){
+    //   if (i % 3  === 0){
+    //     toR +=
+    //   }
+    // }
+
+    return sections.map((posts, i) => (
+      <CardGroup key={i}>
+        {posts.map((post) => (
+          <Card key={post._id}>{renderArticlesList(post)}</Card>
+        ))}
+      </CardGroup>
+    ));
   }
 
   return (
@@ -139,7 +171,7 @@ export default function Category() {
       <Default key="defaultHome">
         <InnerSection>
           <Header>{post_category}</Header>
-          {}
+          {!isLoading && renderArticlesLists(articles)}
         </InnerSection>
       </Default>
       {/* <div className="Home">{renderArticlesLists()}</div> */}

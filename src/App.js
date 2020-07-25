@@ -77,16 +77,16 @@ function App() {
               <LinkContainer to="/">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/category/World">
+              <LinkContainer to="/category/World?limit=12">
                 <Nav.Link>World</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/category/U.S.">
+              <LinkContainer to="/category/U.S.?limit=12">
                 <Nav.Link>U.S.</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/category/On Campus">
+              <LinkContainer to="/category/On Campus?limit=12">
                 <Nav.Link>On Campus</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/category/Business">
+              <LinkContainer to="/category/Business?limit=12">
                 <Nav.Link>Business</Nav.Link>
               </LinkContainer>
             </Nav>
