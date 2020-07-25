@@ -2,13 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import {
-  ListGroup,
-  ListGroupItem,
-  Spinner,
-  Card,
-  CardGroup,
-} from "react-bootstrap";
+import { Spinner, Card, CardGroup, Pagination } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
@@ -48,6 +42,11 @@ const InnerSection = styled.section`
   // background-color: aliceblue;
 `;
 
+const PageDiv = styled.div`
+  padding: 2%;
+  text-align: center;
+`;
+
 const SliderMobile = styled(SliderSection)`
   padding: 5px 5px;
 `;
@@ -68,8 +67,6 @@ export default function Category(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { post_category } = useParams();
-  console.log(post_category);
-  console.log(props[0].location.search);
   const query = props[0].location.search;
 
   useEffect(() => {
@@ -78,11 +75,13 @@ export default function Category(...props) {
       //   const articles = await loadArticles();
       //   return;
       // }
-
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
       try {
         const articles = await loadArticles(query);
-        console.log(articles);
-        makePretty(articles, 500);
         setArticles(articles);
       } catch (e) {
         onError(e);
@@ -105,16 +104,51 @@ export default function Category(...props) {
       return item;
     }
   }
+
+  function getPages(totalPages, currentPage) {
+    let items = [];
+    for (let x = 1; x <= totalPages; x++) {
+      items.push(
+        <LinkContainer
+          key={x}
+          to={`/category/${post_category}?limit=9&page=${x}`}
+          style={{ cursor: "pointer" }}
+        >
+          <Pagination.Item key={x} active={"" + x === currentPage}>
+            {x}
+          </Pagination.Item>
+        </LinkContainer>
+      );
+    }
+    return <Pagination className="justify-content-center">{items}</Pagination>;
+  }
+
   function renderArticlesList(post) {
     var html = (
       <>
-        <Card.Img variant="top" src={showImage(post)} />
+        <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
+          <Card.Img variant="top" src={showImage(post)} />
+        </LinkContainer>
         <Card.Body>
-          <Card.Title>{post.post_title}</Card.Title>
-          <Card.Text>{[post.post_excerpt]}</Card.Text>
+          <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
+            <Card.Title>{post.post_title}</Card.Title>
+          </LinkContainer>
+          <Card.Subtitle className="mb-2 text-muted">
+            {post.post_author}
+          </Card.Subtitle>
+          <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
+            <Card.Text>{[post.post_excerpt]}</Card.Text>
+          </LinkContainer>
         </Card.Body>
         <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">
+            From{" "}
+            {new Intl.DateTimeFormat("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "2-digit",
+            }).format(new Date(post.post_date))}
+          </small>
         </Card.Footer>
       </>
     );
@@ -122,13 +156,8 @@ export default function Category(...props) {
   }
 
   function renderArticlesLists(articles) {
+    makePretty(articles, 500);
     const sections = chunk(articles.data, 3);
-    console.log(sections);
-    // for (var i = 0; i < articles.length; i++){
-    //   if (i % 3  === 0){
-    //     toR +=
-    //   }
-    // }
 
     return sections.map((posts, i) => (
       <CardGroup key={i}>
@@ -142,36 +171,19 @@ export default function Category(...props) {
   return (
     <>
       <Mobile key="mobileHome">
-        <SliderMobile>
-          <h2>{post_category}</h2>
-          <Suspense
-            fallback={
-              <div style={{ textAlign: "center" }}>
-                <Spinner animation="border" variant="primary" />
-              </div>
-            }
-          >
-            <SimpleSlider query={"/category/" + post_category + "/limit/5"} />
-          </Suspense>
-        </SliderMobile>
-
-        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <RecentArticles query={"/category/" + post_category + "/limit/3"} />
-        </Suspense>
-        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query={"/category/" + post_category + "/limit/3"} />
-        </Suspense>
-        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query={"/category/" + post_category + "/limit/3"} />
-        </Suspense>
-        <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query={"/category/" + post_category + "/limit/3"} />
-        </Suspense>
+        <Header>{post_category}</Header>
+        {!isLoading && renderArticlesLists(articles)}
+        <PageDiv>
+          {!isLoading && getPages(articles.totalPages, articles.currentPage)}
+        </PageDiv>
       </Mobile>
       <Default key="defaultHome">
         <InnerSection>
           <Header>{post_category}</Header>
           {!isLoading && renderArticlesLists(articles)}
+          <PageDiv>
+            {!isLoading && getPages(articles.totalPages, articles.currentPage)}
+          </PageDiv>
         </InnerSection>
       </Default>
       {/* <div className="Home">{renderArticlesLists()}</div> */}

@@ -34,3 +34,6 @@ input[type="file"] {
   /* display: flex;
   justify-content: center; */
 }
+html {
+  scroll-behavior: smooth;
+}

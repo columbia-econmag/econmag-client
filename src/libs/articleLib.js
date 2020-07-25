@@ -6,7 +6,12 @@ export default function makePretty(articles, maxLength = 500) {
       var i = 0;
       while (hasImage(excerpt) != null || excerpt.length < 10) {
         i++;
+
         excerpt = p.post_content.trim().split("\n")[i];
+        if (excerpt === undefined) {
+          excerpt = "";
+          break;
+        }
       }
       i = 0;
       while (excerptJunk(excerpt)) {
