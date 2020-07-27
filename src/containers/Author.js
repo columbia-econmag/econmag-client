@@ -11,10 +11,6 @@ import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
-const CategoriesView = lazy(() => import("../components/HomeCategory"));
-const RecentArticles = lazy(() => import("../components/RecentArticles"));
-const SimpleSlider = lazy(() => import("../components/Slider"));
-const FiveViewBlock = lazy(() => import("../components/FiveViewBlock"));
 
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -63,15 +59,10 @@ const MobileHeader = styled.h2`
   text-align: center;
 `;
 
-const LoaderDiv = styled.div`
-  height: 3000px !important;
-  text-align: center;
-`;
-
 export default function Category(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { post_category } = useParams();
+  const { post_author } = useParams();
   const query = props[0].location.search;
 
   useEffect(() => {
@@ -94,10 +85,10 @@ export default function Category(...props) {
       setIsLoading(false);
     }
     onLoad();
-  }, [query, post_category]);
+  }, [query, post_author]);
 
   function loadArticles(query) {
-    var x = API.get("posts", "posts/category/" + post_category + query);
+    var x = API.get("posts", "posts/author/" + post_author + query);
     return x;
   }
 
@@ -116,7 +107,7 @@ export default function Category(...props) {
       items.push(
         <LinkContainer
           key={x}
-          to={`/category/${post_category}?limit=9&page=${x}`}
+          to={`/author/${post_author}?limit=9&page=${x}`}
           style={{ cursor: "pointer" }}
         >
           <Pagination.Item key={x} active={"" + x === currentPage}>
@@ -138,14 +129,9 @@ export default function Category(...props) {
           <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
             <Card.Title>{post.post_title}</Card.Title>
           </LinkContainer>
-          <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
-            <Card.Subtitle
-              className="mb-2 text-muted"
-              style={{ cursor: "pointer" }}
-            >
-              {post.post_author}
-            </Card.Subtitle>
-          </LinkContainer>
+          <Card.Subtitle className="mb-2 text-muted">
+            {post.post_author}
+          </Card.Subtitle>
           <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
             <Card.Text>{[post.post_excerpt]}</Card.Text>
           </LinkContainer>
@@ -181,7 +167,7 @@ export default function Category(...props) {
   return (
     <>
       <Mobile key="mobileHome">
-        <Header>{post_category}</Header>
+        <Header>{post_author}</Header>
         {!isLoading && renderArticlesLists(articles)}
         <PageDiv>
           {!isLoading && getPages(articles.totalPages, articles.currentPage)}
@@ -189,14 +175,8 @@ export default function Category(...props) {
       </Mobile>
       <Default key="defaultHome">
         <InnerSection>
-          <Header>{post_category}</Header>
-          {isLoading ? (
-            <LoaderDiv>
-              <Spinner animation="border" variant="primary" />
-            </LoaderDiv>
-          ) : (
-            <>{renderArticlesLists(articles)}</>
-          )}
+          <Header>{post_author}</Header>
+          {!isLoading && renderArticlesLists(articles)}
           <PageDiv>
             {!isLoading && getPages(articles.totalPages, articles.currentPage)}
           </PageDiv>

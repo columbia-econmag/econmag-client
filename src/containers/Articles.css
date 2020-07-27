@@ -6,7 +6,10 @@
     padding: 0px 2% !important;
   }
   .margins {
-    margin: 30px 3% !important;
+    margin: 5px 3% 30px 3% !important;
+  }
+  .buttonMargin {
+    margin-left: 3% !important;
   }
 }
 .Articles form {
@@ -21,7 +24,7 @@
 .journal {
   white-space: pre-line;
   padding: 0px 5%;
-  overflow: auto;
+  overflow: hidden;
 }
 
 img {
@@ -33,7 +36,7 @@ img {
 .uglyJournal {
   white-space: pre-line;
   padding: 0px 5%;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .journal::first-letter {
@@ -47,5 +50,5 @@ img {
 }
 
 .margins {
-  margin: 50px 10%;
+  margin: 5px 10% 50px 10%;
 }

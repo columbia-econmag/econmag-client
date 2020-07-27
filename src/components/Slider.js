@@ -34,10 +34,8 @@ const mobileSettings = {
 };
 const SliderTitle = styled.h3`
   text-align: center;
-  // width: 50%;
-  // float: right;
-  // color: palevioletred;
   cursor: pointer;
+  margin-bottom: 0px;
 `;
 
 const MobileImage = styled.img`
@@ -64,6 +62,14 @@ const SliderCaption = styled.p`
   // float: right;
   color: black;
 `;
+
+const Author = styled.p`
+  text-align: center;
+  color: grey;
+  margin-bottom: 4px;
+  cursor: pointer;
+`;
+
 const ImgHolder = styled.div`
   text-align: center;
   display: flex;
@@ -153,6 +159,9 @@ export default function SimpleSlider(...props) {
           <LinkContainer to={`/post/${post._id}`}>
             <SliderTitle>{post.post_title}</SliderTitle>
           </LinkContainer>
+          <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
+            <Author>{post.post_author}</Author>
+          </LinkContainer>
           <SliderCaption
             dangerouslySetInnerHTML={{
               __html: post.post_excerpt,
@@ -184,6 +193,9 @@ export default function SimpleSlider(...props) {
         </LinkContainer>
         <LinkContainer to={`/post/${post._id}`}>
           <MobileHeader>{post.post_title}</MobileHeader>
+        </LinkContainer>
+        <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
+          <Author>{post.post_author}</Author>
         </LinkContainer>
         <MobileText
           dangerouslySetInnerHTML={{

@@ -20,6 +20,7 @@ const Default = ({ children }) => {
 const RecentTitle = styled.h3`
   text-align: left;
   margin-top: 5px;
+  margin-bottom: 0px;
   // color: palevioletred;
   cursor: pointer;
 `;
@@ -79,9 +80,24 @@ const RightHeader = styled.h3`
   text-align: right;
   // color: palevioletred;
   cursor: pointer;
+  margin-bottom: 0px;
 `;
 const RightText = styled.p`
   text-align: right;
+`;
+
+const RightAuthor = styled.p`
+  text-align: Right;
+  color: grey;
+  margin-bottom: 4px;
+  cursor: pointer;
+`;
+
+const LeftAuthor = styled.p`
+  text-align: left;
+  color: grey;
+  margin-bottom: 4px;
+  cursor: pointer;
 `;
 
 const MobileDiv = styled.div`
@@ -172,6 +188,11 @@ export default function RecentArticles(...props) {
               <LinkContainer to={`/post/${articles[0]._id}`}>
                 <RecentTitle>{articles[0].post_title}</RecentTitle>
               </LinkContainer>
+              <LinkContainer
+                to={`/author/${articles[0].post_author}?limit=9&page=1`}
+              >
+                <LeftAuthor>{articles[0].post_author}</LeftAuthor>
+              </LinkContainer>
               <RecentCaption
                 dangerouslySetInnerHTML={{
                   __html: articles[0].post_excerpt,
@@ -188,6 +209,11 @@ export default function RecentArticles(...props) {
             <TextHolder>
               <LinkContainer to={`/post/${articles[1]._id}`}>
                 <RecentTitle>{articles[1].post_title}</RecentTitle>
+              </LinkContainer>
+              <LinkContainer
+                to={`/author/${articles[1].post_author}?limit=9&page=1`}
+              >
+                <LeftAuthor>{articles[1].post_author}</LeftAuthor>
               </LinkContainer>
               <RecentCaption
                 dangerouslySetInnerHTML={{
@@ -208,6 +234,11 @@ export default function RecentArticles(...props) {
           </LinkContainer>
           <LinkContainer to={`/post/${articles[2]._id}`}>
             <RightHeader>{articles[2].post_title}</RightHeader>
+          </LinkContainer>
+          <LinkContainer
+            to={`/author/${articles[2].post_author}?limit=9&page=1`}
+          >
+            <RightAuthor>{articles[2].post_author}</RightAuthor>
           </LinkContainer>
           <RightText
             dangerouslySetInnerHTML={{

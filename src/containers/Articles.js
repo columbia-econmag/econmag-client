@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { API } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import styled from "styled-components";
 import parse from "html-react-parser";
 import { removeHome } from "../libs/articleLib";
+import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
+import { FcPrevious } from "react-icons/fc";
 import "./Articles.css";
 
 const Header = styled.h2`
@@ -21,15 +24,26 @@ const LabelHolder = styled.div`
 const AuthorLabel = styled.h6`
   float: left;
   color: grey;
+  cursor: pointer;
 `;
 const DateLabel = styled.h6`
   color: grey;
   float: right;
   padding-bottom: 20px;
 `;
+
+const MyButton = styled(Button)`
+  margin-left: 10%;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  display: flex;
+`;
+
+const ButtonDiv = styled.div``;
 export default function Articles() {
   const { _id } = useParams();
   const [article, setArticle] = useState(null);
+  let history = useHistory();
 
   useEffect(() => {
     function loadArticle() {
@@ -51,21 +65,35 @@ export default function Articles() {
   function renderArticle(post) {
     var content = removeHome(post.post_content);
     return (
-      <OuterDiv className="margins">
-        <Header>{post.post_title}</Header>
-        <LabelHolder>
-          <AuthorLabel>By {post.post_author}</AuthorLabel>
-          <DateLabel>
-            {new Intl.DateTimeFormat("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            }).format(new Date(post.post_date))}
-          </DateLabel>
-        </LabelHolder>
-        <div className="uglyJournal">{parse(content.uglyDiv)}</div>
-        <div className="journal">{parse(content.prettyDiv)}</div>
-      </OuterDiv>
+      <>
+        <ButtonDiv>
+          <MyButton
+            className="buttonMargin"
+            variant="outline-light"
+            size="sm"
+            onClick={() => history.goBack()}
+          >
+            <FcPrevious />
+          </MyButton>
+        </ButtonDiv>
+        <OuterDiv className="margins">
+          <Header>{post.post_title}</Header>
+          <LabelHolder>
+            <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
+              <AuthorLabel>By {post.post_author}</AuthorLabel>
+            </LinkContainer>
+            <DateLabel>
+              {new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+              }).format(new Date(post.post_date))}
+            </DateLabel>
+          </LabelHolder>
+          <div className="uglyJournal">{parse(content.uglyDiv)}</div>
+          <div className="journal">{parse(content.prettyDiv)}</div>
+        </OuterDiv>
+      </>
     );
   }
 

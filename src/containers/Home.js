@@ -46,7 +46,12 @@ const SliderMobile = styled(SliderSection)`
 const Header = styled.h2`
   padding: 30px 0px 0px 0px;
   font-weight: 600;
+  display: inline-block;
+  cursor: pointer;
   // background-color: aliceblue;
+  &:hover {
+    color: grey;
+  }
 `;
 
 const MobileHeader = styled.h2`
@@ -124,7 +129,7 @@ export default function Home() {
 
         <MobileHeader>Recent Articles</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <RecentArticles query="" />
+          <CategoriesView query="" />
         </Suspense>
         <MobileHeader>On Campus</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
@@ -181,7 +186,9 @@ export default function Home() {
         </IssueSection>
 
         <InnerSection>
-          <Header>On Campus</Header>
+          <LinkContainer to="/category/On Campus?limit=9&page=1">
+            <Header>On Campus</Header>
+          </LinkContainer>
           <Suspense
             fallback={
               <div style={{ textAlign: "center" }}>
@@ -191,7 +198,9 @@ export default function Home() {
           >
             <FiveViewBlock query="/category/On Campus/limit/5" />
           </Suspense>
-          <Header>U.S.</Header>
+          <LinkContainer to="/category/U.S.?limit=9&page=1">
+            <Header>U.S.</Header>
+          </LinkContainer>
           <Suspense
             fallback={
               <div style={{ textAlign: "center" }}>
@@ -201,8 +210,9 @@ export default function Home() {
           >
             <CategoriesView query="/category/U.S./limit/3" />
           </Suspense>
-
-          <Header>World</Header>
+          <LinkContainer to="/category/World?limit=9&page=1">
+            <Header>World</Header>
+          </LinkContainer>
           <Suspense
             fallback={
               <div style={{ textAlign: "center" }}>

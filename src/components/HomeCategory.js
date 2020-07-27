@@ -40,9 +40,17 @@ const Header = styled.h3`
   text-align: center;
   // color: palevioletred;
   cursor: pointer;
+  margin-bottom: 0px;
 `;
 const CatText = styled.p`
   text-align: center;
+`;
+
+const Caption = styled.p`
+  text-align: center;
+  color: grey;
+  margin-bottom: 4px;
+  cursor: pointer;
 `;
 
 const MobileDiv = styled.div`
@@ -78,8 +86,12 @@ const MobileLoaderDiv = styled.div`
 export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const propQuery = props[0].query;
-
+  var propQuery = props[0].query;
+  console.log(propQuery);
+  if (propQuery === "") {
+    console.log("WOAH");
+    propQuery = "?limit=3";
+  }
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     let loading = true;
@@ -121,6 +133,9 @@ export default function CategoriesView(...props) {
         <LinkContainer to={`/post/${post._id}`}>
           <Header>{post.post_title}</Header>
         </LinkContainer>
+        <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
+          <Caption>{post.post_author}</Caption>
+        </LinkContainer>
         <CatText
           dangerouslySetInnerHTML={{
             __html: post.post_excerpt,
@@ -140,6 +155,9 @@ export default function CategoriesView(...props) {
         </LinkContainer>
         <LinkContainer to={`/post/${post._id}`}>
           <MobileHeader>{post.post_title}</MobileHeader>
+        </LinkContainer>
+        <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
+          <Caption>{post.post_author}</Caption>
         </LinkContainer>
         <MobileText
           dangerouslySetInnerHTML={{
@@ -166,13 +184,19 @@ export default function CategoriesView(...props) {
         )}
       </Mobile>
       <Default>
-        <OuterDiv>
-          <Container className="width">
-            <Row className="categoryContainer">
-              {!isLoading && renderRecentArticles(articles)}
-            </Row>
-          </Container>
-        </OuterDiv>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <OuterDiv>
+            <Container className="width">
+              <Row className="categoryContainer">
+                {!isLoading && renderRecentArticles(articles)}
+              </Row>
+            </Container>
+          </OuterDiv>
+        )}
       </Default>
     </>
   );

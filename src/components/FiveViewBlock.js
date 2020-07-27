@@ -71,7 +71,10 @@ const RightCaption = styled.p`
   text-align: left;
   color: grey;
   margin-bottom: 4px;
+  cursor: pointer;
 `;
+
+const MobileCaption = styled(RightCaption)``;
 
 const LeftCaption = styled(RightCaption)`
   margin-bottom: 16px !important;
@@ -161,7 +164,9 @@ export default function FiveViewBlock(...props) {
           <LinkContainer to={`/post/${post1._id}`}>
             <RightHeader>{post1.post_title}</RightHeader>
           </LinkContainer>
-          <RightCaption>{post1.post_author}</RightCaption>
+          <LinkContainer to={`/author/${post1.post_author}?limit=9&page=1`}>
+            <RightCaption>{post1.post_author}</RightCaption>
+          </LinkContainer>
           <RightText
             dangerouslySetInnerHTML={{
               __html: post1.post_excerpt,
@@ -175,7 +180,9 @@ export default function FiveViewBlock(...props) {
           <LinkContainer to={`/post/${post2._id}`}>
             <RightHeader>{post2.post_title}</RightHeader>
           </LinkContainer>
-          <RightCaption>{post2.post_author}</RightCaption>
+          <LinkContainer to={`/author/${post2.post_author}?limit=9&page=1`}>
+            <RightCaption>{post2.post_author}</RightCaption>
+          </LinkContainer>
           <RightText
             dangerouslySetInnerHTML={{
               __html: post2.post_excerpt,
@@ -197,7 +204,11 @@ export default function FiveViewBlock(...props) {
           <LinkContainer to={`/post/${articles[0]._id}`}>
             <LeftHeader>{articles[0].post_title}</LeftHeader>
           </LinkContainer>
-          <LeftCaption>{articles[0].post_author}</LeftCaption>
+          <LinkContainer
+            to={`/author/${articles[0].post_author}?limit=9&page=1`}
+          >
+            <LeftCaption>{articles[0].post_author}</LeftCaption>
+          </LinkContainer>
           <RightText
             dangerouslySetInnerHTML={{
               __html: renderRight(articles),
@@ -228,6 +239,7 @@ export default function FiveViewBlock(...props) {
         <LinkContainer to={`/post/${post._id}`}>
           <MobileHeader>{post.post_title}</MobileHeader>
         </LinkContainer>
+        <MobileCaption>{post.post_title}</MobileCaption>
         <MobileText
           dangerouslySetInnerHTML={{
             __html: post.post_excerpt,

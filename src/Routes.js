@@ -8,7 +8,7 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
 const AsyncEdit = asyncComponent(() => import("./containers/EditArticle")); //TOADD
-// const AsyncAuthor = asyncComponent(() => import("./containers/Author")); //TOADD
+const AsyncAuthor = asyncComponent(() => import("./containers/Author")); //TOADD
 const AsyncEditorHome = asyncComponent(() => import("./containers/UserHome")); //TOADD
 const AsyncCategory = asyncComponent(() => import("./containers/Category")); //TOADD
 const AsyncLogin = asyncComponent(() => import("./containers/Login"));
@@ -22,12 +22,8 @@ export default ({ childProps }) => (
     <Route path="/" exact component={AsyncHome} />
     <AuthenticatedRoute path="/editor" exact component={AsyncEditorHome} />
 
-    {/* <UnauthenticatedRoute
-      path="/author/:post_author"
-      exact
-      component={AsyncAuthor}
-    />
-     */}
+    <Route path="/author/:post_author" exact component={AsyncAuthor} />
+
     <Route path="/category/:post_category" exact component={AsyncCategory} />
 
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
