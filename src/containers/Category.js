@@ -125,7 +125,11 @@ export default function Category(...props) {
         </LinkContainer>
       );
     }
-    return <Pagination className="justify-content-center">{items}</Pagination>;
+    return (
+      <Pagination className="justify-content-center  flex-wrap">
+        {items}
+      </Pagination>
+    );
   }
 
   function renderArticlesList(post) {

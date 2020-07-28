@@ -1,66 +1,107 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import { API, Storage } from "aws-amplify";
-import { onError } from "../libs/errorLib";
+import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
+import { onError } from "../libs/errorLib";
 import config from "../config";
 import { s3Upload } from "../libs/awsLib";
+import "./NewArticle.css";
+import { API } from "aws-amplify";
+import styled from "styled-components";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import ImageUploader from "quill-image-uploader";
+import ImageResize from "quill-image-resize-module-react";
+import { ImageDrop } from "quill-image-drop-module";
 import "./Articles.css";
 
-export default function Articles() {
+ReactQuill.Quill.register("modules/imageResize", ImageResize);
+ReactQuill.Quill.register("modules/imageDrop", ImageDrop);
+ReactQuill.Quill.register("modules/imageUploader", ImageUploader);
+
+const OuterDiv = styled.div`
+  margin: 0px 10%;
+  overflow: auto;
+`;
+const Header = styled.h2`
+  color: Black;
+`;
+
+const LabelHolder = styled.div`
+  padding-bottom: 60px;
+`;
+const AuthorLabel = styled.h6`
+  float: left;
+  color: grey;
+  cursor: pointer;
+`;
+const DateLabel = styled.h6`
+  color: grey;
+  float: right;
+  padding-bottom: 20px;
+`;
+
+const WarningLabel = styled.h6`
+  color: #ff6d6dd1;
+`;
+
+const PrevWrapper = styled.div`
+  padding-top: 30px;
+  padding-bottom: 30px;
+`;
+
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
+    ["link", "image"],
+    ["clean"],
+  ],
+  imageResize: { parchment: ReactQuill.Quill.import("parchment") },
+  imageDrop: true,
+  imageUploader: {
+    upload: (file) => {
+      return new Promise((resolve, reject) => {
+        resolve(s3Upload(file));
+      });
+    },
+  },
+};
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+];
+export default function NewArticle() {
   const file = useRef(null);
-  const { _id } = useParams();
   const history = useHistory();
-  const [article, setArticle] = useState(null);
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    function loadArticle() {
-      return API.get("posts", `posts/${_id}`);
-    }
-
-    async function onLoad() {
-      try {
-        const article = await loadArticle();
-        const { post_content, attachment } = article.data;
-        if (attachment) {
-          article.attachmentURL = await Storage.vault.get(attachment);
-        }
-
-        setContent(post_content);
-        setArticle(article.data);
-      } catch (e) {
-        onError(e);
-      }
-    }
-
-    onLoad();
-  }, [_id]);
 
   function validateForm() {
     return content.length > 0;
   }
 
-  function formatFilename(str) {
-    return str.replace(/^\w+-/, "");
-  }
-
   function handleFileChange(event) {
     file.current = event.target.files[0];
   }
-
-  function saveArticle(article) {
-    return API.put("posts", `posts/${_id}`, {
-      body: { post_content: article.content },
-    });
-  }
-
   async function handleSubmit(event) {
-    let attachment;
-
     event.preventDefault();
 
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
@@ -75,14 +116,10 @@ export default function Articles() {
     setIsLoading(true);
 
     try {
-      if (file.current) {
-        attachment = await s3Upload(file.current);
-      }
-
-      await saveArticle({
-        content,
-        attachment: attachment || article.attachment,
-      });
+      const attachment = file.current ? await s3Upload(file.current) : null;
+      console.log("ATTACHMENT");
+      console.log(attachment);
+      await createArticle({ title, author, content });
       history.push("/");
     } catch (e) {
       onError(e);
@@ -90,65 +127,78 @@ export default function Articles() {
     }
   }
 
-  function deleteArticle() {
-    return API.del("posts", `posts/${_id}`);
-  }
-
-  async function handleDelete(event) {
-    event.preventDefault();
-
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this article?"
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
-    setIsDeleting(true);
-
-    try {
-      await deleteArticle();
-      history.push("/");
-    } catch (e) {
-      onError(e);
-      setIsDeleting(false);
-    }
+  function createArticle(article) {
+    return API.post("posts", "posts", {
+      body: {
+        post_title: article.title,
+        post_author: article.author,
+        post_content: article.content,
+        post_date: Date.now(),
+      },
+    });
   }
 
   return (
-    <div className="Articles">
-      {article && (
-        <form onSubmit={handleSubmit}>
-          <FormGroup controlId="content">
+    <div className="NewArticle">
+      <form onSubmit={handleSubmit}>
+        <OuterDiv>
+          <FormGroup controlId="title">
+            <FormLabel
+              style={{
+                marginTop: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              Title:
+            </FormLabel>
             <FormControl
-              value={content}
+              required
+              value={title}
               componentclass="textarea"
-              onChange={(e) => setContent(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </FormGroup>
-          <div
-            className="journal"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-          {article.attachment && (
-            <FormGroup>
-              <FormLabel>Attachment</FormLabel>
-              <FormControl.Static>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={article.attachmentURL}
-                >
-                  {formatFilename(article.attachment)}
-                </a>
-              </FormControl.Static>
-            </FormGroup>
-          )}
-          <FormGroup controlId="file">
-            {!article.attachment && <FormLabel>Attachment</FormLabel>}
-            <FormControl onChange={handleFileChange} type="file" />
+          <FormLabel style={{ marginBottom: "0px" }}>Author:</FormLabel>
+          <WarningLabel>
+            If this author has been previously published, please make sure this
+            name matches the one registered in their previous article
+          </WarningLabel>
+          <FormGroup controlId="author">
+            <FormControl
+              required
+              value={author}
+              componentclass="textarea"
+              onChange={(e) => setAuthor(e.target.value)}
+            />
           </FormGroup>
+          <ReactQuill
+            theme="snow"
+            value={content}
+            modules={modules}
+            formats={formats}
+            onChange={setContent}
+          />
+          <PrevWrapper>
+            <h3 style={{ marginBottom: "0px" }}>Preview:</h3>
+            <Header>{title}</Header>
+            <LabelHolder>
+              <AuthorLabel>By {author}</AuthorLabel>
+              <DateLabel>
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                }).format(new Date(Date.now()))}
+              </DateLabel>
+            </LabelHolder>
+
+            <div
+              className="journal"
+              dangerouslySetInnerHTML={{
+                __html: content,
+              }}
+            ></div>
+          </PrevWrapper>
           <LoaderButton
             block
             type="submit"
@@ -157,19 +207,10 @@ export default function Articles() {
             isLoading={isLoading}
             disabled={!validateForm()}
           >
-            Save
+            Create
           </LoaderButton>
-          <LoaderButton
-            block
-            bssize="large"
-            bsstyle="danger"
-            onClick={handleDelete}
-            isLoading={isDeleting}
-          >
-            Delete
-          </LoaderButton>
-        </form>
-      )}
+        </OuterDiv>
+      </form>
     </div>
   );
 }

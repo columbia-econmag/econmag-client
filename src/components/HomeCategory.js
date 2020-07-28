@@ -87,9 +87,7 @@ export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   var propQuery = props[0].query;
-  console.log(propQuery);
   if (propQuery === "") {
-    console.log("WOAH");
     propQuery = "?limit=3";
   }
   useEffect(() => {

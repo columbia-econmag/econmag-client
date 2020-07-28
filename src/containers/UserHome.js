@@ -2,7 +2,15 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { Spinner, Card, CardGroup, Pagination } from "react-bootstrap";
+import {
+  Spinner,
+  Card,
+  CardGroup,
+  Pagination,
+  Jumbotron,
+  Container,
+  Button,
+} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
@@ -124,7 +132,11 @@ export default function Category(...props) {
         </LinkContainer>
       );
     }
-    return <Pagination className="justify-content-center">{items}</Pagination>;
+    return (
+      <Pagination className="justify-content-center flex-wrap">
+        {items}
+      </Pagination>
+    );
   }
 
   function renderArticlesList(post) {
@@ -190,6 +202,17 @@ export default function Category(...props) {
     <>
       <Mobile key="mobileHome">
         <Header>Editor</Header>
+
+        <Jumbotron fluid>
+          <Container style={{ textAlign: "center" }}>
+            <h1>Create a new article!</h1>
+            <LinkContainer key="new" to="/articles/new">
+              <Button variant="primary" size="lg" block>
+                New Article
+              </Button>
+            </LinkContainer>
+          </Container>
+        </Jumbotron>
         {!isLoading && renderArticlesLists(articles)}
         <PageDiv>
           {!isLoading && getPages(articles.totalPages, articles.currentPage)}
@@ -198,6 +221,16 @@ export default function Category(...props) {
       <Default key="defaultHome">
         <InnerSection>
           <Header>Editor</Header>
+          <Jumbotron fluid>
+            <Container style={{ textAlign: "center" }}>
+              <h1 style={{ paddingBottom: "20px" }}>Create a new article!</h1>
+              <LinkContainer key="new" to="/articles/new">
+                <Button variant="primary" size="lg" block>
+                  New Article
+                </Button>
+              </LinkContainer>
+            </Container>
+          </Jumbotron>
           {isLoading ? (
             <LoaderDiv>
               <Spinner animation="border" variant="primary" />

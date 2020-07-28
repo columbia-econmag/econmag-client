@@ -41,6 +41,15 @@ const DateLabel = styled.h6`
   padding-bottom: 20px;
 `;
 
+const WarningLabel = styled.h6`
+  color: #ff6d6dd1;
+`;
+
+const PrevWrapper = styled.div`
+  padding-top: 30px;
+  padding-bottom: 30px;
+`;
+
 const modules = {
   toolbar: [
     [{ header: [1, 2, false] }],
@@ -134,7 +143,14 @@ export default function NewArticle() {
       <form onSubmit={handleSubmit}>
         <OuterDiv>
           <FormGroup controlId="title">
-            <h4>Title:</h4>
+            <FormLabel
+              style={{
+                marginTop: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              Title:
+            </FormLabel>
             <FormControl
               required
               value={title}
@@ -142,7 +158,11 @@ export default function NewArticle() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </FormGroup>
-          <h3>Author:</h3>
+          <FormLabel style={{ marginBottom: "0px" }}>Author:</FormLabel>
+          <WarningLabel>
+            If this author has been previously published, please make sure this
+            name matches the one registered in their previous article
+          </WarningLabel>
           <FormGroup controlId="author">
             <FormControl
               required
@@ -158,24 +178,27 @@ export default function NewArticle() {
             formats={formats}
             onChange={setContent}
           />
-          <h3>PREVIEW:</h3>
-          <Header>{title}</Header>
-          <LabelHolder>
-            <AuthorLabel>By {author}</AuthorLabel>
-            <DateLabel>
-              {new Intl.DateTimeFormat("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "2-digit",
-              }).format(new Date(Date.now()))}
-            </DateLabel>
-          </LabelHolder>
-          <div
-            className="journal"
-            dangerouslySetInnerHTML={{
-              __html: content,
-            }}
-          ></div>
+          <PrevWrapper>
+            <h3 style={{ marginBottom: "0px" }}>Preview:</h3>
+            <Header>{title}</Header>
+            <LabelHolder>
+              <AuthorLabel>By {author}</AuthorLabel>
+              <DateLabel>
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                }).format(new Date(Date.now()))}
+              </DateLabel>
+            </LabelHolder>
+
+            <div
+              className="journal"
+              dangerouslySetInnerHTML={{
+                __html: content,
+              }}
+            ></div>
+          </PrevWrapper>
           <LoaderButton
             block
             type="submit"

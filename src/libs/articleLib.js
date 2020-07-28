@@ -56,8 +56,7 @@ export function removeHome(content) {
   console.log(div.childNodes[0].textContent.length);
   if (
     div.childNodes[0].nodeName !== "#text" &&
-    div.childNodes[0].nodeName !== "P" &&
-    div.childNodes[0].textContent.length > 200
+    div.childNodes[0].nodeName !== "P"
   ) {
     console.log("THIS IS ALSO WORKING?");
     uglyDiv.innerHTML = content;
