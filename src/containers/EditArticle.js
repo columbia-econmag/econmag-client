@@ -152,8 +152,8 @@ export default function Articles() {
           <LoaderButton
             block
             type="submit"
-            bsSize="large"
-            bsStyle="primary"
+            bssize="large"
+            bsstyle="primary"
             isLoading={isLoading}
             disabled={!validateForm()}
           >
@@ -161,8 +161,8 @@ export default function Articles() {
           </LoaderButton>
           <LoaderButton
             block
-            bsSize="large"
-            bsStyle="danger"
+            bssize="large"
+            bsstyle="danger"
             onClick={handleDelete}
             isLoading={isDeleting}
           >

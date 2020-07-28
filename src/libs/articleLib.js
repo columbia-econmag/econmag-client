@@ -53,17 +53,15 @@ export function removeHome(content) {
   var div = document.createElement("div");
   var uglyDiv = document.createElement("div");
   div.innerHTML = content;
-  if (div.childNodes[0].nodeName !== "#text") {
+  console.log(div.childNodes[0].textContent.length);
+  if (
+    div.childNodes[0].nodeName !== "#text" &&
+    div.childNodes[0].nodeName !== "P" &&
+    div.childNodes[0].textContent.length > 200
+  ) {
+    console.log("THIS IS ALSO WORKING?");
     uglyDiv.innerHTML = content;
     div.innerHTML = null;
-  } else {
-    var a_s = div.getElementsByTagName("a");
-
-    for (var i = 0; i < a_s.length; i++) {
-      if (a_s[i].href === "http://columbiaeconreview.com/") {
-        div.removeChild(a_s[i]);
-      }
-    }
   }
 
   return { uglyDiv: uglyDiv.innerHTML, prettyDiv: div.innerHTML };

@@ -7,10 +7,81 @@ import config from "../config";
 import { s3Upload } from "../libs/awsLib";
 import "./NewArticle.css";
 import { API } from "aws-amplify";
+import styled from "styled-components";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import ImageUploader from "quill-image-uploader";
+import ImageResize from "quill-image-resize-module-react";
+import { ImageDrop } from "quill-image-drop-module";
+import "./Articles.css";
 
+ReactQuill.Quill.register("modules/imageResize", ImageResize);
+ReactQuill.Quill.register("modules/imageDrop", ImageDrop);
+ReactQuill.Quill.register("modules/imageUploader", ImageUploader);
+
+const OuterDiv = styled.div`
+  margin: 0px 10%;
+  overflow: auto;
+`;
+const Header = styled.h2`
+  color: Black;
+`;
+
+const LabelHolder = styled.div`
+  padding-bottom: 60px;
+`;
+const AuthorLabel = styled.h6`
+  float: left;
+  color: grey;
+  cursor: pointer;
+`;
+const DateLabel = styled.h6`
+  color: grey;
+  float: right;
+  padding-bottom: 20px;
+`;
+
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
+    ["link", "image"],
+    ["clean"],
+  ],
+  imageResize: { parchment: ReactQuill.Quill.import("parchment") },
+  imageDrop: true,
+  imageUploader: {
+    upload: (file) => {
+      return new Promise((resolve, reject) => {
+        resolve(s3Upload(file));
+      });
+    },
+  },
+};
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+];
 export default function NewArticle() {
   const file = useRef(null);
   const history = useHistory();
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,8 +108,9 @@ export default function NewArticle() {
 
     try {
       const attachment = file.current ? await s3Upload(file.current) : null;
-
-      await createArticle({ content, attachment });
+      console.log("ATTACHMENT");
+      console.log(attachment);
+      await createArticle({ title, author, content });
       history.push("/");
     } catch (e) {
       onError(e);
@@ -49,7 +121,8 @@ export default function NewArticle() {
   function createArticle(article) {
     return API.post("posts", "posts", {
       body: {
-        post_title: "temp title",
+        post_title: article.title,
+        post_author: article.author,
         post_content: article.content,
         post_date: Date.now(),
       },
@@ -59,27 +132,61 @@ export default function NewArticle() {
   return (
     <div className="NewArticle">
       <form onSubmit={handleSubmit}>
-        <FormGroup controlId="content">
-          <FormControl
+        <OuterDiv>
+          <FormGroup controlId="title">
+            <h4>Title:</h4>
+            <FormControl
+              required
+              value={title}
+              componentclass="textarea"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </FormGroup>
+          <h3>Author:</h3>
+          <FormGroup controlId="author">
+            <FormControl
+              required
+              value={author}
+              componentclass="textarea"
+              onChange={(e) => setAuthor(e.target.value)}
+            />
+          </FormGroup>
+          <ReactQuill
+            theme="snow"
             value={content}
-            componentclass="textarea"
-            onChange={(e) => setContent(e.target.value)}
+            modules={modules}
+            formats={formats}
+            onChange={setContent}
           />
-        </FormGroup>
-        <FormGroup controlId="file">
-          <FormLabel>Attachment</FormLabel>
-          <FormControl onChange={handleFileChange} type="file" />
-        </FormGroup>
-        <LoaderButton
-          block
-          type="submit"
-          bssize="large"
-          bsstyle="primary"
-          isLoading={isLoading}
-          disabled={!validateForm()}
-        >
-          Create
-        </LoaderButton>
+          <h3>PREVIEW:</h3>
+          <Header>{title}</Header>
+          <LabelHolder>
+            <AuthorLabel>By {author}</AuthorLabel>
+            <DateLabel>
+              {new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+              }).format(new Date(Date.now()))}
+            </DateLabel>
+          </LabelHolder>
+          <div
+            className="journal"
+            dangerouslySetInnerHTML={{
+              __html: content,
+            }}
+          ></div>
+          <LoaderButton
+            block
+            type="submit"
+            bssize="large"
+            bsstyle="primary"
+            isLoading={isLoading}
+            disabled={!validateForm()}
+          >
+            Create
+          </LoaderButton>
+        </OuterDiv>
       </form>
     </div>
   );

@@ -138,11 +138,11 @@ export default function Category(...props) {
           <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
             <Card.Title>{post.post_title}</Card.Title>
           </LinkContainer>
-          <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
-            <Card.Subtitle
-              className="mb-2 text-muted"
-              style={{ cursor: "pointer" }}
-            >
+          <LinkContainer
+            to={`/author/${post.post_author}?limit=9&page=1`}
+            style={{ cursor: "pointer" }}
+          >
+            <Card.Subtitle className="mb-2 text-muted">
               {post.post_author}
             </Card.Subtitle>
           </LinkContainer>

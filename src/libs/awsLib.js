@@ -1,6 +1,9 @@
 import { Storage } from "aws-amplify";
 
 export async function s3Upload(file) {
+  if (!file) {
+    return null;
+  }
   var dateObj = new Date(Date.now());
   var month = dateObj.getUTCMonth() + 1; //months from 1-12
   var day = dateObj.getUTCDate();
@@ -12,5 +15,5 @@ export async function s3Upload(file) {
   });
   console.log(stored);
   console.log(stored.key);
-  return stored.key;
+  return "https://econmag-bucket.s3.amazonaws.com/public/" + stored.key;
 }
