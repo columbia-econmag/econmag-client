@@ -175,11 +175,16 @@ export default function Home() {
           <InnerSection>
             <h2 style={{ fontWeight: 600 }}>Current Issue</h2>
             <div style={{ height: "300px", textAlign: "center" }}>
-              <img
-                style={{ height: "280px" }}
-                alt="currentissueImage"
-                src="https://image.isu.pub/200612230156-36b641323d72cc38825fbe8b98b520dd/jpg/page_1_thumb_large.jpg"
-              />
+              <a
+                href="https://issuu.com/columbiaeconreview/docs/cerspring2020"
+                target="_blank"
+              >
+                <img
+                  style={{ height: "280px" }}
+                  alt="currentissueImage"
+                  src="https://image.isu.pub/200612230156-36b641323d72cc38825fbe8b98b520dd/jpg/page_1_thumb_large.jpg"
+                />
+              </a>
               {/* <h4 style={{ float: "right" }}>Relevant Sections:</h4> */}
             </div>
           </InnerSection>

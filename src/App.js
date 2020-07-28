@@ -93,7 +93,7 @@ function App() {
             <Nav className="ml-auto">
               {isAuthenticated ? (
                 <>
-                  <LinkContainer to="/editor">
+                  <LinkContainer to="/editor?limit=9&page=1">
                     <Nav.Link>Editor</Nav.Link>
                   </LinkContainer>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>

@@ -1,11 +1,10 @@
-import React, { useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import React, { useRef, useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { FormGroup, FormControl, FormLabel, Form } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { onError } from "../libs/errorLib";
-import config from "../config";
 import { s3Upload } from "../libs/awsLib";
-import "./NewArticle.css";
+import "./EditArticle.css";
 import { API } from "aws-amplify";
 import styled from "styled-components";
 import ReactQuill from "react-quill";
@@ -20,7 +19,7 @@ ReactQuill.Quill.register("modules/imageDrop", ImageDrop);
 ReactQuill.Quill.register("modules/imageUploader", ImageUploader);
 
 const OuterDiv = styled.div`
-  margin: 0px 10%;
+  margin: 20px 10%;
   overflow: auto;
 `;
 const Header = styled.h2`
@@ -86,40 +85,83 @@ const formats = [
   "link",
   "image",
 ];
+
+const categories = ["On Campus", "Business", "World", "U.S."];
+
 export default function NewArticle() {
-  const file = useRef(null);
+  const { _id } = useParams();
+  const [article, setArticle] = useState(null);
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [category, setCategory] = useState([]);
+
+  const handleCheckbox = (e, s) => {
+    const checkedBoxes = [...category];
+    if (e.target.checked) {
+      checkedBoxes.push(s);
+    } else {
+      console.log(s);
+      const index = checkedBoxes.findIndex((ch) => ch === s);
+      checkedBoxes.splice(index, 1);
+    }
+    console.log(checkedBoxes);
+    setCategory(checkedBoxes);
+  };
+  useEffect(() => {
+    function loadArticle() {
+      return API.get("posts", `posts/${_id}`);
+    }
+
+    async function onLoad() {
+      try {
+        const article = await loadArticle();
+        console.log(article);
+        const {
+          post_content,
+          post_author,
+          post_title,
+          post_category,
+        } = article.data;
+
+        setContent(post_content);
+        setCategory(post_category);
+        setAuthor(post_author);
+        setTitle(post_title);
+        setArticle(article.data);
+        // setAuthor()
+      } catch (e) {
+        onError(e);
+      }
+    }
+
+    onLoad();
+  }, [_id]);
 
   function validateForm() {
     return content.length > 0;
   }
 
-  function handleFileChange(event) {
-    file.current = event.target.files[0];
+  function saveArticle(article) {
+    return API.put("posts", `posts/${_id}`, {
+      body: {
+        post_content: article.content,
+        post_title: article.title,
+        post_author: article.author,
+        post_category: article.category,
+      },
+    });
   }
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
-      alert(
-        `Please pick a file smaller than ${
-          config.MAX_ATTACHMENT_SIZE / 1000000
-        } MB.`
-      );
-      return;
-    }
-
     setIsLoading(true);
 
     try {
-      const attachment = file.current ? await s3Upload(file.current) : null;
-      console.log("ATTACHMENT");
-      console.log(attachment);
-      await createArticle({ title, author, content });
+      await saveArticle({ title, author, content, category });
       history.push("/");
     } catch (e) {
       onError(e);
@@ -127,21 +169,37 @@ export default function NewArticle() {
     }
   }
 
-  function createArticle(article) {
-    return API.post("posts", "posts", {
-      body: {
-        post_title: article.title,
-        post_author: article.author,
-        post_content: article.content,
-        post_date: Date.now(),
-      },
-    });
+  function deleteArticle() {
+    return API.del("posts", `posts/${_id}`);
+  }
+
+  async function handleDelete(event) {
+    event.preventDefault();
+
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this article?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setIsDeleting(true);
+
+    try {
+      await deleteArticle();
+      history.push("/");
+    } catch (e) {
+      onError(e);
+      setIsDeleting(false);
+    }
   }
 
   return (
     <div className="NewArticle">
       <form onSubmit={handleSubmit}>
         <OuterDiv>
+          <h3>Editing Article: "{title}"</h3>
           <FormGroup controlId="title">
             <FormLabel
               style={{
@@ -171,6 +229,19 @@ export default function NewArticle() {
               onChange={(e) => setAuthor(e.target.value)}
             />
           </FormGroup>
+          <div key={`inline-checkbox`} className="mb-3">
+            {categories.map((cat) => (
+              <Form.Check
+                key={cat}
+                inline
+                checked={category.find((ch) => ch === cat) || false}
+                label={cat}
+                type="checkbox"
+                id={`inline-checkbox-1`}
+                onChange={(e) => handleCheckbox(e, cat)}
+              />
+            ))}
+          </div>
           <ReactQuill
             theme="snow"
             value={content}
@@ -207,7 +278,16 @@ export default function NewArticle() {
             isLoading={isLoading}
             disabled={!validateForm()}
           >
-            Create
+            Edit
+          </LoaderButton>
+          <LoaderButton
+            block
+            bssize="large"
+            variant="danger"
+            onClick={handleDelete}
+            isLoading={isDeleting}
+          >
+            Delete
           </LoaderButton>
         </OuterDiv>
       </form>

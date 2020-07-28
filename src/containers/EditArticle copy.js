@@ -131,20 +131,6 @@ export default function Articles() {
             className="journal"
             dangerouslySetInnerHTML={{ __html: content }}
           />
-          {article.attachment && (
-            <FormGroup>
-              <FormLabel>Attachment</FormLabel>
-              <FormControl.Static>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={article.attachmentURL}
-                >
-                  {formatFilename(article.attachment)}
-                </a>
-              </FormControl.Static>
-            </FormGroup>
-          )}
           <FormGroup controlId="file">
             {!article.attachment && <FormLabel>Attachment</FormLabel>}
             <FormControl onChange={handleFileChange} type="file" />

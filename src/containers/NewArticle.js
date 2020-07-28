@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel, Form } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { onError } from "../libs/errorLib";
 import config from "../config";
 import { s3Upload } from "../libs/awsLib";
-import "./NewArticle.css";
+import "./EditArticle.css";
 import { API } from "aws-amplify";
 import styled from "styled-components";
 import ReactQuill from "react-quill";
@@ -18,9 +18,9 @@ import "./Articles.css";
 ReactQuill.Quill.register("modules/imageResize", ImageResize);
 ReactQuill.Quill.register("modules/imageDrop", ImageDrop);
 ReactQuill.Quill.register("modules/imageUploader", ImageUploader);
-
+const categories = ["On Campus", "Business", "World", "U.S"];
 const OuterDiv = styled.div`
-  margin: 0px 10%;
+  margin: 20px 10%;
   overflow: auto;
 `;
 const Header = styled.h2`
@@ -93,25 +93,27 @@ export default function NewArticle() {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [category, setCategory] = useState([]);
+
+  const handleCheckbox = (e, s) => {
+    const checkedBoxes = [...category];
+    if (e.target.checked) {
+      checkedBoxes.push(s);
+    } else {
+      console.log(s);
+      const index = checkedBoxes.findIndex((ch) => ch === s);
+      checkedBoxes.splice(index, 1);
+    }
+    console.log(checkedBoxes);
+    setCategory(checkedBoxes);
+  };
 
   function validateForm() {
     return content.length > 0;
   }
 
-  function handleFileChange(event) {
-    file.current = event.target.files[0];
-  }
   async function handleSubmit(event) {
     event.preventDefault();
-
-    if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
-      alert(
-        `Please pick a file smaller than ${
-          config.MAX_ATTACHMENT_SIZE / 1000000
-        } MB.`
-      );
-      return;
-    }
 
     setIsLoading(true);
 
@@ -119,7 +121,7 @@ export default function NewArticle() {
       const attachment = file.current ? await s3Upload(file.current) : null;
       console.log("ATTACHMENT");
       console.log(attachment);
-      await createArticle({ title, author, content });
+      await createArticle({ title, author, content, category });
       history.push("/");
     } catch (e) {
       onError(e);
@@ -133,15 +135,17 @@ export default function NewArticle() {
         post_title: article.title,
         post_author: article.author,
         post_content: article.content,
+        post_category: article.category,
         post_date: Date.now(),
       },
     });
   }
-
+  console.log(category);
   return (
     <div className="NewArticle">
       <form onSubmit={handleSubmit}>
         <OuterDiv>
+          <h3>New Article</h3>
           <FormGroup controlId="title">
             <FormLabel
               style={{
@@ -171,6 +175,18 @@ export default function NewArticle() {
               onChange={(e) => setAuthor(e.target.value)}
             />
           </FormGroup>
+          <div key={`inline-checkbox`} className="mb-3">
+            {categories.map((cat) => (
+              <Form.Check
+                key={cat}
+                inline
+                label={cat}
+                type="checkbox"
+                id={`inline-checkbox-1`}
+                onChange={(e) => handleCheckbox(e, cat)}
+              />
+            ))}
+          </div>
           <ReactQuill
             theme="snow"
             value={content}
