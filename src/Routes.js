@@ -27,7 +27,7 @@ export default ({ childProps }) => (
     <Route path="/category/:post_category" exact component={AsyncCategory} />
 
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
-    <UnauthenticatedRoute path="/signup" exact component={AsyncSignup} />
+    <AuthenticatedRoute path="/signup" exact component={AsyncSignup} />
     <Route path="/post/:_id" exact component={AsyncNotes} />
 
     <AuthenticatedRoute

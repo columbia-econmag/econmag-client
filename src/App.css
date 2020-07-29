@@ -16,6 +16,9 @@
   max-width: 50%;
   cursor: pointer;
 }
+.testy {
+  border-right-style: none !important;
+}
 
 .App .nav-link {
   border-right-style: solid;

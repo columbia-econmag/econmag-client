@@ -100,11 +100,19 @@ function App() {
                 </>
               ) : (
                 <>
-                  <LinkContainer to="/signup">
+                  {/* <LinkContainer to="/signup">
                     <Nav.Link>Signup</Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to="/login">
-                    <Nav.Link>Login</Nav.Link>
+                  </LinkContainer> */}
+                  <LinkContainer
+                    style={{ borderRightStyle: "hidden !important" }}
+                    to="/login"
+                  >
+                    <Nav.Link
+                      className="testy"
+                      style={{ borderRightStyle: "none" }}
+                    >
+                      Login
+                    </Nav.Link>
                   </LinkContainer>
                 </>
               )}
