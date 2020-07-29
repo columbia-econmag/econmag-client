@@ -3,11 +3,30 @@
     display: flex !important;
     max-height: 600px !important;
   }
+  .slick-prev:before,
+  .slick-next:before {
+    color: black !important;
+    font-size: 20px !important;
+  }
+}
+.slick-prev,
+.slick-next {
+  width: 30px;
+  height: 40px;
 }
 
+.slick-next {
+  right: -40px;
+}
+.slick-prev {
+  left: -40px;
+  line-height: 0;
+}
 .slick-prev:before,
 .slick-next:before {
   color: black !important;
+  font-size: 25px !important;
+  line-height: 0;
 }
 .slick-slide div {
   outline: none;

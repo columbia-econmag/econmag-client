@@ -31,7 +31,7 @@ const RecentCaption = styled.p`
 `;
 const ImgHolder = styled.div`
   text-align: center;
-  display: flex;
+  display: -webkit-flexbox;
   width: 50%;
   justify-content: center;
   float: left;
