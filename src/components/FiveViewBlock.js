@@ -72,12 +72,20 @@ const RightCaption = styled.p`
   color: grey;
   margin-bottom: 4px;
   cursor: pointer;
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1;
+  }
 `;
 
 const MobileCaption = styled(RightCaption)``;
 
 const LeftCaption = styled(RightCaption)`
   margin-bottom: 16px !important;
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1;
+  }
 `;
 
 const MobileDiv = styled.div`

@@ -54,6 +54,10 @@ const MobileHeader = styled.h3`
 `;
 const MobileText = styled.p`
   text-align: center;
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1;
+  }
 `;
 
 const SliderCaption = styled.p`
@@ -68,6 +72,10 @@ const Author = styled.p`
   color: grey;
   margin-bottom: 4px;
   cursor: pointer;
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1;
+  }
 `;
 
 const ImgHolder = styled.div`

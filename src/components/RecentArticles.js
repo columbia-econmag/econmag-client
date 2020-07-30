@@ -38,7 +38,7 @@ const ImgHolder = styled.div`
   overflow: auto;
 `;
 const TextHolder = styled.div`
-  text-align: center;
+  text-align: left;
   display: block;
   width: 50%;
   justify-content: center;
@@ -91,6 +91,10 @@ const RightAuthor = styled.p`
   color: grey;
   margin-bottom: 4px;
   cursor: pointer;
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1;
+  }
 `;
 
 const LeftAuthor = styled.p`
@@ -98,6 +102,10 @@ const LeftAuthor = styled.p`
   color: grey;
   margin-bottom: 4px;
   cursor: pointer;
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1;
+  }
 `;
 
 const MobileDiv = styled.div`
@@ -228,7 +236,7 @@ export default function RecentArticles(...props) {
             </LinkContainer>
           </Row>
         </Col>
-        <Col key={articles[2].post_date} xs={5}>
+        <Col key={articles[2].post_date} style={{ textAlign: "right" }} xs={5}>
           <LinkContainer to={`/post/${articles[2]._id}`}>
             <RightImage src={showImage(articles[2])} />
           </LinkContainer>

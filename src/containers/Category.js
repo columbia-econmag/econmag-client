@@ -11,10 +11,6 @@ import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
-const CategoriesView = lazy(() => import("../components/HomeCategory"));
-const RecentArticles = lazy(() => import("../components/RecentArticles"));
-const SimpleSlider = lazy(() => import("../components/Slider"));
-const FiveViewBlock = lazy(() => import("../components/FiveViewBlock"));
 
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -24,16 +20,6 @@ const Default = ({ children }) => {
   const isNotMobile = useMediaQuery({ minWidth: 768 });
   return isNotMobile ? children : null;
 };
-
-const SliderSection = styled.section`
-  padding: 5px 50px;
-  background-color: aliceblue;
-`;
-
-const IssueSection = styled.section`
-  padding: 5px 50px;
-  background-color: #a0bbd3;
-`;
 
 const InnerSection = styled.section`
   margin: auto;
@@ -47,20 +33,17 @@ const PageDiv = styled.div`
   text-align: center;
 `;
 
-const SliderMobile = styled(SliderSection)`
-  padding: 5px 5px;
-`;
-
 const Header = styled.h2`
   padding: 30px 0px 0px 0px;
   font-weight: 600;
   // background-color: aliceblue;
 `;
 
-const MobileHeader = styled.h2`
-  padding: 35px 0px 0px 0px;
-  font-weight: 600;
-  text-align: center;
+const AuthorText = styled(Card.Subtitle)`
+  display: inline-block;
+  &:hover {
+    color: #d4a3a1 !important;
+  }
 `;
 
 const LoaderDiv = styled.div`
@@ -147,9 +130,9 @@ export default function Category(...props) {
             to={`/author/${post.post_author}?limit=9&page=1`}
             style={{ cursor: "pointer" }}
           >
-            <Card.Subtitle className="mb-2 text-muted">
+            <AuthorText className="mb-2 text-muted">
               {post.post_author}
-            </Card.Subtitle>
+            </AuthorText>
           </LinkContainer>
           <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
             <Card.Text>{[post.post_excerpt]}</Card.Text>

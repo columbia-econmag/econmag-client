@@ -18,6 +18,7 @@
 }
 .categoryContainer {
   align-items: flex-start;
+  text-align: center;
   max-height: 600px;
   overflow: auto;
 }
