@@ -75,6 +75,7 @@ export default function Category(...props) {
   const query = props[0].location.search;
 
   useEffect(() => {
+    setIsLoading(true);
     async function onLoad() {
       // if (!isAuthenticated) {
       //   const articles = await loadArticles();

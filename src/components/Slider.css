@@ -13,6 +13,7 @@
 .slick-next {
   width: 30px;
   height: 40px;
+  line-height: 0;
 }
 
 .slick-next {
@@ -20,7 +21,6 @@
 }
 .slick-prev {
   left: -40px;
-  line-height: 0;
 }
 .slick-prev:before,
 .slick-next:before {
