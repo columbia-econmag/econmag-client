@@ -26,6 +26,11 @@ const LeftHeader = styled.h2`
   text-align: left;
   margin-bottom: 0px;
   cursor: pointer;
+  text-decoration-color: #a0bbd3;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 const LeftImage = styled.img`
   height: auto;
@@ -39,7 +44,7 @@ const LeftImage = styled.img`
 
 const RightImage = styled.img`
   max-height: 50%;
-  max-width: 50%;
+  max-width: 90%;
   border-radius: 2px;
   display: block;
   margin: auto;
@@ -205,7 +210,10 @@ export default function FiveViewBlock(...props) {
     var articles = descriptionControl(posts, 300);
     var HTML = (
       <>
-        <Col style={{ paddingLeft: "0" }} xs={5}>
+        <Col
+          style={{ paddingLeft: "0", alignContent: "center", margin: "auto" }}
+          xs={5}
+        >
           <LinkContainer to={`/post/${articles[0]._id}`}>
             <LeftImage src={showImage(articles[0])} />
           </LinkContainer>
