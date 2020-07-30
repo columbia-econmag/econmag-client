@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FcSynchronize } from "react-icons/fc";
+import { Spinner } from "react-bootstrap";
 import "./LoaderButton.css";
 
 export default function asyncComponent(importComponent) {
@@ -26,8 +27,8 @@ export default function asyncComponent(importComponent) {
       return C ? (
         <C {...this.props} />
       ) : (
-        <div className="item">
-          <FcSynchronize className="spin" />
+        <div className="item" style={{ marginTop: "5%", textAlign: "center" }}>
+          <Spinner animation="border" variant="primary" />
         </div>
       );
     }

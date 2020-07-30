@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
@@ -37,6 +37,13 @@ const Header = styled.h2`
   padding: 30px 0px 0px 0px;
   font-weight: 600;
   // background-color: aliceblue;
+`;
+
+const CardTitle = styled(Card.Title)`
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 
 const AuthorText = styled(Card.Subtitle)`
@@ -124,7 +131,7 @@ export default function Category(...props) {
         </LinkContainer>
         <Card.Body>
           <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
-            <Card.Title>{post.post_title}</Card.Title>
+            <CardTitle>{post.post_title}</CardTitle>
           </LinkContainer>
           <LinkContainer
             to={`/author/${post.post_author}?limit=9&page=1`}
@@ -134,9 +141,7 @@ export default function Category(...props) {
               {post.post_author}
             </AuthorText>
           </LinkContainer>
-          <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
-            <Card.Text>{[post.post_excerpt]}</Card.Text>
-          </LinkContainer>
+          <Card.Text>{[post.post_excerpt]}</Card.Text>
         </Card.Body>
         <Card.Footer>
           <small className="text-muted">
