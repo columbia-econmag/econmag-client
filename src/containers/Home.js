@@ -146,10 +146,13 @@ export default function Home() {
           <CategoriesView query="/category/On Campus/limit/3" />
         </Suspense>
       </Mobile>
+
       <Default key="defaultHome">
         <SliderSection>
           <InnerSection>
-            <h2 style={{ fontWeight: 600 }}>Popular Articles</h2>
+            <h2 style={{ fontWeight: 600, paddingTop: "25px" }}>
+              Popular Articles
+            </h2>
             <Suspense
               fallback={
                 <div style={{ height: "500px", textAlign: "center" }}>
