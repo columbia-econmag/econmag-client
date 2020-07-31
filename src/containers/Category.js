@@ -40,6 +40,7 @@ const Header = styled.h2`
 `;
 
 const CardTitle = styled(Card.Title)`
+  margin-bottom: 0.1rem;
   &:hover {
     text-decoration: underline;
     text-decoration-color: #a0bbd3;
@@ -49,7 +50,7 @@ const CardTitle = styled(Card.Title)`
 const AuthorText = styled(Card.Subtitle)`
   display: inline-block;
   &:hover {
-    color: #d4a3a1 !important;
+    color: #a0bbd3 !important;
   }
 `;
 

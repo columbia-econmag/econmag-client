@@ -63,8 +63,6 @@ const MobileHeader = styled.h2`
 export default function Home() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("HELLO");
-  console.log("On Campus?limit=3".split("?"));
 
   // useEffect(() => {
   //   async function onLoad() {
