@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API } from "aws-amplify";
+import { API, Cache } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import styled from "styled-components";
@@ -53,7 +53,7 @@ const Caption = styled.p`
   cursor: pointer;
   display: inline-block;
   &:hover {
-    color: #d4a3a1;
+    color: #a0bbd3;
   }
 `;
 
@@ -91,24 +91,38 @@ export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   var propQuery = props[0].query;
+  console.log(propQuery);
   if (propQuery === "") {
     propQuery = "?limit=3";
   }
   useEffect(() => {
-    // eslint-disable-next-line no-unused-vars
-    let loading = true;
     async function onLoad() {
       try {
-        const articles = await loadArticles(propQuery);
+        var articles = Cache.getItem(propQuery);
+        if (!articles) {
+          articles = await loadArticles(propQuery);
+          Cache.setItem(propQuery, articles);
+        }
         setArticles(articles);
         makePretty(articles, 300);
       } catch (e) {
         onError(e);
       }
       setIsLoading(false);
+      try {
+        let cachedArticles = Cache.getItem(propQuery);
+        let tempArticles = await loadArticles(propQuery);
+        if (
+          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+        ) {
+          Cache.setItem(propQuery, tempArticles);
+        }
+      } catch (e) {
+        onError(e);
+      }
     }
     onLoad();
-    return () => false;
+    return () => isLoading;
   }, [propQuery]);
 
   function loadArticles(query = "") {

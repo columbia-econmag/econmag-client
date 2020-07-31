@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API } from "aws-amplify";
+import { API, Cache } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import styled from "styled-components";
@@ -79,7 +79,7 @@ const RightCaption = styled.p`
   cursor: pointer;
   display: inline-block;
   &:hover {
-    color: #d4a3a1;
+    color: #a0bbd3;
   }
 `;
 
@@ -89,7 +89,7 @@ const LeftCaption = styled(RightCaption)`
   margin-bottom: 16px !important;
   display: inline-block;
   &:hover {
-    color: #d4a3a1;
+    color: #a0bbd3;
   }
 `;
 
@@ -126,16 +126,31 @@ export default function FiveViewBlock(...props) {
   useEffect(() => {
     async function onLoad() {
       try {
-        const articles = await loadArticles(propQuery);
+        var articles = Cache.getItem("fiveView");
+        if (!articles) {
+          articles = await loadArticles(propQuery);
+          Cache.setItem("fiveView", articles);
+        }
         setArticles(articles);
       } catch (e) {
         onError(e);
       }
       setIsLoading(false);
+      try {
+        let cachedArticles = Cache.getItem("fiveView");
+        let tempArticles = await loadArticles(propQuery);
+        if (
+          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+        ) {
+          Cache.setItem("fiveView", tempArticles);
+        }
+      } catch (e) {
+        onError(e);
+      }
     }
     onLoad();
-    return () => false;
-  }, [propQuery]);
+    return () => isLoading;
+  }, [propQuery, isLoading]);
 
   function loadArticles(propQuery = "") {
     var x = API.get("posts", "posts/" + propQuery);

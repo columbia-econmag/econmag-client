@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { FcSynchronize } from "react-icons/fc";
 import { Spinner } from "react-bootstrap";
 import "./LoaderButton.css";
 

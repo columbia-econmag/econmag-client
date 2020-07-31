@@ -6,7 +6,7 @@ import { Spinner, Card, CardGroup, Pagination } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
-import { API } from "aws-amplify";
+import { API, Cache } from "aws-amplify";
 import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
@@ -67,24 +67,32 @@ export default function Category(...props) {
   useEffect(() => {
     setIsLoading(true);
     async function onLoad() {
-      // if (!isAuthenticated) {
-      //   const articles = await loadArticles();
-      //   return;
-      // }
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
       try {
-        const articles = await loadArticles(query);
+        var articles = Cache.getItem(post_category + query);
+        if (!articles) {
+          articles = await loadArticles(query);
+          Cache.setItem(post_category + query, articles);
+        }
         setArticles(articles);
+        makePretty(articles, 300);
       } catch (e) {
         onError(e);
       }
       setIsLoading(false);
+      try {
+        let cachedArticles = Cache.getItem(post_category + query);
+        let tempArticles = await loadArticles(query);
+        if (
+          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+        ) {
+          Cache.setItem(post_category + query, tempArticles);
+        }
+      } catch (e) {
+        onError(e);
+      }
     }
     onLoad();
+    return () => isLoading;
   }, [query, post_category]);
 
   function loadArticles(query) {

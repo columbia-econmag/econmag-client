@@ -25,6 +25,9 @@ const AuthorLabel = styled.h6`
   float: left;
   color: grey;
   cursor: pointer;
+  &:hover {
+    color: #a0bbd3;
+  }
 `;
 const DateLabel = styled.h6`
   color: grey;

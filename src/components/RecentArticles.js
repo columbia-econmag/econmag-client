@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API } from "aws-amplify";
+import { API, Cache } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import styled from "styled-components";
@@ -93,7 +93,7 @@ const RightAuthor = styled.p`
   cursor: pointer;
   display: inline-block;
   &:hover {
-    color: #d4a3a1;
+    color: #a0bbd3;
   }
 `;
 
@@ -104,7 +104,7 @@ const LeftAuthor = styled.p`
   cursor: pointer;
   display: inline-block;
   &:hover {
-    color: #d4a3a1;
+    color: #a0bbd3;
   }
 `;
 
@@ -145,16 +145,31 @@ export default function RecentArticles(...props) {
   useEffect(() => {
     async function onLoad() {
       try {
-        const articles = await loadArticles(propQuery);
+        var articles = Cache.getItem("recent");
+        if (!articles) {
+          articles = await loadArticles(propQuery);
+          Cache.setItem("recent", articles);
+        }
         setArticles(articles);
       } catch (e) {
         onError(e);
       }
       setIsLoading(false);
+      try {
+        let cachedArticles = Cache.getItem("recent");
+        let tempArticles = await loadArticles(propQuery);
+        if (
+          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+        ) {
+          Cache.setItem("recent", tempArticles);
+        }
+      } catch (e) {
+        onError(e);
+      }
     }
     onLoad();
-    return () => false;
-  }, [propQuery]);
+    return () => isLoading;
+  }, [propQuery, isLoading]);
 
   function loadArticles(propQuery = "") {
     var x = API.get("posts", "posts/" + propQuery);
