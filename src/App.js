@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
-import { Link } from "react-router-dom";
-import {
-  Nav,
-  Image,
-  NavItem,
-  Navbar,
-  NavDropdown,
-  Button,
-  Form,
-  FormControl,
-} from "react-bootstrap";
+import { Nav, Navbar, Container, Row, Col } from "react-bootstrap";
 import "./App.css";
 import { LinkContainer } from "react-router-bootstrap";
 import styled from "styled-components";
@@ -19,9 +9,26 @@ import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
 
 const Footer = styled.section`
-  height: 300px;
+  height: 330px;
   padding: 5px 50px;
   background-color: aliceblue;
+`;
+
+const FootLogo = styled.img`
+  height: 200px;
+  margin: auto 20px;
+`;
+
+const FooterWrap = styled(Container)`
+  margin: auto !important;
+`;
+
+const FooterText = styled.p`
+  cursor: pointer;
+  padding: 0px 20px;
+  &:hover {
+    color: #a0bbd3;
+  }
 `;
 
 function App() {
@@ -94,7 +101,7 @@ function App() {
                 <Nav.Link>U.S.</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/category/On Campus?limit=9&page=1">
-                <Nav.Link class="rightMost">On Campus</Nav.Link>
+                <Nav.Link className="rightMost">On Campus</Nav.Link>
               </LinkContainer>
             </Nav>
             <Nav className="ml-auto">
@@ -125,11 +132,45 @@ function App() {
           <Routes />
         </AppContext.Provider>
         <Footer>
-          <img
-            style={{ height: "280px" }}
-            alt="currentissueImage"
-            src="https://econmag-bucket.s3.amazonaws.com/public/2020/7/CER.jpg"
-          />
+          <div style={{ display: "flex", height: "300px" }}>
+            <FooterWrap>
+              <Row className="justify-content-md-center">
+                <Col md="auto">
+                  <FootLogo
+                    alt="currentissueImage"
+                    src="https://econmag-bucket.s3.amazonaws.com/public/2020/7/CER.jpg"
+                  />
+                </Col>
+                <Col
+                  md="auto"
+                  style={{ alignSelf: "center", paddingRight: "150px" }}
+                >
+                  <LinkContainer to="/">
+                    <FooterText>About us</FooterText>
+                  </LinkContainer>
+                  <LinkContainer to="/">
+                    <FooterText>Subscribe</FooterText>
+                  </LinkContainer>
+                  <LinkContainer to="/">
+                    <FooterText className="noBottomMargin">
+                      Contact Us
+                    </FooterText>
+                  </LinkContainer>
+                </Col>
+              </Row>
+            </FooterWrap>
+          </div>
+          <p
+            style={{
+              textAlign: "right",
+              fontStyle: "italic",
+              fontSize: "smaller",
+              paddingBottom: "5px",
+              margin: "0px",
+            }}
+          >
+            Website Created By Ivan Barral
+          </p>
         </Footer>
       </div>
     )
