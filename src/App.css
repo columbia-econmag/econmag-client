@@ -16,9 +16,6 @@
   max-width: 50%;
   cursor: pointer;
 }
-.testy {
-  border-right-style: none !important;
-}
 
 .App .nav-link {
   border-right-style: solid;
@@ -39,5 +36,15 @@
   background-color: white !important;
   border-color: white;
 }
-.test {
+.rightMost {
+  border-right-style: none !important;
+}
+
+.img-30 {
+  background-position: 50%;
+  background-size: cover;
+  max-width: 400px;
+  max-height: 300px;
+  width: 100%;
+  padding-bottom: 75%;
 }

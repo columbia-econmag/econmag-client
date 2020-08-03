@@ -144,7 +144,10 @@ export default function SimpleSlider(...props) {
         let cachedArticles = Cache.getItem("slider");
         let tempArticles = await loadArticles(propQuery);
         if (
-          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+          cachedArticles.data[0].post_title !==
+            tempArticles.data[0].post_title ||
+          cachedArticles.data[0].post_content !==
+            tempArticles.data[0].post_content
         ) {
           Cache.setItem("slider", tempArticles);
         }

@@ -67,6 +67,11 @@ export default function Category(...props) {
 
   useEffect(() => {
     setIsLoading(true);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
     async function onLoad() {
       try {
         var articles = Cache.getItem(post_category + query);
@@ -84,7 +89,10 @@ export default function Category(...props) {
         let cachedArticles = Cache.getItem(post_category + query);
         let tempArticles = await loadArticles(query);
         if (
-          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+          cachedArticles.data[0].post_title !==
+            tempArticles.data[0].post_title ||
+          cachedArticles.data[0].post_content !==
+            tempArticles.data[0].post_content
         ) {
           Cache.setItem(post_category + query, tempArticles);
         }

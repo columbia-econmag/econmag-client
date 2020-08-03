@@ -1,11 +1,9 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { ListGroup, ListGroupItem, Spinner } from "react-bootstrap";
-import { onError } from "../libs/errorLib";
 import { LinkContainer } from "react-router-bootstrap";
-import { API } from "aws-amplify";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
 const CategoriesView = lazy(() => import("../components/HomeCategory"));
@@ -178,7 +176,9 @@ export default function Home() {
         </InnerSection>
         <IssueSection>
           <InnerSection>
-            <h2 style={{ fontWeight: 600 }}>Current Issue</h2>
+            <h2 style={{ fontWeight: 600, paddingTop: "25px" }}>
+              Current Issue
+            </h2>
             <div style={{ height: "300px", textAlign: "center" }}>
               <a
                 href="https://issuu.com/columbiaeconreview/docs/cerspring2020"

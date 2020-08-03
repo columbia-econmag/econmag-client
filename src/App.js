@@ -13,9 +13,16 @@ import {
 } from "react-bootstrap";
 import "./App.css";
 import { LinkContainer } from "react-router-bootstrap";
+import styled from "styled-components";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
+
+const Footer = styled.section`
+  height: 300px;
+  padding: 5px 50px;
+  background-color: aliceblue;
+`;
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -77,6 +84,9 @@ function App() {
               <LinkContainer to="/">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/category/Business?limit=9&page=1">
+                <Nav.Link>Business</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/category/World?limit=9&page=1">
                 <Nav.Link>World</Nav.Link>
               </LinkContainer>
@@ -84,10 +94,7 @@ function App() {
                 <Nav.Link>U.S.</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/category/On Campus?limit=9&page=1">
-                <Nav.Link>On Campus</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/category/Business?limit=9&page=1">
-                <Nav.Link>Business</Nav.Link>
+                <Nav.Link class="rightMost">On Campus</Nav.Link>
               </LinkContainer>
             </Nav>
             <Nav className="ml-auto">
@@ -107,12 +114,7 @@ function App() {
                     style={{ borderRightStyle: "hidden !important" }}
                     to="/login"
                   >
-                    <Nav.Link
-                      className="testy"
-                      style={{ borderRightStyle: "none" }}
-                    >
-                      Login
-                    </Nav.Link>
+                    <Nav.Link className="rightMost">Login</Nav.Link>
                   </LinkContainer>
                 </>
               )}
@@ -122,6 +124,13 @@ function App() {
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
           <Routes />
         </AppContext.Provider>
+        <Footer>
+          <img
+            style={{ height: "280px" }}
+            alt="currentissueImage"
+            src="https://econmag-bucket.s3.amazonaws.com/public/2020/7/CER.jpg"
+          />
+        </Footer>
       </div>
     )
   );

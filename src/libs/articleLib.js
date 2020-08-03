@@ -39,8 +39,10 @@ export default function makePretty(articles, maxLength = 500) {
 export function hasImage(content) {
   var div = document.createElement("div");
   div.innerHTML = content;
-  var firstImage = div.getElementsByTagName("img")[0];
-
+  var firstImage = div.querySelectorAll("img")[0];
+  // console.log(div);
+  // console.log(firstImage);
+  // console.log(div.querySelectorAll("img")[0]);
   if (firstImage !== undefined) {
     // console.log(firstImage.toString());
     return firstImage;

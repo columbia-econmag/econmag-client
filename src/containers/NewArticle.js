@@ -87,7 +87,6 @@ const formats = [
   "image",
 ];
 export default function NewArticle() {
-  const file = useRef(null);
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -100,11 +99,9 @@ export default function NewArticle() {
     if (e.target.checked) {
       checkedBoxes.push(s);
     } else {
-      console.log(s);
       const index = checkedBoxes.findIndex((ch) => ch === s);
       checkedBoxes.splice(index, 1);
     }
-    console.log(checkedBoxes);
     setCategory(checkedBoxes);
   };
 
@@ -118,9 +115,6 @@ export default function NewArticle() {
     setIsLoading(true);
 
     try {
-      const attachment = file.current ? await s3Upload(file.current) : null;
-      console.log("ATTACHMENT");
-      console.log(attachment);
       await createArticle({ title, author, content, category });
       history.push("/");
     } catch (e) {
@@ -140,7 +134,6 @@ export default function NewArticle() {
       },
     });
   }
-  console.log(category);
   return (
     <div className="NewArticle">
       <form onSubmit={handleSubmit}>
@@ -192,7 +185,11 @@ export default function NewArticle() {
             value={content}
             modules={modules}
             formats={formats}
-            onChange={setContent}
+            onChange={(v) => {
+              // replace tabs with spaces
+              v = v.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+              setContent(v);
+            }}
           />
           <PrevWrapper>
             <h3 style={{ marginBottom: "0px" }}>Preview:</h3>

@@ -25,6 +25,7 @@ const LoaderDiv = styled.div`
 const LeftHeader = styled.h2`
   text-align: left;
   margin-bottom: 0px;
+  margin-top: 10px;
   cursor: pointer;
   text-decoration-color: #a0bbd3;
   &:hover {
@@ -66,6 +67,7 @@ const RightHeader = styled.h4`
   text-align: left;
   // color: palevioletred;
   cursor: pointer;
+  margin-top: 5px;
   margin-bottom: 0px;
 `;
 const RightText = styled.p`
@@ -140,7 +142,10 @@ export default function FiveViewBlock(...props) {
         let cachedArticles = Cache.getItem("fiveView");
         let tempArticles = await loadArticles(propQuery);
         if (
-          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+          cachedArticles.data[0].post_title !==
+            tempArticles.data[0].post_title ||
+          cachedArticles.data[0].post_content !==
+            tempArticles.data[0].post_content
         ) {
           Cache.setItem("fiveView", tempArticles);
         }
@@ -221,7 +226,7 @@ export default function FiveViewBlock(...props) {
     );
   }
 
-  function renderRecentArticles(posts) {
+  function renderFive(posts) {
     var articles = descriptionControl(posts, 300);
     var HTML = (
       <>
@@ -303,7 +308,7 @@ export default function FiveViewBlock(...props) {
         ) : (
           <OuterDiv>
             <Container className="width">
-              <Row>{renderRecentArticles(articles)}</Row>
+              <Row>{renderFive(articles)}</Row>
             </Container>
           </OuterDiv>
         )}

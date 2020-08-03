@@ -113,7 +113,10 @@ export default function CategoriesView(...props) {
         let cachedArticles = Cache.getItem(propQuery);
         let tempArticles = await loadArticles(propQuery);
         if (
-          cachedArticles.data[0].post_title !== tempArticles.data[0].post_title
+          cachedArticles.data[0].post_title !==
+            tempArticles.data[0].post_title ||
+          cachedArticles.data[0].post_content !==
+            tempArticles.data[0].post_content
         ) {
           Cache.setItem(propQuery, tempArticles);
         }

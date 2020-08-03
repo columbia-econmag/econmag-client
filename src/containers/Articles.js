@@ -44,7 +44,13 @@ const MyButton = styled(Button)`
 
 const ButtonDiv = styled.div``;
 export default function Articles() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "auto",
+  });
   const { _id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState(null);
   let history = useHistory();
 
@@ -60,6 +66,7 @@ export default function Articles() {
       } catch (e) {
         onError(e);
       }
+      setIsLoading(false);
     }
 
     onLoad();
@@ -100,5 +107,13 @@ export default function Articles() {
     );
   }
 
-  return <div className="Articles">{article && renderArticle(article)}</div>;
+  return (
+    <div className="Articles">
+      {isLoading ? (
+        <div style={{ height: "1000px" }}></div>
+      ) : (
+        <>{renderArticle(article)}</>
+      )}
+    </div>
+  );
 }
