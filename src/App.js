@@ -11,12 +11,12 @@ import { onError } from "./libs/errorLib";
 const Footer = styled.section`
   height: 330px;
   padding: 5px 50px;
-  background-color: aliceblue;
+  background-color: #1c3c75;
 `;
 
 const FootLogo = styled.img`
   height: 200px;
-  margin: auto 20px;
+  margin: 0 20px;
 `;
 
 const FooterWrap = styled(Container)`
@@ -26,6 +26,7 @@ const FooterWrap = styled(Container)`
 const FooterText = styled.p`
   cursor: pointer;
   padding: 0px 20px;
+  color: white;
   &:hover {
     color: #a0bbd3;
   }
@@ -134,7 +135,7 @@ function App() {
         <Footer>
           <div style={{ display: "flex", height: "300px" }}>
             <FooterWrap>
-              <Row className="justify-content-md-center">
+              <Row>
                 <Col md="auto">
                   <FootLogo
                     alt="currentissueImage"
@@ -146,10 +147,12 @@ function App() {
                   style={{ alignSelf: "center", paddingRight: "150px" }}
                 >
                   <LinkContainer to="/About">
-                    <FooterText>About Us</FooterText>
+                    <FooterText className="noBottomMargin">About Us</FooterText>
                   </LinkContainer>
                   <LinkContainer to="/Subscribe">
-                    <FooterText>Subscribe</FooterText>
+                    <FooterText className="noBottomMargin">
+                      Subscribe
+                    </FooterText>
                   </LinkContainer>
                   <LinkContainer to="/Contact">
                     <FooterText className="noBottomMargin">
@@ -167,6 +170,7 @@ function App() {
               fontSize: "smaller",
               paddingBottom: "5px",
               margin: "0px",
+              color: "grey",
             }}
           >
             Website By Ivan Barral
