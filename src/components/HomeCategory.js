@@ -120,7 +120,11 @@ export default function CategoriesView(...props) {
           cachedArticles.data[0].post_title !==
             tempArticles.data[0].post_title ||
           cachedArticles.data[0].post_content !==
-            tempArticles.data[0].post_content
+            tempArticles.data[0].post_content ||
+          cachedArticles.data[0].post_excerpt !==
+            tempArticles.data[0].post_excerpt ||
+          cachedArticles.data[0].post_largeExcerpt !==
+            tempArticles.data[0].post_largeExcerpt
         ) {
           Cache.setItem(propQuery, tempArticles);
         }
@@ -140,7 +144,7 @@ export default function CategoriesView(...props) {
   function showImage(post) {
     var item = randomImage();
     if (post.cover_image) {
-      return post.cover_image.src;
+      return post.cover_image;
     } else {
       return item;
     }

@@ -118,7 +118,14 @@ export default function NewArticle() {
     setIsLoading(true);
 
     try {
-      await createArticle({ title, author, content, category });
+      await createArticle({
+        title,
+        author,
+        content,
+        category,
+        excerpt,
+        excerptLong,
+      });
       history.push("/");
     } catch (e) {
       onError(e);
@@ -134,6 +141,8 @@ export default function NewArticle() {
         post_content: article.content,
         post_category: article.category,
         post_date: Date.now(),
+        post_excerpt: article.excerpt,
+        post_largeExcerpt: article.excerptLong,
       },
     });
   }
@@ -158,7 +167,9 @@ export default function NewArticle() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </FormGroup>
-          <FormLabel style={{ marginBottom: "0px" }}>Author:</FormLabel>
+          <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
+            Author:
+          </FormLabel>
           <WarningLabel>
             If this author has been previously published, please make sure this
             name matches the one registered in their previous article
@@ -171,6 +182,9 @@ export default function NewArticle() {
               onChange={(e) => setAuthor(e.target.value)}
             />
           </FormGroup>
+          <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
+            Categories:
+          </FormLabel>
           <div key={`inline-checkbox`} className="mb-3">
             {categories.map((cat) => (
               <Form.Check
@@ -183,6 +197,39 @@ export default function NewArticle() {
               />
             ))}
           </div>
+          <Form.Group controlId="excerptLong">
+            <Form.Label style={{ marginBottom: "0px", fontWeight: "bold" }}>
+              Long Excerpt:
+            </Form.Label>
+            <Form.Control
+              required
+              placeholder="Around 500 Characters Long"
+              value={excerptLong}
+              onChange={(e) => {
+                setExcerptLong(e.target.value);
+              }}
+              as="textarea"
+              rows="3"
+            />
+            <p style={{ textAlign: "right" }}>{excerptLong.length}/600</p>
+          </Form.Group>
+          <Form.Group controlId="excerpt">
+            <Form.Label style={{ marginBottom: "0px", fontWeight: "bold" }}>
+              Short Excerpt:
+            </Form.Label>
+            <Form.Control
+              required
+              placeholder="Around 200 Characters Long"
+              value={excerpt}
+              onChange={(e) => {
+                setExcerpt(e.target.value);
+              }}
+              as="textarea"
+              rows="2"
+            />
+            <p style={{ textAlign: "right" }}>{excerpt.length}/250</p>
+          </Form.Group>
+
           <ReactQuill
             theme="snow"
             value={content}

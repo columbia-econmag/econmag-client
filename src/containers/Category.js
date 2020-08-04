@@ -112,7 +112,7 @@ export default function Category(...props) {
   function showImage(post) {
     var item = randomImage();
     if (post.cover_image) {
-      return post.cover_image.src;
+      return post.cover_image;
     } else {
       return item;
     }

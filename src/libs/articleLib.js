@@ -21,15 +21,42 @@ export default function makePretty(articles, maxLength = 500) {
       excerpt = excerpt.replace(/(<([^>]+)>)/gi, "");
       // let excerpt = p.post_content.trim().split("\n")[0];
       // .replace(/(<([^>]+)>)/gi, "");
-      if (excerpt.length > maxLength) {
-        var tempExcerpt = excerpt.substring(0, maxLength);
-        excerpt = tempExcerpt.substring(0, tempExcerpt.lastIndexOf(".")) + ".";
+      if (maxLength >= 500) {
+        if (excerpt.length > maxLength) {
+          let tempLargeExcerpt = excerpt.substring(0, maxLength);
+          let largeExcerpt =
+            tempLargeExcerpt.substring(0, tempLargeExcerpt.lastIndexOf(".")) +
+            ".";
+          p.post_largeExcerpt = largeExcerpt;
+        } else {
+          p.post_largeExcerpt = excerpt;
+        }
+        let tempExcerpt = excerpt.substring(0, 300);
+        let shortExcerpt =
+          tempExcerpt.substring(0, tempExcerpt.lastIndexOf(".")) + ".";
+        p.post_excerpt = shortExcerpt;
+      } else {
+        if (excerpt.length > maxLength) {
+          let tempExcerpt = excerpt.substring(0, maxLength);
+          let shortExcerpt =
+            tempExcerpt.substring(0, tempExcerpt.lastIndexOf(".")) + ".";
+          p.post_excerpt = shortExcerpt;
+        } else {
+          p.post_excerpt = excerpt;
+        }
+        let tempExcerpt = excerpt.substring(0, 500);
+        let largeExcerpt =
+          tempExcerpt.substring(0, tempExcerpt.lastIndexOf(".")) + ".";
+
+        p.post_largeExcerpt = largeExcerpt;
       }
-      p.post_excerpt = excerpt;
     }
-    var img = hasImage(p.post_content);
-    if (img !== null) {
-      p.cover_image = img;
+    if (!p.cover_image) {
+      console.log("IMA BANANA");
+      var img = hasImage(p.post_content);
+      if (img !== null) {
+        p.cover_image = img.src;
+      }
     }
     return p;
   });

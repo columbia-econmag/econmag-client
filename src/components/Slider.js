@@ -140,6 +140,8 @@ export default function SimpleSlider(...props) {
           Cache.setItem("slider", articles);
         }
         setArticles(articles);
+        console.log(articles);
+        await loadArticles(propQuery);
       } catch (e) {
         onError(e);
       }
@@ -151,7 +153,11 @@ export default function SimpleSlider(...props) {
           cachedArticles.data[0].post_title !==
             tempArticles.data[0].post_title ||
           cachedArticles.data[0].post_content !==
-            tempArticles.data[0].post_content
+            tempArticles.data[0].post_content ||
+          cachedArticles.data[0].post_excerpt !==
+            tempArticles.data[0].post_excerpt ||
+          cachedArticles.data[0].post_largeExcerpt !==
+            tempArticles.data[0].post_largeExcerpt
         ) {
           Cache.setItem("slider", tempArticles);
         }
@@ -170,7 +176,7 @@ export default function SimpleSlider(...props) {
   function showImage(post) {
     var item = randomImage();
     if (post.cover_image) {
-      return post.cover_image.src;
+      return post.cover_image;
     } else {
       return item;
     }
@@ -178,6 +184,7 @@ export default function SimpleSlider(...props) {
 
   function renderArticlesCarousel(posts) {
     const bigPosts = descriptionControl(posts, 600);
+    console.log(bigPosts);
     const articles = bigPosts.map((post) => (
       <OuterDiv key={post._id}>
         <LinkContainer to={`/post/${post._id}`}>
@@ -194,7 +201,7 @@ export default function SimpleSlider(...props) {
           </LinkContainer>
           <SliderCaption
             dangerouslySetInnerHTML={{
-              __html: post.post_excerpt,
+              __html: post.post_largeExcerpt,
             }}
           >
             {/* {post.post_content.trim().split("\n")[0]} */}
@@ -207,7 +214,9 @@ export default function SimpleSlider(...props) {
 
   function descriptionControl(articles, maxLength) {
     for (var i = 0; i < articles.data.length; i++) {
-      articles.data[i].post_excerpt = "";
+      if (!articles.data[i].post_excerpt) {
+        articles.data[i].post_excerpt = "";
+      }
     }
 
     var test = makePretty(articles, maxLength);
