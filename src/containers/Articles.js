@@ -6,7 +6,7 @@ import styled from "styled-components";
 import parse from "html-react-parser";
 import { removeHome } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { FcPrevious } from "react-icons/fc";
 import "./Articles.css";
 
@@ -110,7 +110,9 @@ export default function Articles() {
   return (
     <div className="Articles">
       {isLoading ? (
-        <div style={{ height: "1000px" }}></div>
+        <div style={{ height: "1000px", width: "100%", textAlign: "center" }}>
+          <Spinner animation="border" variant="primary" />
+        </div>
       ) : (
         <>{renderArticle(article)}</>
       )}
