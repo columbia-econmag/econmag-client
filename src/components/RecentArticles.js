@@ -23,6 +23,10 @@ const RecentTitle = styled.h3`
   margin-bottom: 0px;
   // color: palevioletred;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 
 const RecentCaption = styled.p`
@@ -81,6 +85,10 @@ const RightHeader = styled.h3`
   // color: palevioletred;
   cursor: pointer;
   margin-bottom: 0px;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 const RightText = styled.p`
   text-align: right;

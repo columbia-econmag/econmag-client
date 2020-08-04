@@ -41,6 +41,10 @@ const Header = styled.h3`
   // color: palevioletred;
   cursor: pointer;
   margin-bottom: 0px;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 const CatText = styled.p`
   text-align: center;

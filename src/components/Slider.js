@@ -36,6 +36,10 @@ const SliderTitle = styled.h3`
   text-align: center;
   cursor: pointer;
   margin-bottom: 0px;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 
 const MobileImage = styled.img`

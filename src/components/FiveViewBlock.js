@@ -69,6 +69,10 @@ const RightHeader = styled.h4`
   cursor: pointer;
   margin-top: 5px;
   margin-bottom: 0px;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 const RightText = styled.p`
   text-align: left;
