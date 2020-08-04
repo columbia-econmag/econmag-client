@@ -98,6 +98,9 @@ export default function NewArticle() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [category, setCategory] = useState([]);
+  const [excerpt, setExcerpt] = useState("");
+  const [excerptLong, setExcerptLong] = useState("");
+  const [coverImage, setCoverImage] = useState("");
 
   const handleCheckbox = (e, s) => {
     const checkedBoxes = [...category];
@@ -125,6 +128,8 @@ export default function NewArticle() {
           post_author,
           post_title,
           post_category,
+          post_excerpt,
+          post_largeExcerpt,
         } = article.data;
 
         setContent(post_content);
@@ -132,6 +137,13 @@ export default function NewArticle() {
         setAuthor(post_author);
         setTitle(post_title);
         setArticle(article.data);
+        if (!post_excerpt) {
+          setExcerpt("");
+          setExcerptLong("");
+        } else {
+          setExcerpt(post_excerpt);
+          setExcerptLong(post_largeExcerpt);
+        }
         // setAuthor()
       } catch (e) {
         onError(e);
@@ -152,6 +164,8 @@ export default function NewArticle() {
         post_title: article.title,
         post_author: article.author,
         post_category: article.category,
+        post_excerpt: article.excerpt,
+        post_largeExcerpt: article.excerptLong,
       },
     });
   }
@@ -161,7 +175,14 @@ export default function NewArticle() {
     setIsLoading(true);
 
     try {
-      await saveArticle({ title, author, content, category });
+      await saveArticle({
+        title,
+        author,
+        content,
+        category,
+        excerpt,
+        excerptLong,
+      });
       history.push("/");
     } catch (e) {
       onError(e);
@@ -229,6 +250,9 @@ export default function NewArticle() {
               onChange={(e) => setAuthor(e.target.value)}
             />
           </FormGroup>
+          <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
+            Categories:
+          </FormLabel>
           <div key={`inline-checkbox`} className="mb-3">
             {categories.map((cat) => (
               <Form.Check
@@ -242,6 +266,38 @@ export default function NewArticle() {
               />
             ))}
           </div>
+          <Form.Group controlId="excerptLong">
+            <Form.Label style={{ marginBottom: "0px", fontWeight: "bold" }}>
+              Long Excerpt:
+            </Form.Label>
+            <Form.Control
+              required
+              placeholder="Around 500 Characters Long"
+              value={excerptLong}
+              onChange={(e) => {
+                setExcerptLong(e.target.value);
+              }}
+              as="textarea"
+              rows="3"
+            />
+            <p style={{ textAlign: "right" }}>{excerptLong.length}/600</p>
+          </Form.Group>
+          <Form.Group controlId="excerpt">
+            <Form.Label style={{ marginBottom: "0px", fontWeight: "bold" }}>
+              Short Excerpt:
+            </Form.Label>
+            <Form.Control
+              required
+              placeholder="Around 200 Characters Long"
+              value={excerpt}
+              onChange={(e) => {
+                setExcerpt(e.target.value);
+              }}
+              as="textarea"
+              rows="2"
+            />
+            <p style={{ textAlign: "right" }}>{excerpt.length}/250</p>
+          </Form.Group>
           <ReactQuill
             theme="snow"
             value={content}
