@@ -145,13 +145,13 @@ function App() {
                   md="auto"
                   style={{ alignSelf: "center", paddingRight: "150px" }}
                 >
-                  <LinkContainer to="/">
+                  <LinkContainer to="/About">
                     <FooterText>About us</FooterText>
                   </LinkContainer>
-                  <LinkContainer to="/">
+                  <LinkContainer to="/Subscribe">
                     <FooterText>Subscribe</FooterText>
                   </LinkContainer>
-                  <LinkContainer to="/">
+                  <LinkContainer to="/Contact">
                     <FooterText className="noBottomMargin">
                       Contact Us
                     </FooterText>
@@ -169,7 +169,7 @@ function App() {
               margin: "0px",
             }}
           >
-            Website Created By Ivan Barral
+            Website By Ivan Barral
           </p>
         </Footer>
       </div>

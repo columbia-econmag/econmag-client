@@ -146,11 +146,9 @@ export default function RecentArticles(...props) {
     async function onLoad() {
       try {
         var articles = Cache.getItem("recent");
-        console.log(articles);
 
         if (!articles) {
           articles = await loadArticles(propQuery);
-          console.log(articles);
 
           Cache.setItem("recent", articles);
         }
@@ -175,14 +173,6 @@ export default function RecentArticles(...props) {
       }
     }
     onLoad();
-    // if (articles.length !== 0) {
-    //   console.log(articles);
-    //   console.log(articles.data[0].post_content);
-    //   var div = document.createElement("div");
-    //   div.innerHTML = articles.data[0].post_content;
-    //   console.log(div.querySelectorAll("img"));
-    // }
-    console.log(articles);
     return () => isLoading;
   }, [propQuery, isLoading]);
 

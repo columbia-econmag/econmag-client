@@ -40,11 +40,8 @@ export function hasImage(content) {
   var div = document.createElement("div");
   div.innerHTML = content;
   var firstImage = div.querySelectorAll("img")[0];
-  // console.log(div);
-  // console.log(firstImage);
-  // console.log(div.querySelectorAll("img")[0]);
+
   if (firstImage !== undefined) {
-    // console.log(firstImage.toString());
     return firstImage;
   } else {
     return null;
@@ -55,12 +52,10 @@ export function removeHome(content) {
   var div = document.createElement("div");
   var uglyDiv = document.createElement("div");
   div.innerHTML = content;
-  console.log(div.childNodes[0].textContent.length);
   if (
     div.childNodes[0].nodeName !== "#text" &&
     div.childNodes[0].nodeName !== "P"
   ) {
-    console.log("THIS IS ALSO WORKING?");
     uglyDiv.innerHTML = content;
     div.innerHTML = null;
   }
