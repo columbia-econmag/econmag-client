@@ -68,12 +68,12 @@ function App() {
         >
           Columbia Econ Review
         </Navbar.Brand> */}
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div style={{ width: "100%", textAlign: "center", padding: "1%" }}>
           <LinkContainer to="/">
             <img
               className="headerImage"
               alt="CER Header"
-              src="https://econmag-bucket.s3.amazonaws.com/public/2015/10/CER_LOGO_BANNER-e1444933900847.png"
+              src="https://econmag-bucket.s3.amazonaws.com/public/2020/8/CER+new+Logo.png"
             />
           </LinkContainer>
         </div>
@@ -146,7 +146,7 @@ function App() {
                   style={{ alignSelf: "center", paddingRight: "150px" }}
                 >
                   <LinkContainer to="/About">
-                    <FooterText>About us</FooterText>
+                    <FooterText>About Us</FooterText>
                   </LinkContainer>
                   <LinkContainer to="/Subscribe">
                     <FooterText>Subscribe</FooterText>

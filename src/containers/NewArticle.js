@@ -90,6 +90,9 @@ export default function NewArticle() {
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+  const [excerptLong, setExcerptLong] = useState("");
+  const [coverImage, setCoverImage] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState([]);
