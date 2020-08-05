@@ -26,6 +26,12 @@ const Header = styled.h2`
   color: Black;
 `;
 
+const CoverImageWrap = styled.img`
+  max-width: 40%;
+  padding: 20px;
+  padding-top: 0px !important;
+`;
+
 const LabelHolder = styled.div`
   padding-bottom: 60px;
 `;
@@ -114,6 +120,14 @@ export default function NewArticle() {
     console.log(checkedBoxes);
     setCategory(checkedBoxes);
   };
+
+  async function handleCoverImage(event) {
+    console.log(event);
+    console.log(event.target.files[0]);
+    let attachment = await s3Upload(event.target.files[0]);
+    setCoverImage(attachment);
+  }
+
   useEffect(() => {
     function loadArticle() {
       return API.get("posts", `posts/${_id}`);
@@ -130,6 +144,7 @@ export default function NewArticle() {
           post_category,
           post_excerpt,
           post_largeExcerpt,
+          cover_image,
         } = article.data;
 
         setContent(post_content);
@@ -137,6 +152,7 @@ export default function NewArticle() {
         setAuthor(post_author);
         setTitle(post_title);
         setArticle(article.data);
+        setCoverImage(cover_image);
         if (!post_excerpt) {
           setExcerpt("");
           setExcerptLong("");
@@ -166,6 +182,7 @@ export default function NewArticle() {
         post_category: article.category,
         post_excerpt: article.excerpt,
         post_largeExcerpt: article.excerptLong,
+        cover_image: article.coverImage,
       },
     });
   }
@@ -182,6 +199,7 @@ export default function NewArticle() {
         category,
         excerpt,
         excerptLong,
+        coverImage,
       });
       history.push("/");
     } catch (e) {
@@ -214,6 +232,14 @@ export default function NewArticle() {
       onError(e);
       setIsDeleting(false);
     }
+  }
+
+  function showCoverImage() {
+    console.log(coverImage);
+    if (coverImage) {
+      return <CoverImageWrap alt="cover" src={coverImage} />;
+    }
+    return null;
   }
 
   return (
@@ -298,6 +324,13 @@ export default function NewArticle() {
             />
             <p style={{ textAlign: "right" }}>{excerpt.length}/250</p>
           </Form.Group>
+          <FormGroup controlId="file">
+            <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
+              Cover Image:
+            </FormLabel>
+            <FormControl onChange={handleCoverImage} type="file" />
+          </FormGroup>
+          {showCoverImage()}
           <ReactQuill
             theme="snow"
             value={content}

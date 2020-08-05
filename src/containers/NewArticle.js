@@ -35,6 +35,13 @@ const AuthorLabel = styled.h6`
   color: grey;
   cursor: pointer;
 `;
+
+const CoverImageWrap = styled.img`
+  max-width: 40%;
+  padding: 20px;
+  padding-top: 0px !important;
+`;
+
 const DateLabel = styled.h6`
   color: grey;
   float: right;
@@ -112,6 +119,13 @@ export default function NewArticle() {
     return content.length > 0;
   }
 
+  async function handleCoverImage(event) {
+    console.log(event);
+    console.log(event.target.files[0]);
+    let attachment = await s3Upload(event.target.files[0]);
+    setCoverImage(attachment);
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -125,6 +139,7 @@ export default function NewArticle() {
         category,
         excerpt,
         excerptLong,
+        coverImage,
       });
       history.push("/");
     } catch (e) {
@@ -143,8 +158,17 @@ export default function NewArticle() {
         post_date: Date.now(),
         post_excerpt: article.excerpt,
         post_largeExcerpt: article.excerptLong,
+        cover_image: article.coverImage,
       },
     });
+  }
+
+  function showCoverImage() {
+    console.log(coverImage);
+    if (coverImage !== "") {
+      return <CoverImageWrap alt="cover" src={coverImage} />;
+    }
+    return null;
   }
   return (
     <div className="NewArticle">
@@ -229,7 +253,17 @@ export default function NewArticle() {
             />
             <p style={{ textAlign: "right" }}>{excerpt.length}/250</p>
           </Form.Group>
-
+          <FormGroup controlId="file">
+            <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
+              Cover Image:
+            </FormLabel>
+            <FormControl
+              value={coverImage}
+              onChange={handleCoverImage}
+              type="file"
+            />
+          </FormGroup>
+          {showCoverImage()}
           <ReactQuill
             theme="snow"
             value={content}
