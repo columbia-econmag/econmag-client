@@ -125,6 +125,7 @@ const MobileLoaderDiv = styled.div`
 
 const OuterMobile = styled.div`
   display: block;
+  text-align: center;
 `;
 
 export default function SimpleSlider(...props) {
@@ -140,8 +141,6 @@ export default function SimpleSlider(...props) {
           Cache.setItem("slider", articles);
         }
         setArticles(articles);
-        console.log(articles);
-        await loadArticles(propQuery);
       } catch (e) {
         onError(e);
       }

@@ -176,7 +176,7 @@ export default function CategoriesView(...props) {
 
   function renderRecentMobile(posts) {
     var HTML = posts.data.map((post) => (
-      <div key={post._id}>
+      <div key={post._id} style={{ textAlign: "center" }}>
         <LinkContainer to={`/post/${post._id}`}>
           <MobileImage src={showImage(post)} />
         </LinkContainer>

@@ -50,8 +50,10 @@ const TextHolder = styled.div`
   overflow: auto;
 `;
 const LeftImage = styled.img`
-  max-height: 90%;
+  max-height: 100%;
   max-width: 90%;
+  padding-right: 10px;
+  padding-bottom: 10px;
   border-radius: 2px;
   display: block;
   margin: auto;
@@ -62,7 +64,7 @@ const LeftImage = styled.img`
 
 const RightImage = styled.img`
   max-height: 50%;
-  max-width: 50%;
+  max-width: 80%;
   border-radius: 2px;
   display: block;
   margin: auto;
@@ -203,10 +205,12 @@ export default function RecentArticles(...props) {
   }
 
   function renderRight(articles) {
-    articles[2].post_excerpt = "";
-    makePretty({ data: articles });
+    if (!articles[2].post_excerpt) {
+      articles[2].post_excerpt = "";
+      makePretty({ data: articles });
+    }
 
-    return articles[2].post_largeExcerpt;
+    return articles[2].post_excerpt;
   }
 
   function descriptionControl(articles, maxLength) {
