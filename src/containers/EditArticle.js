@@ -94,9 +94,10 @@ const formats = [
 
 const categories = ["On Campus", "Business", "World", "U.S."];
 
-export default function NewArticle() {
+export default function EditArticle() {
   const { _id } = useParams();
   const [article, setArticle] = useState(null);
+  const [editContent, setEditContent] = useState(false);
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -119,6 +120,15 @@ export default function NewArticle() {
     }
     console.log(checkedBoxes);
     setCategory(checkedBoxes);
+  };
+
+  const handleEditCheck = (e) => {
+    if (e.target.checked) {
+      setEditContent(true);
+    } else {
+      setEditContent(false);
+    }
+    console.log(editContent);
   };
 
   async function handleCoverImage(event) {
@@ -190,21 +200,37 @@ export default function NewArticle() {
     event.preventDefault();
 
     setIsLoading(true);
-
-    try {
-      await saveArticle({
-        title,
-        author,
-        content,
-        category,
-        excerpt,
-        excerptLong,
-        coverImage,
-      });
-      history.push("/");
-    } catch (e) {
-      onError(e);
-      setIsLoading(false);
+    if (editContent) {
+      try {
+        await saveArticle({
+          title,
+          author,
+          content,
+          category,
+          excerpt,
+          excerptLong,
+          coverImage,
+        });
+        history.push("/");
+      } catch (e) {
+        onError(e);
+        setIsLoading(false);
+      }
+    } else {
+      try {
+        await saveArticle({
+          title,
+          author,
+          category,
+          excerpt,
+          excerptLong,
+          coverImage,
+        });
+        history.push("/");
+      } catch (e) {
+        onError(e);
+        setIsLoading(false);
+      }
     }
   }
 
@@ -235,7 +261,6 @@ export default function NewArticle() {
   }
 
   function showCoverImage() {
-    console.log(coverImage);
     if (coverImage) {
       return <CoverImageWrap alt="cover" src={coverImage} />;
     }
@@ -306,7 +331,7 @@ export default function NewArticle() {
               as="textarea"
               rows="3"
             />
-            <p style={{ textAlign: "right" }}>{excerptLong.length}/600</p>
+            <p style={{ textAlign: "right" }}>{excerptLong.length}/500</p>
           </Form.Group>
           <Form.Group controlId="excerpt">
             <Form.Label style={{ marginBottom: "0px", fontWeight: "bold" }}>
@@ -331,13 +356,20 @@ export default function NewArticle() {
             <FormControl onChange={handleCoverImage} type="file" />
           </FormGroup>
           {showCoverImage()}
-          <ReactQuill
-            theme="snow"
-            value={content}
-            modules={modules}
-            formats={formats}
-            onChange={setContent}
+          <Form.Check
+            label="Modify Content?"
+            onChange={(e) => handleEditCheck(e)}
           />
+          {editContent ? (
+            <ReactQuill
+              theme="snow"
+              value={content}
+              modules={modules}
+              formats={formats}
+              onChange={setContent}
+            />
+          ) : null}
+
           <PrevWrapper>
             <h3 style={{ marginBottom: "0px" }}>Preview:</h3>
             <Header>{title}</Header>

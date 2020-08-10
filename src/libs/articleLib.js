@@ -93,7 +93,6 @@ export function removeHome(content) {
 export function randomImage() {
   const randomImage = [
     "https://media-exp1.licdn.com/dms/image/C511BAQFuptKQFmdDMQ/company-background_10000/0?e=2159024400&v=beta&t=LL5-QWwjotGxNdT8uVoNp6WQmgMDOnVy490S5PnEluM",
-    "https://upload.wikimedia.org/wikipedia/en/8/89/Columbia_University_Shield.png",
     "https://econ.columbia.edu/wp-content/uploads/sites/41/2017/10/dreamstime_xxl_110309746-1.jpg",
     "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F144663665%2F0x0.jpg%3Ffit%3Dscale",
     "https://static01.nyt.com/images/2020/03/08/nyregion/08xp-columbia1/08xp-columbia1-videoSixteenByNineJumbo1600.jpg",

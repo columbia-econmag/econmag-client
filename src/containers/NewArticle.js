@@ -235,7 +235,7 @@ export default function NewArticle() {
               as="textarea"
               rows="3"
             />
-            <p style={{ textAlign: "right" }}>{excerptLong.length}/600</p>
+            <p style={{ textAlign: "right" }}>{excerptLong.length}/500</p>
           </Form.Group>
           <Form.Group controlId="excerpt">
             <Form.Label style={{ marginBottom: "0px", fontWeight: "bold" }}>
@@ -257,11 +257,7 @@ export default function NewArticle() {
             <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
               Cover Image:
             </FormLabel>
-            <FormControl
-              value={coverImage}
-              onChange={handleCoverImage}
-              type="file"
-            />
+            <FormControl onChange={handleCoverImage} type="file" />
           </FormGroup>
           {showCoverImage()}
           <ReactQuill
