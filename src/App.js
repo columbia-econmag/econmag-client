@@ -137,10 +137,12 @@ function App() {
             <FooterWrap>
               <Row>
                 <Col md="auto">
-                  <FootLogo
-                    alt="currentissueImage"
-                    src="https://econmag-bucket.s3.amazonaws.com/public/2020/7/CER.jpg"
-                  />
+                  <a href="#top">
+                    <FootLogo
+                      alt="currentissueImage"
+                      src="https://econmag-bucket.s3.amazonaws.com/public/2020/7/CER.jpg"
+                    />
+                  </a>
                 </Col>
                 <Col
                   md="auto"
