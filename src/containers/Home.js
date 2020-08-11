@@ -163,7 +163,9 @@ export default function Home() {
           </InnerSection>
         </SliderSection>
         <InnerSection>
-          <Header>Recent Articles</Header>
+          <LinkContainer to="/recent?limit=9&page=1">
+            <Header>Recent Articles</Header>
+          </LinkContainer>
           <Suspense
             fallback={
               <div style={{ height: "600px", textAlign: "center" }}>

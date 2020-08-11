@@ -64,11 +64,12 @@ const LeftImage = styled.img`
 
 const RightImage = styled.img`
   max-height: 50%;
-  max-width: 80%;
+  max-width: 100%;
   border-radius: 2px;
   display: block;
   margin: auto;
   vertical-align: middle;
+  margin-right: 0px;
   cursor: pointer;
 `;
 
@@ -79,7 +80,6 @@ const OuterDiv = styled.div`
   border-bottom-color: rgb(38, 38, 38, 0.1);
   border-width: 1px;
   // margin: 20px 40px 0px 40px;
-  padding: 0px 10px;
 `;
 
 const RightHeader = styled.h3`

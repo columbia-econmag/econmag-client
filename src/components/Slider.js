@@ -8,6 +8,7 @@ import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Slider.css";
 import { useMediaQuery } from "react-responsive";
+import { MdNavigateNext } from "react-icons/md";
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return isMobile ? children : null;
@@ -33,7 +34,7 @@ const mobileSettings = {
   slidesToScroll: 1,
 };
 const SliderTitle = styled.h3`
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   margin-bottom: 0px;
   &:hover {
@@ -65,14 +66,14 @@ const MobileText = styled.p`
 `;
 
 const SliderCaption = styled.p`
-  text-align: center;
+  text-align: left;
   // width: 50%;
   // float: right;
   color: black;
 `;
 
 const Author = styled.p`
-  text-align: center;
+  text-align: left;
   color: grey;
   margin-bottom: 4px;
   cursor: pointer;
@@ -83,7 +84,7 @@ const Author = styled.p`
 `;
 
 const ImgHolder = styled.div`
-  text-align: center;
+  text-align: left;
   display: flex;
   width: 50%;
   justify-content: center;
@@ -91,18 +92,22 @@ const ImgHolder = styled.div`
   overflow: auto;
 `;
 const TextHolder = styled.div`
-  text-align: center;
+  text-align: left;
+  margin-left: 15px;
   display: block;
   width: 50%;
-  justify-content: center;
+  // justify-content: center;
   float: left;
   overflow: auto;
 `;
 const SliderImage = styled.img`
-  max-height: 80%;
-  max-width: 85%;
+  max-height: 100%;
+  max-width: 90%;
+  padding: 8px 0px;
   border-radius: 2px;
   display: block;
+  margin-right: 15px !important;
+  margin-left: 1px;
   margin: auto;
   vertical-align: middle;
   float: right;

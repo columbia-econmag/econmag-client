@@ -59,8 +59,6 @@ const OuterDiv = styled.div`
   border-bottom-style: solid;
   border-bottom-color: rgb(38, 38, 38, 0.3);
   border-width: 1px;
-  // margin: 20px 40px 0px 40px;
-  padding: 0px 10px;
 `;
 
 const RightHeader = styled.h4`

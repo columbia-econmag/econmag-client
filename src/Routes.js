@@ -15,6 +15,7 @@ const AsyncLogin = asyncComponent(() => import("./containers/Login"));
 const AsyncNotes = asyncComponent(() => import("./containers/Articles"));
 const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
 const AsyncNewArticle = asyncComponent(() => import("./containers/NewArticle"));
+const AsyncRecent = asyncComponent(() => import("./containers/Recent"));
 const AsyncNotFound = asyncComponent(() => import("./containers/NotFound"));
 
 export default ({ childProps }) => (
@@ -25,10 +26,10 @@ export default ({ childProps }) => (
     <Route path="/author/:post_author" exact component={AsyncAuthor} />
 
     <Route path="/category/:post_category" exact component={AsyncCategory} />
-
+    <Route path="/recent" exact component={AsyncRecent} />
+    <Route path="/post/:_id" exact component={AsyncNotes} />
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <AuthenticatedRoute path="/signup" exact component={AsyncSignup} />
-    <Route path="/post/:_id" exact component={AsyncNotes} />
 
     <AuthenticatedRoute
       path="/articles/new"
