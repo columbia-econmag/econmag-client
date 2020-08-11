@@ -18,8 +18,8 @@
 }
 
 .App .nav-link {
-  border-right-style: none;
-  border-right-color: rgb(38, 38, 38, 0.1);
+  border-right-style: solid;
+  border-right-color: rgb(38, 38, 38, 0.05);
   border-width: 0.5px;
   padding: 8px 16px !important;
 }

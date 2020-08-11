@@ -101,9 +101,9 @@ const TextHolder = styled.div`
   overflow: auto;
 `;
 const SliderImage = styled.img`
-  max-height: 100%;
-  max-width: 95%;
-  padding: 8px 0px;
+  max-height: 97%;
+  max-width: 97%;
+  padding-bottom: 10px;
   border-radius: 2px;
   display: block;
   margin-right: 15px !important;

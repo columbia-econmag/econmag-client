@@ -19,7 +19,7 @@ const Default = ({ children }) => {
 
 const CatImage = styled.img`
   max-height: 50%;
-  max-width: 80%;
+  max-width: 100%;
   border-radius: 2px;
   display: block;
   margin: auto;
