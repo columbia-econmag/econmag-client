@@ -102,7 +102,7 @@ const TextHolder = styled.div`
 `;
 const SliderImage = styled.img`
   max-height: 100%;
-  max-width: 90%;
+  max-width: 95%;
   padding: 8px 0px;
   border-radius: 2px;
   display: block;
