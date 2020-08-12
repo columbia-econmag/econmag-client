@@ -19,10 +19,6 @@ import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
-const CategoriesView = lazy(() => import("../components/HomeCategory"));
-const RecentArticles = lazy(() => import("../components/RecentArticles"));
-const SimpleSlider = lazy(() => import("../components/Slider"));
-const FiveViewBlock = lazy(() => import("../components/FiveViewBlock"));
 
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });

@@ -17,6 +17,7 @@ const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
 const AsyncNewArticle = asyncComponent(() => import("./containers/NewArticle"));
 const AsyncRecent = asyncComponent(() => import("./containers/Recent"));
 const AsyncNotFound = asyncComponent(() => import("./containers/NotFound"));
+const AsyncSearch = asyncComponent(() => import("./containers/Search"));
 
 export default ({ childProps }) => (
   <Switch>
@@ -24,7 +25,7 @@ export default ({ childProps }) => (
     <AuthenticatedRoute path="/editor" exact component={AsyncEditorHome} />
 
     <Route path="/author/:post_author" exact component={AsyncAuthor} />
-
+    <Route path="/search" exact component={AsyncSearch} />
     <Route path="/category/:post_category" exact component={AsyncCategory} />
     <Route path="/recent" exact component={AsyncRecent} />
     <Route path="/post/:_id" exact component={AsyncNotes} />
