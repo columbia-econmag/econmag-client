@@ -228,7 +228,7 @@ export default function Category(...props) {
   }
 
   function getStickBugged() {
-    if (search === "get stick bugged lol") {
+    if (search.current === "get stick bugged lol") {
       return (
         <div style={{ width: "100%", textAlign: "center" }}>
           <img
