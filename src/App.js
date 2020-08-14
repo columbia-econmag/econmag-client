@@ -48,6 +48,7 @@ const SearchBar = styled.input`
 `;
 const SearchImage = styled(GoSearch)`
   height: 20px;
+  transition: 1s;
   width: 20px;
   color: rgba(0, 0, 0, 0.8);
 `;
