@@ -249,7 +249,7 @@ export default function Category(...props) {
           <form onSubmit={submitForm}>
             <SearchGroup>
               <SearchBar
-                style={{ width: "90%" }}
+                style={{ width: "100%" }}
                 type="text"
                 defaultValue={query}
                 onChange={(e) => {
@@ -257,9 +257,10 @@ export default function Category(...props) {
                 }}
                 placeholder="Search..."
               />
-              <SearchButton style={{ width: "8%" }} type="submit">
-                <GoSearch style={{ width: "150%", height: "150%" }} />
-              </SearchButton>
+              <SearchButton
+                style={{ width: "0%" }}
+                type="submit"
+              ></SearchButton>
             </SearchGroup>
           </form>
           {isLoading ? (
