@@ -19,6 +19,7 @@ import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
+import { GoSearch } from "react-icons/go";
 
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -48,28 +49,62 @@ const MobileHeader = styled.h2`
   text-align: center;
 `;
 
-const SearchBar = styled.input`
-  width: 90%;
-  border-style: none;
-  border-bottom-style: solid;
-  background: border-box;
-  font-size: 35px;
-  border-bottom-width: 2px;
-  border-color: #e9ecef;
-  transition: 0.1s;
+const SearchButton = styled.button`
+  border: none;
+  background: transparent;
+  // opacity: 0.5;
+  color: #e9ecef;
+  width: 5%;
+  transition: 0.2s;
   &:focus {
     border-style: none;
     outline-style: none;
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    border-bottom-color: initial;
     opacity: 1;
   }
+`;
+
+const SearchGroup = styled(FormGroup)`
+  margin: 20px 2px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  margin-bottom: 30px;
+  border-color: #e9ecef;
+  transition: 0.2s;
+
   &:hover {
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: initial;
     opacity: 1;
+  }
+  &:hover ${SearchButton} {
+    color: black;
+  }
+  &:focus-within ${SearchButton} {
+    color: black;
+  }
+  &:focus-within {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: initial;
+  }
+`;
+
+const SearchBar = styled.input`
+  width: 95%;
+  border-style: none;
+  background: border-box;
+  font-weight: 600;
+  font-size: 35px;
+  &:focus {
+    border-style: none;
+    outline-style: none;
+    opacity: 1;
+  }
+  &:focus ${SearchGroup} {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: initial;
   }
 `;
 
@@ -209,17 +244,21 @@ export default function Category(...props) {
         <Jumbotron fluid>
           <Container style={{ textAlign: "center" }}>
             <form onSubmit={submitForm}>
-              <FormGroup>
+              <SearchGroup>
                 <SearchBar
                   type="text"
                   defaultValue={query}
                   onChange={(e) => {
                     search = e.target.value.toLowerCase();
                   }}
-                  placeholder=""
-                />
-                <button type="submit">Submit</button>
-              </FormGroup>
+                  placeholder="Search.."
+                >
+                  Hello
+                </SearchBar>
+                <SearchButton type="submit">
+                  <GoSearch style={{ width: "70%", height: "100%" }} />
+                </SearchButton>
+              </SearchGroup>
             </form>
           </Container>
         </Jumbotron>
@@ -227,23 +266,21 @@ export default function Category(...props) {
       </Mobile>
       <Default key="defaultHome">
         <InnerSection>
-          <Jumbotron fluid>
-            <Container style={{ textAlign: "center" }}>
-              <form onSubmit={submitForm}>
-                <FormGroup>
-                  <SearchBar
-                    type="text"
-                    defaultValue={query}
-                    onChange={(e) => {
-                      search = e.target.value.toLowerCase();
-                    }}
-                    placeholder=""
-                  />
-                  <button type="submit">Submit</button>
-                </FormGroup>
-              </form>
-            </Container>
-          </Jumbotron>
+          <form onSubmit={submitForm}>
+            <SearchGroup>
+              <SearchBar
+                type="text"
+                defaultValue={query}
+                onChange={(e) => {
+                  search = e.target.value.toLowerCase();
+                }}
+                placeholder="Search..."
+              />
+              <SearchButton type="submit">
+                <GoSearch style={{ width: "70%", height: "100%" }} />
+              </SearchButton>
+            </SearchGroup>
+          </form>
           {isLoading ? (
             <LoaderDiv>
               <Spinner animation="border" variant="primary" />
