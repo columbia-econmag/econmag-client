@@ -193,6 +193,16 @@ export default function Category(...props) {
     history.push("/search?s=" + search); // <--- The page you want to redirect your user to.
   }
 
+  function getStickBugged() {
+    if (search === "get stick bugged lol") {
+      return (
+        <img src="https://media1.tenor.com/images/a38eae4a52a11d3845b2d6bdfa3f6710/tenor.gif?itemid=18048663"></img>
+      );
+    } else {
+      return null;
+    }
+  }
+
   return (
     <>
       <Mobile key="mobileHome">
@@ -217,7 +227,7 @@ export default function Category(...props) {
                   type="text"
                   value={search}
                   onChange={(e) => {
-                    setSearch(e.target.value);
+                    setSearch(e.target.value.toLowerCase());
                   }}
                   placeholder="search"
                 />
@@ -230,7 +240,10 @@ export default function Category(...props) {
               <Spinner animation="border" variant="primary" />
             </LoaderDiv>
           ) : (
-            <>{renderArticlesLists(articles)}</>
+            <>
+              {getStickBugged()}
+              {renderArticlesLists(articles)}
+            </>
           )}
         </InnerSection>
       </Default>
