@@ -101,11 +101,6 @@ const SearchBar = styled.input`
     outline-style: none;
     opacity: 1;
   }
-  &:focus ${SearchGroup} {
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    border-bottom-color: initial;
-  }
 `;
 
 const LoaderDiv = styled.div`
@@ -121,6 +116,7 @@ export default function Category(...props) {
   let query = decodeURI(props[0].location.search.slice(3));
   var search = query;
   useEffect(() => {
+    setIsLoading(true);
     async function onLoad() {
       // if (!isAuthenticated) {
       //   const articles = await loadArticles();
@@ -151,7 +147,14 @@ export default function Category(...props) {
     let listOArticles = [];
     for (let i = 0; i < articles.length; i++) {
       if (
-        articles[i]["post_content"].toLowerCase().includes(query.toLowerCase())
+        articles[i]["post_content"]
+          .toLowerCase()
+          .includes(query.toLowerCase()) ||
+        articles[i]["post_author"]
+          .toLowerCase()
+          .includes(query.toLowerCase()) ||
+        articles[i]["post_title"].toLowerCase().includes(query.toLowerCase()) ||
+        articles[i]["post_date"].toLowerCase().includes(query.toLowerCase())
       ) {
         listOArticles.push(articles[i]);
       }
@@ -226,10 +229,13 @@ export default function Category(...props) {
   function getStickBugged() {
     if (search === "get stick bugged lol") {
       return (
-        <img
-          alt="get stickbugged lol"
-          src="https://media1.tenor.com/images/a38eae4a52a11d3845b2d6bdfa3f6710/tenor.gif?itemid=18048663"
-        ></img>
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <img
+            style={{ margin: "auto" }}
+            alt="get stickbugged lol"
+            src="https://media1.tenor.com/images/a38eae4a52a11d3845b2d6bdfa3f6710/tenor.gif?itemid=18048663"
+          ></img>
+        </div>
       );
     } else {
       return null;
