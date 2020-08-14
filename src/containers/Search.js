@@ -249,7 +249,7 @@ export default function Category(...props) {
           <form onSubmit={submitForm}>
             <SearchGroup>
               <SearchBar
-                style={{ width: "97%" }}
+                style={{ width: "95%" }}
                 type="text"
                 defaultValue={query}
                 onChange={(e) => {
