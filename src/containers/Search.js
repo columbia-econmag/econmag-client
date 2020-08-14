@@ -6,7 +6,7 @@ import {
   Spinner,
   Card,
   CardGroup,
-  Pagination,
+  FormGroup,
   Jumbotron,
   Container,
   Button,
@@ -76,11 +76,10 @@ export default function Category(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
-  const [allArticles, setAllArticles] = useState([]);
-  const [search, setSearch] = useState("");
+
   let query = decodeURI(props[0].location.search.slice(3));
+  var search = query;
   useEffect(() => {
-    setSearch(query);
     async function onLoad() {
       // if (!isAuthenticated) {
       //   const articles = await loadArticles();
@@ -93,7 +92,6 @@ export default function Category(...props) {
       });
       try {
         const articles = await loadArticles();
-        setAllArticles(articles);
         setArticles(handleSearch(articles.data, query));
       } catch (e) {
         onError(e);
@@ -196,7 +194,10 @@ export default function Category(...props) {
   function getStickBugged() {
     if (search === "get stick bugged lol") {
       return (
-        <img src="https://media1.tenor.com/images/a38eae4a52a11d3845b2d6bdfa3f6710/tenor.gif?itemid=18048663"></img>
+        <img
+          alt="get stickbugged lol"
+          src="https://media1.tenor.com/images/a38eae4a52a11d3845b2d6bdfa3f6710/tenor.gif?itemid=18048663"
+        ></img>
       );
     } else {
       return null;
@@ -210,7 +211,7 @@ export default function Category(...props) {
 
         <Jumbotron fluid>
           <Container style={{ textAlign: "center" }}>
-            <h1>Create a new article!</h1>
+            <h1>Search</h1>
           </Container>
         </Jumbotron>
         {!isLoading && renderArticlesLists(articles)}
@@ -223,14 +224,16 @@ export default function Category(...props) {
               <h1 style={{ paddingBottom: "20px" }}>Search!</h1>
 
               <form onSubmit={submitForm}>
-                <input
-                  type="text"
-                  value={search}
-                  onChange={(e) => {
-                    setSearch(e.target.value.toLowerCase());
-                  }}
-                  placeholder="search"
-                />
+                <FormGroup>
+                  <input
+                    type="text"
+                    defaultValue={query}
+                    onChange={(e) => {
+                      search = e.target.value.toLowerCase();
+                    }}
+                    placeholder=""
+                  />
+                </FormGroup>
                 <button type="submit">Submit</button>
               </form>
             </Container>

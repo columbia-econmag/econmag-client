@@ -52,7 +52,6 @@ export default function makePretty(articles, maxLength = 500) {
       }
     }
     if (!p.cover_image) {
-      console.log("IMA BANANA");
       var img = hasImage(p.post_content);
       if (img !== null) {
         p.cover_image = img.src;

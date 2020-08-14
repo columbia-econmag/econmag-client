@@ -56,13 +56,14 @@ const MobileHeader = styled.h3`
   text-align: center;
   // color: palevioletred;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
 `;
 const MobileText = styled.p`
   text-align: center;
   display: inline-block;
-  &:hover {
-    color: #d4a3a1;
-  }
 `;
 
 const SliderCaption = styled.p`
@@ -188,7 +189,6 @@ export default function SimpleSlider(...props) {
 
   function renderArticlesCarousel(posts) {
     const bigPosts = descriptionControl(posts, 600);
-    console.log(bigPosts);
     const articles = bigPosts.map((post) => (
       <OuterDiv key={post._id}>
         <LinkContainer to={`/post/${post._id}`}>
