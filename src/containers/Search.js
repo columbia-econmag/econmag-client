@@ -245,30 +245,34 @@ export default function Category(...props) {
   return (
     <>
       <Mobile key="mobileHome">
-        <Header>Editor</Header>
-
-        <Jumbotron fluid>
-          <Container style={{ textAlign: "center" }}>
-            <form onSubmit={submitForm}>
-              <SearchGroup>
-                <SearchBar
-                  type="text"
-                  defaultValue={query}
-                  onChange={(e) => {
-                    search = e.target.value.toLowerCase();
-                  }}
-                  placeholder="Search.."
-                >
-                  Hello
-                </SearchBar>
-                <SearchButton type="submit">
-                  <GoSearch style={{ width: "70%", height: "100%" }} />
-                </SearchButton>
-              </SearchGroup>
-            </form>
-          </Container>
-        </Jumbotron>
-        {!isLoading && renderArticlesLists(articles)}
+        <InnerSection>
+          <form onSubmit={submitForm}>
+            <SearchGroup>
+              <SearchBar
+                style={{ width: "90%" }}
+                type="text"
+                defaultValue={query}
+                onChange={(e) => {
+                  search = e.target.value.toLowerCase();
+                }}
+                placeholder="Search..."
+              />
+              <SearchButton style={{ width: "8%" }} type="submit">
+                <GoSearch style={{ width: "150%", height: "150%" }} />
+              </SearchButton>
+            </SearchGroup>
+          </form>
+          {isLoading ? (
+            <LoaderDiv>
+              <Spinner animation="border" variant="primary" />
+            </LoaderDiv>
+          ) : (
+            <>
+              {getStickBugged()}
+              {renderArticlesLists(articles)}
+            </>
+          )}
+        </InnerSection>
       </Mobile>
       <Default key="defaultHome">
         <InnerSection>
