@@ -29,30 +29,11 @@ const Default = ({ children }) => {
   return isNotMobile ? children : null;
 };
 
-const SliderSection = styled.section`
-  padding: 5px 50px;
-  background-color: aliceblue;
-`;
-
-const IssueSection = styled.section`
-  padding: 5px 50px;
-  background-color: #a0bbd3;
-`;
-
 const InnerSection = styled.section`
   margin: auto;
   padding: 0px 2%;
   max-width: 1200px;
   // background-color: aliceblue;
-`;
-
-const PageDiv = styled.div`
-  padding: 2%;
-  text-align: center;
-`;
-
-const SliderMobile = styled(SliderSection)`
-  padding: 5px 5px;
 `;
 
 const Header = styled.h2`
@@ -65,6 +46,31 @@ const MobileHeader = styled.h2`
   padding: 35px 0px 0px 0px;
   font-weight: 600;
   text-align: center;
+`;
+
+const SearchBar = styled.input`
+  width: 90%;
+  border-style: none;
+  border-bottom-style: solid;
+  background: border-box;
+  font-size: 35px;
+  border-bottom-width: 2px;
+  border-color: #e9ecef;
+  transition: 0.1s;
+  &:focus {
+    border-style: none;
+    outline-style: none;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: initial;
+    opacity: 1;
+  }
+  &:hover {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: initial;
+    opacity: 1;
+  }
 `;
 
 const LoaderDiv = styled.div`
@@ -130,17 +136,11 @@ export default function Category(...props) {
   function renderArticlesList(post) {
     var html = (
       <>
-        <LinkContainer
-          to={`/post/${post._id}/edit`}
-          style={{ cursor: "pointer" }}
-        >
+        <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
           <Card.Img variant="top" src={showImage(post)} />
         </LinkContainer>
         <Card.Body>
-          <LinkContainer
-            to={`/post/${post._id}/edit`}
-            style={{ cursor: "pointer" }}
-          >
+          <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
             <Card.Title>{post.post_title}</Card.Title>
           </LinkContainer>
           <LinkContainer
@@ -151,10 +151,7 @@ export default function Category(...props) {
               {post.post_author}
             </Card.Subtitle>
           </LinkContainer>
-          <LinkContainer
-            to={`/post/${post._id}/edit`}
-            style={{ cursor: "pointer" }}
-          >
+          <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
             <Card.Text>{[post.post_excerpt]}</Card.Text>
           </LinkContainer>
         </Card.Body>
@@ -211,21 +208,30 @@ export default function Category(...props) {
 
         <Jumbotron fluid>
           <Container style={{ textAlign: "center" }}>
-            <h1>Search</h1>
+            <form onSubmit={submitForm}>
+              <FormGroup>
+                <SearchBar
+                  type="text"
+                  defaultValue={query}
+                  onChange={(e) => {
+                    search = e.target.value.toLowerCase();
+                  }}
+                  placeholder=""
+                />
+                <button type="submit">Submit</button>
+              </FormGroup>
+            </form>
           </Container>
         </Jumbotron>
         {!isLoading && renderArticlesLists(articles)}
       </Mobile>
       <Default key="defaultHome">
         <InnerSection>
-          <Header>Search</Header>
           <Jumbotron fluid>
             <Container style={{ textAlign: "center" }}>
-              <h1 style={{ paddingBottom: "20px" }}>Search!</h1>
-
               <form onSubmit={submitForm}>
                 <FormGroup>
-                  <input
+                  <SearchBar
                     type="text"
                     defaultValue={query}
                     onChange={(e) => {
@@ -233,8 +239,8 @@ export default function Category(...props) {
                     }}
                     placeholder=""
                   />
+                  <button type="submit">Submit</button>
                 </FormGroup>
-                <button type="submit">Submit</button>
               </form>
             </Container>
           </Jumbotron>
