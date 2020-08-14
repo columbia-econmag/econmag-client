@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
@@ -17,7 +17,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
-import "./Home.css";
+import "./Search.css";
 import { useMediaQuery } from "react-responsive";
 import { GoSearch } from "react-icons/go";
 
@@ -114,8 +114,9 @@ export default function Category(...props) {
   const history = useHistory();
 
   let query = decodeURI(props[0].location.search.slice(3));
-  var search = query;
+  const search = useRef(query);
   useEffect(() => {
+    search.current = query;
     setIsLoading(true);
     async function onLoad() {
       // if (!isAuthenticated) {
@@ -136,7 +137,7 @@ export default function Category(...props) {
       setIsLoading(false);
     }
     onLoad();
-  }, [query]);
+  }, [query, search]);
 
   function loadArticles() {
     var x = API.get("posts", "posts/all");
@@ -223,7 +224,7 @@ export default function Category(...props) {
 
   function submitForm(e) {
     e.preventDefault();
-    history.push("/search?s=" + search); // <--- The page you want to redirect your user to.
+    history.push("/search?s=" + search.current); // <--- The page you want to redirect your user to.
   }
 
   function getStickBugged() {
@@ -253,7 +254,7 @@ export default function Category(...props) {
                 type="text"
                 defaultValue={query}
                 onChange={(e) => {
-                  search = e.target.value.toLowerCase();
+                  search.current = e.target.value.toLowerCase();
                 }}
                 placeholder="Search..."
               />
@@ -281,9 +282,10 @@ export default function Category(...props) {
             <SearchGroup>
               <SearchBar
                 type="text"
+                autoFocus
                 defaultValue={query}
                 onChange={(e) => {
-                  search = e.target.value.toLowerCase();
+                  search.current = e.target.value.toLowerCase();
                 }}
                 placeholder="Search..."
               />
