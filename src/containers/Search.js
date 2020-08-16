@@ -37,16 +37,13 @@ const InnerSection = styled.section`
   // background-color: aliceblue;
 `;
 
-const Header = styled.h2`
-  padding: 30px 0px 0px 0px;
-  font-weight: 600;
-  // background-color: aliceblue;
-`;
-
-const MobileHeader = styled.h2`
-  padding: 35px 0px 0px 0px;
-  font-weight: 600;
+const EmptyDiv = styled.div`
+  height: 300px;
+  font-size: 25px;
+  font-weight: bold;
   text-align: center;
+  margin: auto;
+  padding-top: 100px;
 `;
 
 const SearchButton = styled.button`
@@ -210,6 +207,11 @@ export default function Category(...props) {
   }
 
   function renderArticlesLists(articles) {
+    console.log(articles);
+    console.log(articles.data.length);
+    if (articles.data.length === 0) {
+      return <EmptyDiv>nothing found ):</EmptyDiv>;
+    }
     makePretty(articles, 500);
     const sections = chunk(articles.data, 3);
 
