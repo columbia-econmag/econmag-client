@@ -171,7 +171,10 @@ function App() {
                 <Nav.Link>U.S.</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/category/On Campus?limit=9&page=1">
-                <Nav.Link className="rightMost">On Campus</Nav.Link>
+                <Nav.Link>On Campus</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/category/Competitions?limit=9&page=1">
+                <Nav.Link className="rightMost">Competitions</Nav.Link>
               </LinkContainer>
             </Nav>
             <Nav className="ml-auto">

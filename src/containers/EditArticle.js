@@ -24,6 +24,7 @@ const OuterDiv = styled.div`
 `;
 const Header = styled.h2`
   color: Black;
+  padding: 0px 5%;
 `;
 
 const CoverImageWrap = styled.img`
@@ -33,6 +34,7 @@ const CoverImageWrap = styled.img`
 `;
 
 const LabelHolder = styled.div`
+  padding: 0px 5%;
   padding-bottom: 60px;
 `;
 const AuthorLabel = styled.h6`
@@ -92,7 +94,14 @@ const formats = [
   "image",
 ];
 
-const categories = ["On Campus", "Business", "World", "U.S."];
+const categories = [
+  "On Campus",
+  "Business",
+  "World",
+  "U.S.",
+  "Competitions",
+  "Spring 2020 Issue",
+];
 
 export default function EditArticle() {
   const { _id } = useParams();

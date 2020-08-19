@@ -18,7 +18,14 @@ import "./Articles.css";
 ReactQuill.Quill.register("modules/imageResize", ImageResize);
 ReactQuill.Quill.register("modules/imageDrop", ImageDrop);
 ReactQuill.Quill.register("modules/imageUploader", ImageUploader);
-const categories = ["On Campus", "Business", "World", "U.S"];
+const categories = [
+  "On Campus",
+  "Business",
+  "World",
+  "U.S",
+  "Competitions",
+  "Spring 2020 Issue",
+];
 const OuterDiv = styled.div`
   margin: 20px 10%;
   overflow: auto;

@@ -12,6 +12,7 @@ import "./Articles.css";
 
 const Header = styled.h2`
   color: Black;
+  padding: 0px 5%;
 `;
 
 const OuterDiv = styled.div`
@@ -19,6 +20,7 @@ const OuterDiv = styled.div`
 `;
 
 const LabelHolder = styled.div`
+  padding: 0px 5%;
   padding-bottom: 60px;
 `;
 const AuthorLabel = styled.h6`

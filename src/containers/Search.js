@@ -152,7 +152,7 @@ export default function Category(...props) {
           .toLowerCase()
           .includes(query.toLowerCase()) ||
         articles[i]["post_title"].toLowerCase().includes(query.toLowerCase()) ||
-        articles[i]["post_date"].toLowerCase().includes(query.toLowerCase())
+        articles[i]["post_author"].toLowerCase().includes(query.toLowerCase())
       ) {
         listOArticles.push(articles[i]);
       }
@@ -207,8 +207,6 @@ export default function Category(...props) {
   }
 
   function renderArticlesLists(articles) {
-    console.log(articles);
-    console.log(articles.data.length);
     if (articles.data.length === 0) {
       return <EmptyDiv>nothing found ):</EmptyDiv>;
     }
