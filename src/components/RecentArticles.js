@@ -51,7 +51,7 @@ const TextHolder = styled.div`
 `;
 const LeftImage = styled.img`
   max-height: 100%;
-  max-width: 90%;
+  max-width: 98%;
   padding-right: 10px;
   padding-bottom: 10px;
   border-radius: 2px;

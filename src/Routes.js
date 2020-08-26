@@ -18,6 +18,7 @@ const AsyncNewArticle = asyncComponent(() => import("./containers/NewArticle"));
 const AsyncRecent = asyncComponent(() => import("./containers/Recent"));
 const AsyncNotFound = asyncComponent(() => import("./containers/NotFound"));
 const AsyncSearch = asyncComponent(() => import("./containers/Search"));
+const AsyncJournal = asyncComponent(() => import("./containers/Journal"));
 
 export default ({ childProps }) => (
   <Switch>
@@ -28,6 +29,7 @@ export default ({ childProps }) => (
     <Route path="/search" exact component={AsyncSearch} />
     <Route path="/category/:post_category" exact component={AsyncCategory} />
     <Route path="/recent" exact component={AsyncRecent} />
+    <Route path="/journal/:journal_year" exact component={AsyncJournal} />
     <Route path="/post/:_id" exact component={AsyncNotes} />
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <AuthenticatedRoute path="/signup" exact component={AsyncSignup} />

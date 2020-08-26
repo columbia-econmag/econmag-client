@@ -258,7 +258,7 @@ export default function NewArticle() {
               as="textarea"
               rows="2"
             />
-            <p style={{ textAlign: "right" }}>{excerpt.length}/250</p>
+            <p style={{ textAlign: "right" }}>{excerpt.length}/200</p>
           </Form.Group>
           <FormGroup controlId="file">
             <FormLabel style={{ marginBottom: "0px", fontWeight: "bold" }}>
