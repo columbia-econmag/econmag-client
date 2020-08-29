@@ -158,7 +158,7 @@ function App() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <LinkContainer to="/">
+              <LinkContainer to="/journal/Spring 2020 Issue">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/category/Business?limit=9&page=1">

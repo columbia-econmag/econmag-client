@@ -182,16 +182,16 @@ export default function Home() {
               Current Issue
             </h2>
             <div style={{ height: "300px", textAlign: "center" }}>
-              <a
-                href="https://issuu.com/columbiaeconreview/docs/cerspring2020"
-                target="_blank"
-              >
-                <img
-                  style={{ height: "280px" }}
-                  alt="currentissueImage"
-                  src="https://image.isu.pub/200612230156-36b641323d72cc38825fbe8b98b520dd/jpg/page_1_thumb_large.jpg"
-                />
-              </a>
+              <LinkContainer to="/journal/Spring 2020 Issue">
+                <a>
+                  <img
+                    style={{ height: "280px" }}
+                    alt="currentissueImage"
+                    src="https://image.isu.pub/200612230156-36b641323d72cc38825fbe8b98b520dd/jpg/page_1_thumb_large.jpg"
+                  />
+                </a>
+              </LinkContainer>
+
               {/* <h4 style={{ float: "right" }}>Relevant Sections:</h4> */}
             </div>
           </InnerSection>
