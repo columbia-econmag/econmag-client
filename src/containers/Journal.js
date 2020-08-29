@@ -11,7 +11,7 @@ import { chunk } from "lodash";
 import makePretty, { randomImage } from "../libs/articleLib";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 const width = "200px;";
 const Mobile = ({ children }) => {
@@ -48,6 +48,10 @@ const LetterButton = styled.div`
   text-align: center;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+  transition: 0.2s;
+  &:hover {
+    color: azure;
+  }
 `;
 
 const IssueSection = styled.section`
@@ -350,8 +354,8 @@ export default function Category(...props) {
             aria-controls="letters"
             aria-expanded={isClicked}
           >
-            <h6 style={{ marginBottom: "0px" }}>Letter From the Editors</h6>
-            <BsChevronDown />
+            <h6 style={{ marginBottom: "0px" }}>Letter from the Editors</h6>
+            {!isClicked ? <BsChevronDown /> : <BsChevronUp />}
           </LetterButton>
         </div>
         <InnerSection>
