@@ -29,10 +29,72 @@ const InnerSection = styled.section`
   max-width: 1200px;
   // background-color: aliceblue;
 `;
+const SliderTitle = styled.h3`
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 0px;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #a0bbd3;
+  }
+`;
+
+const OuterDiv = styled.div`
+  display: flex !important;
+  padding: 20px 0px;
+`;
+
+const SliderCaption = styled.p`
+  text-align: left;
+  // width: 50%;
+  // float: right;
+  color: black;
+`;
+
+const Author = styled.p`
+  text-align: left;
+  color: grey;
+  margin-bottom: 4px;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    color: #a0bbd3;
+  }
+`;
+const ImgHolder = styled.div`
+  text-align: left;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  float: left;
+  overflow: auto;
+`;
+const TextHolder = styled.div`
+  text-align: left;
+  margin-left: 15px;
+  display: block;
+  width: 50%;
+  // justify-content: center;
+  float: left;
+  overflow: auto;
+`;
+const SliderImage = styled.img`
+  max-height: 97%;
+  max-width: 97%;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  display: block;
+  margin-right: 15px !important;
+  margin-left: 1px;
+  margin: auto;
+  vertical-align: middle;
+  float: right;
+  cursor: pointer;
+`;
 
 const ImageTemp = styled.div`
-  max-width: 400px;
-  max-height: 300px;
+  max-width: 500px;
+  max-height: 500px;
   background-position: 50%;
   background-size: cover;
   width: 100%;
@@ -164,35 +226,32 @@ export default function Category(...props) {
   }
 
   function renderArticlesList(post) {
+    var image = showImage(post);
+    console.log(image);
     var html = (
       <>
-        <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
-          <Card.Img variant="top" src={showImage(post)} />
-        </LinkContainer>
-        <Card.Body>
-          <LinkContainer to={`/post/${post._id}`} style={{ cursor: "pointer" }}>
-            <CardTitle>{post.post_title}</CardTitle>
+        <OuterDiv key={post._id}>
+          <LinkContainer to={`/post/${post._id}`}>
+            <ImgHolder key={post.post_author}>
+              <ImageTemp style={{ backgroundImage: "url(" + image + ")" }} />
+            </ImgHolder>
           </LinkContainer>
-          <LinkContainer
-            to={`/author/${post.post_author}?limit=9&page=1`}
-            style={{ cursor: "pointer" }}
-          >
-            <AuthorText className="mb-2 text-muted">
-              {post.post_author}
-            </AuthorText>
-          </LinkContainer>
-          <Card.Text>{[post.post_excerpt]}</Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">
-            From{" "}
-            {new Intl.DateTimeFormat("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            }).format(new Date(post.post_date))}
-          </small>
-        </Card.Footer>
+          <TextHolder>
+            <LinkContainer to={`/post/${post._id}`}>
+              <SliderTitle>{post.post_title}</SliderTitle>
+            </LinkContainer>
+            <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
+              <Author>{post.post_author}</Author>
+            </LinkContainer>
+            <SliderCaption
+              dangerouslySetInnerHTML={{
+                __html: post.post_largeExcerpt,
+              }}
+            >
+              {/* {post.post_content.trim().split("\n")[0]} */}
+            </SliderCaption>
+          </TextHolder>
+        </OuterDiv>
       </>
     );
     return html;
@@ -200,15 +259,11 @@ export default function Category(...props) {
 
   function renderArticlesLists(articles) {
     makePretty(articles, 500);
-    const sections = chunk(articles.data, 3);
-
-    return sections.map((posts, i) => (
-      <CardGroup key={i}>
-        {posts.map((post) => (
-          <Card key={post._id}>{renderArticlesList(post)}</Card>
-        ))}
-      </CardGroup>
-    ));
+    var toR = [];
+    for (let i = articles.data.length - 2; i >= 0; i--) {
+      toR.push(renderArticlesList(articles.data[i]));
+    }
+    return toR;
   }
 
   return (
@@ -357,12 +412,21 @@ export default function Category(...props) {
         </LetterButton>
       </div>
       <InnerSection>
+        <h2>In this Issue:</h2>
         {isLoading ? (
           <LoaderDiv>
             <Spinner animation="border" variant="primary" />
           </LoaderDiv>
         ) : (
           <>{renderArticlesLists(articles)}</>
+        )}
+        <h2>Online Feature:</h2>
+        {isLoading ? (
+          <LoaderDiv>
+            <Spinner animation="border" variant="primary" />
+          </LoaderDiv>
+        ) : (
+          <>{renderArticlesList(articles.data[4])}</>
         )}
       </InnerSection>
       {/* </Default> */}
