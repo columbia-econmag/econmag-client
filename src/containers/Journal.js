@@ -85,6 +85,7 @@ const ImageTemp = styled.div`
   background-size: cover;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 `;
 
 const LetterButton = styled.div`
@@ -268,7 +269,7 @@ export default function Category(...props) {
               <AuthorName>Shreya Ganguly</AuthorName>
               <SchoolName>Columbia University</SchoolName>
             </Col>
-            <Col style={{ textAlign: "center" }}>
+            <Col style={{ margin: "auto", textAlign: "center" }}>
               <img
                 style={{ maxHeight: "500px", maxWidth: "100%" }}
                 alt="currentissueImage"

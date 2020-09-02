@@ -20,6 +20,10 @@ const ArtTitle = styled.h5`
   padding: 0px;
   margin: 0px;
   cursor: pointer;
+  transition: 0.1s;
+  &:hover {
+    color: azure;
+  }
 `;
 
 const AuthorName = styled.h6`
@@ -43,6 +47,11 @@ const Header = styled.h2`
   font-weight: 600;
   font-size: 40px;
   cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    color: azure;
+  }
+
   // background-color: aliceblue;
 `;
 
@@ -167,45 +176,43 @@ export default function CategoriesView(...props) {
 
   return (
     <>
-      <Mobile>
-        {isLoading ? (
-          <MobileLoaderDiv>
-            <Spinner animation="border" variant="primary" />
-          </MobileLoaderDiv>
-        ) : (
-          <MobileDiv key="MobileCategory">
-            {renderRecentMobile(articles)}
-          </MobileDiv>
-        )}
-      </Mobile>
-      <Default>
-        {isLoading ? (
-          <LoaderDiv>
-            <Spinner animation="border" variant="primary" />
-          </LoaderDiv>
-        ) : (
-          <Row>
-            <Col key="first" style={{ margin: "auto", textAlign: "center" }}>
-              <LinkContainer to={`/journal/Spring 2020 Issue`}>
-                <a>
-                  <img
-                    style={{ maxHeight: "500px", maxWidth: "100%" }}
-                    alt="currentissueImage"
-                    src="https://econmag-bucket.s3.amazonaws.com/public/2020/8/Spring+2020.jpeg"
-                  />
-                </a>
-              </LinkContainer>
-            </Col>
-            <Col key="second" style={{ textAlign: "left" }}>
-              <LinkContainer to={`/journal/Spring 2020 Issue`}>
-                <Header>Spring 2020 Issue | Volume XII</Header>
-              </LinkContainer>
-              <h4 style={{ marginBottom: "20px" }}>In This Issue: </h4>
-              {!isLoading && renderRecentArticles(articles)}
-            </Col>
-          </Row>
-        )}
-      </Default>
+      {isLoading ? (
+        <LoaderDiv>
+          <Spinner animation="border" variant="primary" />
+        </LoaderDiv>
+      ) : (
+        <Row>
+          <Col
+            key="first"
+            style={{ margin: "auto", textAlign: "center", minWidth: "10%" }}
+          >
+            <LinkContainer to={`/journal/Spring 2020 Issue`}>
+              <a>
+                <img
+                  style={{
+                    maxHeight: "500px",
+                    maxWidth: "100%",
+                    minWidth: "30%",
+                  }}
+                  alt="currentissueImage"
+                  src="https://econmag-bucket.s3.amazonaws.com/public/2020/8/Spring+2020.jpeg"
+                />
+              </a>
+            </LinkContainer>
+          </Col>
+          <Col
+            key="second"
+            md="auto"
+            style={{ textAlign: "left", maxWidth: "100%" }}
+          >
+            <LinkContainer to={`/journal/Spring 2020 Issue`}>
+              <Header>Spring 2020 Issue | Volume XII</Header>
+            </LinkContainer>
+            <h4 style={{ marginBottom: "20px" }}>In This Issue: </h4>
+            {!isLoading && renderRecentArticles(articles)}
+          </Col>
+        </Row>
+      )}
     </>
   );
 }

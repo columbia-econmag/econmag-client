@@ -108,7 +108,7 @@ const SliderImage = styled.img`
   border-radius: 2px;
   display: block;
   margin-right: 15px !important;
-  margin-left: 1px;
+  margin-left: 5px;
   margin: auto;
   vertical-align: middle;
   float: right;
@@ -240,6 +240,8 @@ export default function SimpleSlider(...props) {
         <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
           <Author>{post.post_author}</Author>
         </LinkContainer>
+
+        <br />
         <MobileText
           dangerouslySetInnerHTML={{
             __html: post.post_excerpt,

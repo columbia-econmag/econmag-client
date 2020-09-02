@@ -80,6 +80,19 @@ export default function Home() {
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
           <CategoriesView query="" />
         </Suspense>
+        <IssueSection>
+          <InnerSection>
+            <Suspense
+              fallback={
+                <div style={{ height: "500px", textAlign: "center" }}>
+                  <Spinner animation="border" variant="primary" />
+                </div>
+              }
+            >
+              <Issue />
+            </Suspense>
+          </InnerSection>
+        </IssueSection>
         <MobileHeader>Business</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
           <CategoriesView query="/category/Business/limit/3" />
