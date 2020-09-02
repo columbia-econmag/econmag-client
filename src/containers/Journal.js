@@ -78,19 +78,6 @@ const TextHolder = styled.div`
   float: left;
   overflow: auto;
 `;
-const SliderImage = styled.img`
-  max-height: 97%;
-  max-width: 97%;
-  padding-bottom: 10px;
-  border-radius: 2px;
-  display: block;
-  margin-right: 15px !important;
-  margin-left: 1px;
-  margin: auto;
-  vertical-align: middle;
-  float: right;
-  cursor: pointer;
-`;
 
 const ImageTemp = styled.div`
   max-width: 500px;
@@ -128,14 +115,6 @@ const Header = styled.h2`
   font-weight: 600;
   font-size: 40px;
   // background-color: aliceblue;
-`;
-
-const CardTitle = styled(Card.Title)`
-  margin-bottom: 0.1rem;
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: #a0bbd3;
-  }
 `;
 
 const AuthorName = styled.h5`
@@ -294,7 +273,7 @@ export default function Category(...props) {
               <img
                 style={{ maxHeight: "500px", maxWidth: "100%" }}
                 alt="currentissueImage"
-                src="https://image.isu.pub/200612230156-36b641323d72cc38825fbe8b98b520dd/jpg/page_1_thumb_large.jpg"
+                src="https://econmag-bucket.s3.amazonaws.com/public/2020/8/Spring+2020.jpeg"
               />
             </Col>
           </Row>
