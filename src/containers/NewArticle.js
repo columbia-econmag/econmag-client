@@ -14,6 +14,9 @@ import ImageUploader from "quill-image-uploader";
 import ImageResize from "quill-image-resize-module-react";
 import { ImageDrop } from "quill-image-drop-module";
 import "./Articles.css";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+window.katex = katex;
 
 ReactQuill.Quill.register("modules/imageResize", ImageResize);
 ReactQuill.Quill.register("modules/imageDrop", ImageDrop);
@@ -74,7 +77,7 @@ const modules = {
       { indent: "-1" },
       { indent: "+1" },
     ],
-    ["link", "image"],
+    ["link", "image", "formula"],
     ["clean"],
   ],
   imageResize: { parchment: ReactQuill.Quill.import("parchment") },
@@ -99,6 +102,7 @@ const formats = [
   "indent",
   "link",
   "image",
+  "formula",
 ];
 export default function NewArticle() {
   const history = useHistory();

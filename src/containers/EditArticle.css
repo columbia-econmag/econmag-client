@@ -35,6 +35,10 @@ blockquote + blockquote:before {
   display: none;
 }
 
+.ql-tooltip {
+  left: 0px !important;
+}
+
 blockquote:last-of-type {
   margin-bottom: 1em;
   padding-bottom: 0.5rem;

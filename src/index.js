@@ -6,6 +6,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Amplify } from "aws-amplify";
 import config from "./config";
+import "katex/dist/katex.min.css";
 
 Amplify.configure({
   Auth: {
