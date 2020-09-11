@@ -116,6 +116,7 @@ export default function CategoriesView(...props) {
             post_author: articles.data["post_author"],
             post_title: articles.data["post_title"],
           };
+          console.log(newArt);
           Cache.setItem("Spring 2020", { status: "success", data: newArt });
         }
         setArticles(articles);
