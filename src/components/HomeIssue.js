@@ -108,9 +108,16 @@ export default function CategoriesView(...props) {
     async function onLoad() {
       try {
         var articles = Cache.getItem("Spring 2020");
+        console.log(articles);
         if (!articles) {
           articles = await loadArticles();
-          Cache.setItem("Spring 2020", articles);
+          var newArt = {
+            cover_image: articles.data["cover_image"],
+            post_author: articles.data["post_author"],
+            post_title: articles.data["post_title"],
+          };
+          console.log(articles);
+          Cache.setItem("Spring 2020", { data: newArt });
         }
         setArticles(articles);
         makePretty(articles, 300);
