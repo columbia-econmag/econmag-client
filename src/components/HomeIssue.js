@@ -111,11 +111,14 @@ export default function CategoriesView(...props) {
         console.log(articles);
         if (!articles) {
           articles = await loadArticles();
-          var newArt = {
-            cover_image: articles.data["cover_image"],
-            post_author: articles.data["post_author"],
-            post_title: articles.data["post_title"],
-          };
+          var newArt = [];
+          for (var i = 0; i < articles.data.length; i++) {
+            newArt.append({
+              cover_image: articles.data[i]["cover_image"],
+              post_author: articles.data[i]["post_author"],
+              post_title: articles.data[i]["post_title"],
+            });
+          }
           console.log(newArt);
           Cache.setItem("Spring 2020", { status: "success", data: newArt });
         }

@@ -159,13 +159,16 @@ export default function RecentArticles(...props) {
 
         if (!articles) {
           articles = await loadArticles(propQuery);
-          var newArt = {
-            cover_image: articles.data["cover_image"],
-            post_author: articles.data["post_author"],
-            post_title: articles.data["post_title"],
-            post_excerpt: articles.data["post_excerpt"],
-            post_largeExcerpt: articles.data["post_largeExcerpt"],
-          };
+          var newArt = [];
+          for (let i = 0; i < articles.data.length; i++) {
+            newArt.append({
+              cover_image: articles.data[i]["cover_image"],
+              post_author: articles.data[i]["post_author"],
+              post_title: articles.data[i]["post_title"],
+              post_excerpt: articles.data[i]["post_excerpt"],
+              post_largeExcerpt: articles.data[i]["post_largeExcerpt"],
+            });
+          }
           console.log(newArt);
           Cache.setItem("recent", { data: newArt });
         }
@@ -177,11 +180,19 @@ export default function RecentArticles(...props) {
       try {
         let cachedArticles = Cache.getItem("recent");
         let tempArticles = await loadArticles(propQuery);
+        var newerArt = [];
+        for (let i = 0; i < articles.data.length; i++) {
+          newerArt.append({
+            cover_image: tempArticles.data[i]["cover_image"],
+            post_author: tempArticles.data[i]["post_author"],
+            post_title: tempArticles.data[i]["post_title"],
+            post_excerpt: tempArticles.data[i]["post_excerpt"],
+            post_largeExcerpt: tempArticles.data[i]["post_largeExcerpt"],
+          });
+        }
         if (
           cachedArticles.data[0].post_title !==
             tempArticles.data[0].post_title ||
-          cachedArticles.data[0].post_content !==
-            tempArticles.data[0].post_content ||
           cachedArticles.data[0].post_excerpt !==
             tempArticles.data[0].post_excerpt ||
           cachedArticles.data[0].post_largeExcerpt !==
