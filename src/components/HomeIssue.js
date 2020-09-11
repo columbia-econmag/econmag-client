@@ -108,19 +108,10 @@ export default function CategoriesView(...props) {
     async function onLoad() {
       try {
         var articles = Cache.getItem("Spring 2020");
-        console.log(articles);
         if (!articles) {
           articles = await loadArticles();
-          var newArt = [];
-          for (var i = 0; i < articles.data.length; i++) {
-            newArt.append({
-              cover_image: articles.data[i]["cover_image"],
-              post_author: articles.data[i]["post_author"],
-              post_title: articles.data[i]["post_title"],
-            });
-          }
-          console.log(newArt);
-          Cache.setItem("Spring 2020", { status: "success", data: newArt });
+          console.log(articles);
+          Cache.setItem("Spring 2020", articles);
         }
         setArticles(articles);
         makePretty(articles, 300);
@@ -134,7 +125,7 @@ export default function CategoriesView(...props) {
   }, []);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/category/Spring 2020 Issue");
+    var x = API.get("posts", "posts/category/Spring 2020 Issue/excerpt");
     return x;
   }
 
@@ -149,7 +140,6 @@ export default function CategoriesView(...props) {
 
   function renderRecentArticles(posts) {
     var articles = posts.data;
-    console.log(articles);
     var HTML = articles.map((post) => (
       <>
         <LinkContainer to={`/post/${post._id}`}>

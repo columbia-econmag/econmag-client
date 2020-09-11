@@ -156,21 +156,11 @@ export default function RecentArticles(...props) {
     async function onLoad() {
       try {
         var articles = Cache.getItem("recent");
-
+        console.log(articles);
         if (!articles) {
           articles = await loadArticles(propQuery);
-          var newArt = [];
-          for (let i = 0; i < articles.data.length; i++) {
-            newArt.append({
-              cover_image: articles.data[i]["cover_image"],
-              post_author: articles.data[i]["post_author"],
-              post_title: articles.data[i]["post_title"],
-              post_excerpt: articles.data[i]["post_excerpt"],
-              post_largeExcerpt: articles.data[i]["post_largeExcerpt"],
-            });
-          }
-          console.log(newArt);
-          Cache.setItem("recent", { data: newArt });
+
+          Cache.setItem("recent", articles);
         }
         setArticles(articles);
       } catch (e) {
@@ -180,19 +170,11 @@ export default function RecentArticles(...props) {
       try {
         let cachedArticles = Cache.getItem("recent");
         let tempArticles = await loadArticles(propQuery);
-        var newerArt = [];
-        for (let i = 0; i < articles.data.length; i++) {
-          newerArt.append({
-            cover_image: tempArticles.data[i]["cover_image"],
-            post_author: tempArticles.data[i]["post_author"],
-            post_title: tempArticles.data[i]["post_title"],
-            post_excerpt: tempArticles.data[i]["post_excerpt"],
-            post_largeExcerpt: tempArticles.data[i]["post_largeExcerpt"],
-          });
-        }
         if (
           cachedArticles.data[0].post_title !==
             tempArticles.data[0].post_title ||
+          cachedArticles.data[0].post_content !==
+            tempArticles.data[0].post_content ||
           cachedArticles.data[0].post_excerpt !==
             tempArticles.data[0].post_excerpt ||
           cachedArticles.data[0].post_largeExcerpt !==
@@ -209,7 +191,8 @@ export default function RecentArticles(...props) {
   }, [propQuery, isLoading]);
 
   function loadArticles(propQuery = "") {
-    var x = API.get("posts", "posts/" + propQuery);
+    console.log(propQuery);
+    var x = API.get("posts", "posts/excerpt?limit=3" + propQuery);
     return x;
   }
 
