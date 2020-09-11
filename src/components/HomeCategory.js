@@ -152,8 +152,9 @@ export default function CategoriesView(...props) {
 
   function renderRecentArticles(posts) {
     var articles = posts.data;
+    console.log(propQuery);
     var HTML = articles.map((post) => (
-      <Col className="flex" key={post._id}>
+      <Col className="flex" key={post._id + "-" + propQuery}>
         <LinkContainer to={`/post/${post._id}`}>
           <CatImage src={showImage(post)} />
         </LinkContainer>
@@ -176,7 +177,7 @@ export default function CategoriesView(...props) {
 
   function renderRecentMobile(posts) {
     var HTML = posts.data.map((post) => (
-      <div key={post._id} style={{ textAlign: "center" }}>
+      <div key={post._id + "-" + propQuery} style={{ textAlign: "center" }}>
         <LinkContainer to={`/post/${post._id}`}>
           <MobileImage src={showImage(post)} />
         </LinkContainer>

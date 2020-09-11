@@ -159,8 +159,14 @@ export default function RecentArticles(...props) {
 
         if (!articles) {
           articles = await loadArticles(propQuery);
-
-          Cache.setItem("recent", articles);
+          var newArt = {
+            cover_image: articles.data["cover_image"],
+            post_author: articles.data["post_author"],
+            post_title: articles.data["post_title"],
+            post_excerpt: articles.data["post_excerpt"],
+            post_largeExcerpt: articles.data["post_largeExcerpt"],
+          };
+          Cache.setItem("recent", { data: newArt });
         }
         setArticles(articles);
       } catch (e) {
