@@ -12,7 +12,7 @@ import "./Articles.css";
 
 const Header = styled.h2`
   color: Black;
-  padding: 0px 5%;
+  padding: 0px 25%;
 `;
 
 const OuterDiv = styled.div`
@@ -20,7 +20,7 @@ const OuterDiv = styled.div`
 `;
 
 const LabelHolder = styled.div`
-  padding: 0px 5%;
+  padding: 0px 25%;
   padding-bottom: 60px;
 `;
 const AuthorLabel = styled.h6`
@@ -89,8 +89,8 @@ export default function Articles() {
           </MyButton>
         </ButtonDiv>
         <OuterDiv className="margins">
-          <Header>{post.post_title}</Header>
-          <LabelHolder>
+          <Header className="uglyJournal">{post.post_title}</Header>
+          <LabelHolder className="uglyJournal">
             <LinkContainer to={`/author/${post.post_author}?limit=9&page=1`}>
               <AuthorLabel>By {post.post_author}</AuthorLabel>
             </LinkContainer>

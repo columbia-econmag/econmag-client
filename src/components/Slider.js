@@ -8,7 +8,6 @@ import makePretty, { randomImage } from "../libs/articleLib";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Slider.css";
 import { useMediaQuery } from "react-responsive";
-import { MdNavigateNext } from "react-icons/md";
 const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return isMobile ? children : null;
@@ -24,6 +23,9 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 9000,
+  pauseOnHover: true,
 };
 const mobileSettings = {
   dots: true,
@@ -32,6 +34,8 @@ const mobileSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 15000,
 };
 const SliderTitle = styled.h3`
   text-align: left;

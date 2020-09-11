@@ -19,6 +19,7 @@ const Footer = styled.section`
 const FootLogo = styled.img`
   height: 200px;
   margin: 0 20px;
+  cursor: pointer;
 `;
 
 const FooterWrap = styled(Container)`
@@ -158,6 +159,9 @@ function App() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/journal/Spring 2020 Issue">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
@@ -224,12 +228,12 @@ function App() {
             <FooterWrap>
               <Row>
                 <Col md="auto">
-                  <a href="#top">
+                  <LinkContainer to="/#top">
                     <FootLogo
                       alt="currentissueImage"
                       src="https://econmag-bucket.s3.amazonaws.com/public/2020/7/CER.jpg"
                     />
-                  </a>
+                  </LinkContainer>
                 </Col>
                 <Col
                   md="auto"

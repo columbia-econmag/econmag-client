@@ -1,9 +1,11 @@
 @media only screen and (max-device-width: 1100px) {
   .journal {
-    padding: 0px 2% !important;
+    padding: 0px 6% !important;
+    width: fit-content;
   }
   .uglyJournal {
-    padding: 0px 2% !important;
+    padding: 0px 6% !important;
+    width: fit-content;
   }
   .margins {
     margin: 5px 3% 30px 3% !important;
@@ -23,7 +25,7 @@
 
 .journal {
   white-space: pre-line;
-  padding: 0px 5%;
+  padding: 0px 25%;
   overflow: hidden;
 }
 
@@ -35,7 +37,7 @@ img {
 
 .uglyJournal {
   white-space: pre-line;
-  padding: 0px 5%;
+  padding: 0px 25%;
   overflow: hidden;
 }
 
