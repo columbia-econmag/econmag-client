@@ -116,7 +116,7 @@ export default function CategoriesView(...props) {
             post_author: articles.data["post_author"],
             post_title: articles.data["post_title"],
           };
-          Cache.setItem("Spring 2020", { data: newArt });
+          Cache.setItem("Spring 2020", { status: "success", data: newArt });
         }
         setArticles(articles);
         makePretty(articles, 300);
@@ -145,6 +145,7 @@ export default function CategoriesView(...props) {
 
   function renderRecentArticles(posts) {
     var articles = posts.data;
+    console.log(articles);
     var HTML = articles.map((post) => (
       <>
         <LinkContainer to={`/post/${post._id}`}>
