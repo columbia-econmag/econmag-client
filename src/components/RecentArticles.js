@@ -166,6 +166,7 @@ export default function RecentArticles(...props) {
             post_excerpt: articles.data["post_excerpt"],
             post_largeExcerpt: articles.data["post_largeExcerpt"],
           };
+          console.log(newArt);
           Cache.setItem("recent", { data: newArt });
         }
         setArticles(articles);
