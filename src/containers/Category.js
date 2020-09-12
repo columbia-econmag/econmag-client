@@ -40,7 +40,7 @@ const Header = styled.h2`
 `;
 
 const CardTitle = styled(Card.Title)`
-  margin-bottom: 0.1rem;
+  margin-bottom: 6px;
   &:hover {
     text-decoration: underline;
     text-decoration-color: #a0bbd3;
