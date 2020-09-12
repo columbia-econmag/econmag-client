@@ -78,7 +78,7 @@ export default function Home() {
 
         <MobileHeader>Recent Articles</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query="" />
+          <CategoriesView query="excerpt?limit=3" />
         </Suspense>
         <IssueSection>
           <InnerSection>
