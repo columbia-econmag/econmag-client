@@ -9,6 +9,7 @@ import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
 import { GoSearch } from "react-icons/go";
+import { HashLink as Link } from "react-router-hash-link";
 
 const Footer = styled.section`
   height: 330px;
@@ -239,19 +240,19 @@ function App() {
                   md="auto"
                   style={{ alignSelf: "center", paddingRight: "150px" }}
                 >
-                  <LinkContainer to="/About">
+                  <Link to="/about#aboutUs">
                     <FooterText className="noBottomMargin">About Us</FooterText>
-                  </LinkContainer>
-                  <LinkContainer to="/Subscribe">
+                  </Link>
+                  {/* <Link to="/About#joinUs">
                     <FooterText className="noBottomMargin">
                       Subscribe
                     </FooterText>
-                  </LinkContainer>
-                  <LinkContainer to="/Contact">
+                  </Link> */}
+                  <Link to="/About#contactUs">
                     <FooterText className="noBottomMargin">
                       Contact Us
                     </FooterText>
-                  </LinkContainer>
+                  </Link>
                   <LinkContainer to="/login">
                     <FooterText className="noBottomMargin">
                       Editor Login

@@ -156,7 +156,6 @@ export default function RecentArticles(...props) {
     async function onLoad() {
       try {
         var articles = Cache.getItem("recent");
-        console.log(articles);
         if (!articles) {
           articles = await loadArticles(propQuery);
 

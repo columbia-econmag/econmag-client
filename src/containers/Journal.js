@@ -145,7 +145,7 @@ const Letter = styled.div`
   padding: 0px 50px;
 `;
 
-export default function Category(...props) {
+export default function Journal(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isClicked, setClicked] = useState(false);
