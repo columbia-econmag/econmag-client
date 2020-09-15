@@ -64,6 +64,7 @@ export default function Articles() {
     async function onLoad() {
       try {
         const article = await loadArticle();
+        await addView(article.data["post_clicks"]);
         setArticle(article.data);
       } catch (e) {
         onError(e);
@@ -73,6 +74,22 @@ export default function Articles() {
 
     onLoad();
   }, [_id]);
+
+  function addView(clicks) {
+    if (clicks) {
+      API.put("posts", `posts/${_id}`, {
+        body: {
+          post_clicks: clicks + 1,
+        },
+      });
+    } else {
+      API.put("posts", `posts/${_id}`, {
+        body: {
+          post_clicks: 1,
+        },
+      });
+    }
+  }
 
   function renderArticle(post) {
     var content = removeHome(post.post_content);
