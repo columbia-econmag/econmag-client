@@ -76,6 +76,7 @@ export default function Articles() {
   }, [_id]);
 
   function addView(clicks) {
+    console.log("THIS IS RUNNING");
     if (clicks) {
       API.put("posts", `posts/${_id}`, {
         body: {

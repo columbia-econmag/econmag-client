@@ -196,7 +196,7 @@ export default function CategoriesView(...props) {
                     minWidth: "30%",
                   }}
                   alt="currentissueImage"
-                  src="https://econmag-bucket.s3.amazonaws.com/public/2020/8/Spring+2020.jpeg"
+                  src="https://econmag-bucket.s3.amazonaws.com/public/2020/9/21-CER%20cover.jpg"
                 />
               </a>
             </LinkContainer>
