@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
-import { Nav, Navbar, Container, Row, Col, FormGroup } from "react-bootstrap";
+import { Nav, Navbar, Container, Row, Col, NavDropdown } from "react-bootstrap";
 import "./App.css";
 import { useHistory, useLocation } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
@@ -178,9 +178,27 @@ function App() {
               <LinkContainer to="/category/On Campus?limit=9&page=1">
                 <Nav.Link>On Campus</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/category/Competitions?limit=9&page=1">
+              {/* <LinkContainer to="/category/Competitions?limit=9&page=1">
                 <Nav.Link className="rightMost">Competitions</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
+              <NavDropdown
+                className="rightMost"
+                title="About"
+                id="collasible-nav-dropdown"
+              >
+                <NavDropdown.Item href="/About#aboutUs">
+                  About us
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/About#contactUs">
+                  Contact Us
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/About#joinUs">
+                  Join Us
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/About#managingBoard">
+                  Managing Board
+                </NavDropdown.Item>
+              </NavDropdown>
             </Nav>
             <Nav className="ml-auto">
               {isAuthenticated ? (

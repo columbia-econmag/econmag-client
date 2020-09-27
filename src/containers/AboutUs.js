@@ -96,6 +96,7 @@ export default function AboutUs() {
             social media accounts to learn more about recruitment each semester.
           </p>
         </div>
+        <a id="managingBoard"></a>
         <Header>Managing Board</Header>
         <div className="uglyJournal">
           <p>Editor in Chief: Ignacio Lopez Gaffney</p>
