@@ -180,6 +180,7 @@ export default function SimpleSlider(...props) {
 
   function loadArticles(propQuery = "") {
     var x = API.get("posts", "posts/" + propQuery);
+    // var x = API.get("posts", "posts/popular/?limit=5"); for popular page, images do not look very good rn
     return x;
   }
   function showImage(post) {

@@ -64,7 +64,10 @@ export default function Articles() {
     async function onLoad() {
       try {
         const article = await loadArticle();
-        await addView(article.data["post_clicks"]);
+        await addView(
+          article.data["post_clicks"],
+          article.data["click_modified"]
+        );
         setArticle(article.data);
       } catch (e) {
         onError(e);
@@ -75,8 +78,26 @@ export default function Articles() {
     onLoad();
   }, [_id]);
 
-  function addView(clicks) {
-    console.log("THIS IS RUNNING");
+  function addView(clicks, dateModified) {
+    if (dateModified) {
+      let now = new Date().getTime();
+      let modified = dateModified.getTime();
+      if (now - modified > 2592000000) {
+        API.put("posts", `posts/${_id}`, {
+          body: {
+            post_clicks: 0,
+            click_modified: Date.now(),
+          },
+        });
+      }
+    } else {
+      API.put("posts", `posts/${_id}`, {
+        body: {
+          click_modified: Date.now(),
+        },
+      });
+    }
+
     if (clicks) {
       API.put("posts", `posts/${_id}`, {
         body: {

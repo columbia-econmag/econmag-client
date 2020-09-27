@@ -271,6 +271,12 @@ function App() {
                       Contact Us
                     </FooterText>
                   </Link>
+                  <a href="https://issuu.com/columbiaeconreview">
+                    <FooterText className="noBottomMargin">
+                      Previous Issues
+                    </FooterText>
+                  </a>
+
                   <LinkContainer to="/login">
                     <FooterText className="noBottomMargin">
                       Editor Login
