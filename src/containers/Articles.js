@@ -64,10 +64,8 @@ export default function Articles() {
     async function onLoad() {
       try {
         const article = await loadArticle();
-        await addView(
-          article.data["post_clicks"],
-          article.data["click_modified"]
-        );
+        await fixViews(article.data["click_modified"]);
+        await addView(article.data["post_clicks"]);
         setArticle(article.data);
       } catch (e) {
         onError(e);
@@ -78,7 +76,7 @@ export default function Articles() {
     onLoad();
   }, [_id]);
 
-  function addView(clicks, dateModified) {
+  function fixViews(dateModified) {
     if (dateModified) {
       let now = new Date().getTime();
       let modified = dateModified.getTime();
@@ -97,7 +95,9 @@ export default function Articles() {
         },
       });
     }
+  }
 
+  function addView(clicks) {
     if (clicks) {
       API.put("posts", `posts/${_id}`, {
         body: {
