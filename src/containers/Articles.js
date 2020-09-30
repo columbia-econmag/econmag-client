@@ -64,7 +64,7 @@ export default function Articles() {
     async function onLoad() {
       try {
         const article = await loadArticle();
-        await fixViews(article.data["click_modified"]);
+        // await fixViews(article.data["click_modified"]);
         await addView(article.data["post_clicks"]);
         setArticle(article.data);
       } catch (e) {
