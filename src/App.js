@@ -175,12 +175,12 @@ function App() {
               <LinkContainer to="/category/U.S.?limit=9&page=1">
                 <Nav.Link>U.S.</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/category/On Campus?limit=9&page=1">
+              {/* <LinkContainer to="/category/On Campus?limit=9&page=1">
                 <Nav.Link>On Campus</Nav.Link>
-              </LinkContainer>
-              {/* <LinkContainer to="/category/Competitions?limit=9&page=1">
-                <Nav.Link className="rightMost">Competitions</Nav.Link>
               </LinkContainer> */}
+              <LinkContainer to="/category/Competitions?limit=9&page=1">
+                <Nav.Link>Competitions</Nav.Link>
+              </LinkContainer>
               <NavDropdown
                 className="rightMost"
                 title="About"

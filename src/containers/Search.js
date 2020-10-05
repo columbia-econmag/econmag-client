@@ -156,6 +156,15 @@ export default function Category(...props) {
       ) {
         listOArticles.push(articles[i]);
       }
+      for (let j = 0; j < articles[i]["post_category"].length; j++) {
+        if (
+          articles[i]["post_category"][j]
+            .toLowerCase()
+            .includes(query.toLowerCase())
+        ) {
+          listOArticles.push(articles[i]);
+        }
+      }
     }
     return { data: listOArticles };
   }
