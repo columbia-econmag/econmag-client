@@ -281,7 +281,7 @@ function App() {
                   </Link>
                   <a href="https://issuu.com/columbiaeconreview">
                     <FooterText className="noBottomMargin">
-                      Previous Issues
+                      Past Issues
                     </FooterText>
                   </a>
 
