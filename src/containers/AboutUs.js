@@ -22,7 +22,7 @@ const FB = styled(FaFacebookSquare)`
 
 const Header = styled.h2`
   color: Black;
-  padding: 0px 25%;
+  padding: 0px 20%;
   margin-top: 2%;
   margin-bottom: 2%;
   font-weight: bold;
@@ -100,7 +100,7 @@ export default function AboutUs() {
         <Header>Managing Board</Header>
         <div className="uglyJournal">
           <p>Editor in Chief: Ignacio Lopez Gaffney</p>
-          <p>President: Sinet Chelaget</p>
+          <p>President: Sinet Chelagat</p>
           <p>Executive Editor: Philip Jang</p>
           <p>Head of Operations: Reyna Choi</p>
           <p>Technical Director: Ivan Barral</p>

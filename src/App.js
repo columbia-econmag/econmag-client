@@ -166,6 +166,14 @@ function App() {
               <LinkContainer to="/journal/Spring 2020 Issue">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
+
+              <Nav.Link
+                href="https://issuu.com/columbiaeconreview"
+                target="_blank"
+              >
+                Past Issues
+              </Nav.Link>
+
               <LinkContainer to="/category/Business?limit=9&page=1">
                 <Nav.Link>Business</Nav.Link>
               </LinkContainer>
