@@ -63,8 +63,8 @@ const LeftImage = styled.img`
 `;
 
 const RightImage = styled.img`
-  max-height: 50%;
-  max-width: 100%;
+  // max-height: 50%;
+  max-width: 80%;
   border-radius: 2px;
   display: block;
   margin: auto;
