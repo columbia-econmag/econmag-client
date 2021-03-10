@@ -101,7 +101,7 @@ export default function AboutUs() {
         <div className="uglyJournal">
           <p>Editor in Chief: Ignacio Lopez Gaffney</p>
           <p>President: Sinet Chelagat</p>
-          <p>Executive Editor: Philip Jang</p>
+          <p>Executive Editor: Alqaim Lalani</p>
           <p>Head of Operations: Reyna Choi</p>
           <p>Technical Director: Ivan Barral</p>
         </div>
