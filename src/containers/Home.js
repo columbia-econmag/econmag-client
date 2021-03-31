@@ -124,7 +124,7 @@ export default function Home() {
                 </div>
               }
             >
-              <SimpleSlider query="/category/World/limit/5" />
+              <SimpleSlider query="/category/World/limit/7" />
             </Suspense>
           </InnerSection>
         </SliderSection>
