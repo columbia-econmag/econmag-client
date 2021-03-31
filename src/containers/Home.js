@@ -179,6 +179,8 @@ export default function Home() {
               </div>
             }
           >
+            <CategoriesView query="/category/U.S./limit/3" />
+          </Suspense>
           <LinkContainer to="/category/Business?limit=9&page=1">
             <Header>Business</Header>
           </LinkContainer>
@@ -190,8 +192,6 @@ export default function Home() {
             }
           >
             <CategoriesView query="/category/Business/limit/3" />
-          </Suspense>
-            <CategoriesView query="/category/U.S./limit/3" />
           </Suspense>
           <LinkContainer to="/category/On Campus?limit=9&page=1">
             <Header>On Campus</Header>
