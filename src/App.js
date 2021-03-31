@@ -173,16 +173,16 @@ function App() {
               >
                 Past Issues
               </Nav.Link>
-
-              <LinkContainer to="/category/Business?limit=9&page=1">
-                <Nav.Link>Business</Nav.Link>
-              </LinkContainer>
               <LinkContainer to="/category/World?limit=9&page=1">
                 <Nav.Link>World</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/category/U.S.?limit=9&page=1">
                 <Nav.Link>U.S.</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/category/Business?limit=9&page=1">
+                <Nav.Link>Business</Nav.Link>
+              </LinkContainer>
+              
               {/* <LinkContainer to="/category/On Campus?limit=9&page=1">
                 <Nav.Link>On Campus</Nav.Link>
               </LinkContainer> */}
