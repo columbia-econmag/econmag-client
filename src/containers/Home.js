@@ -182,18 +182,6 @@ export default function Home() {
           >
             <CategoriesView query="/category/World/limit/3" />
           </Suspense>
-          <LinkContainer to="/category/On Campus?limit=9&page=1">
-            <Header>On Campus</Header>
-          </LinkContainer>
-          <Suspense
-            fallback={
-              <div style={{ textAlign: "center" }}>
-                <Spinner animation="border" variant="primary" />
-              </div>
-            }
-          >
-            <CategoriesView query="/category/On Campus/limit/3" />
-          </Suspense>
           <LinkContainer to="/category/U.S.?limit=9&page=1">
             <Header>U.S.</Header>
           </LinkContainer>
@@ -206,6 +194,19 @@ export default function Home() {
           >
             <CategoriesView query="/category/U.S./limit/3" />
           </Suspense>
+          <LinkContainer to="/category/On Campus?limit=9&page=1">
+            <Header>On Campus</Header>
+          </LinkContainer>
+          <Suspense
+            fallback={
+              <div style={{ textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <CategoriesView query="/category/On Campus/limit/3" />
+          </Suspense>
+          
         </InnerSection>
       </Default>
     </>
