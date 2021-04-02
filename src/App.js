@@ -298,7 +298,7 @@ function App() {
             style={{
               textAlign: "right",
               fontStyle: "italic",
-              fontSize: "smaller",
+              fontSize: "x-small",
               paddingBottom: "5px",
               margin: "0px",
               color: "grey",
