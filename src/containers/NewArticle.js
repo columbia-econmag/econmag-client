@@ -27,7 +27,7 @@ const categories = [
   "World",
   "U.S",
   "Competitions",
-  "Spring 2020 Issue",
+  "Spring 2021 Issue",
 ];
 const OuterDiv = styled.div`
   margin: 20px 10%;
