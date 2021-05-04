@@ -103,15 +103,19 @@ const MobileLoaderDiv = styled.div`
 export default function CategoriesView(...props) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const propQuery = props[0].query;
+  const propIssue = props[0].issue;
+  const propImage = props[0].image;
+  const propVolume = props[0].volume;
 
   useEffect(() => {
     async function onLoad() {
       try {
-        var articles = Cache.getItem("Spring 2020");
+        var articles = Cache.getItem(propIssue);
         if (!articles) {
           articles = await loadArticles();
           console.log(articles);
-          Cache.setItem("Spring 2020", articles);
+          Cache.setItem(propIssue, articles);
         }
         setArticles(articles);
         makePretty(articles, 300);
@@ -125,7 +129,7 @@ export default function CategoriesView(...props) {
   }, []);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/category/Spring 2020 Issue/excerpt");
+    var x = API.get("posts", propQuery + "/excerpt");
     return x;
   }
 
@@ -187,7 +191,7 @@ export default function CategoriesView(...props) {
             key="first"
             style={{ margin: "auto", textAlign: "center", minWidth: "10%" }}
           >
-            <LinkContainer to={`/journal/Spring 2020 Issue`}>
+            <LinkContainer to={`/journal/` + propIssue}>
               <a>
                 <img
                   style={{
@@ -196,7 +200,7 @@ export default function CategoriesView(...props) {
                     minWidth: "30%",
                   }}
                   alt="currentissueImage"
-                  src="https://econmag-bucket.s3.amazonaws.com/public/2020/9/21-CER%20cover.jpg"
+                  src = {propImage}
                 />
               </a>
             </LinkContainer>
@@ -206,8 +210,8 @@ export default function CategoriesView(...props) {
             md="auto"
             style={{ textAlign: "left", maxWidth: "100%" }}
           >
-            <LinkContainer to={`/journal/Spring 2020 Issue`}>
-              <Header>Spring 2020 Issue | Volume XII</Header>
+            <LinkContainer to={`/journal/` + propIssue}>
+              <Header>{propIssue} | {propVolume}</Header>
             </LinkContainer>
             <h4 style={{ marginBottom: "20px" }}>In This Issue: </h4>
             {!isLoading && renderRecentArticles(articles)}

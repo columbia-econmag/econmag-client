@@ -21,6 +21,7 @@ const AsyncSearch = asyncComponent(() => import("./containers/Search"));
 const AsyncJournal = asyncComponent(() => import("./containers/Journal"));
 const AsyncReset = asyncComponent(() => import("./containers/ResetPassword"));
 const AsyncAbout = asyncComponent(() => import("./containers/AboutUs"));
+const AsyncPrev = asyncComponent(() => import("./containers/PrevIssues"));
 
 export default ({ childProps }) => (
   <Switch>
@@ -35,6 +36,7 @@ export default ({ childProps }) => (
     <Route path="/post/:_id" exact component={AsyncNotes} />
     <Route path="/login/reset" exact component={AsyncReset} />
     <Route path="/about" exact component={AsyncAbout} />
+    <Route path="/previousIssues" exact component={AsyncPrev} />
 
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <AuthenticatedRoute path="/signup" exact component={AsyncSignup} />
