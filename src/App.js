@@ -163,7 +163,7 @@ function App() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/journal/Spring 2020 Issue">
+              <LinkContainer to="/journal/Fall 2020 Issue">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
 
