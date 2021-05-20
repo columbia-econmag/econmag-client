@@ -72,7 +72,7 @@ export default function Home() {
               </div>
             }
           >
-            <SimpleSlider query="/category/World/limit/5" />
+            <SimpleSlider query="/category/World/limit/5/excerpt" />
           </Suspense>
         </SliderMobile>
 
@@ -89,25 +89,28 @@ export default function Home() {
                 </div>
               }
             >
-              <Issue />
+              <Issue query = "posts/category/Fall 2020 Issue" 
+              issue = "Fall 2020 Issue" 
+              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
+              volume = "Volume XIII"/>
             </Suspense>
           </InnerSection>
         </IssueSection>
         <MobileHeader>Business</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query="/category/Business/limit/3" />
+          <CategoriesView query="/category/Business/limit/3/excerpt" />
         </Suspense>
         <MobileHeader>U.S.</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query="/category/U.S./limit/3" />
+          <CategoriesView query="/category/U.S./limit/3/excerpt" />
         </Suspense>
         <MobileHeader>World</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query="/category/World/limit/3" />
+          <CategoriesView query="/category/World/limit/3/excerpt" />
         </Suspense>
         <MobileHeader>On Campus</MobileHeader>
         <Suspense fallback={<Spinner animation="border" variant="primary" />}>
-          <CategoriesView query="/category/On Campus/limit/3" />
+          <CategoriesView query="/category/On Campus/limit/3/excerpt" />
         </Suspense>
       </Mobile>
 
@@ -124,7 +127,7 @@ export default function Home() {
                 </div>
               }
             >
-              <SimpleSlider query="/category/World/limit/7" />
+              <SimpleSlider query="/category/World/limit/7/excerpt" />
             </Suspense>
           </InnerSection>
         </SliderSection>
@@ -151,7 +154,7 @@ export default function Home() {
                 </div>
               }
             >
-              <Issue query = "posts/category/Fall 2020 Issue" 
+              <Issue query = "posts/category/Fall 2020 Issue/excerpt" 
               issue = "Fall 2020 Issue" 
               image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
               volume = "Volume XIII"/>
@@ -170,7 +173,7 @@ export default function Home() {
               </div>
             }
           >
-            <FiveViewBlock query="/category/World/limit/5" />
+            <FiveViewBlock query="/category/World/limit/5/excerpt" />
           </Suspense>
           <LinkContainer to="/category/U.S.?limit=9&page=1">
             <Header>U.S.</Header>
@@ -182,7 +185,7 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView query="/category/U.S./limit/3" />
+            <CategoriesView query="/category/U.S./limit/3/excerpt" />
           </Suspense>
           <LinkContainer to="/category/Business?limit=9&page=1">
             <Header>Business</Header>
@@ -194,7 +197,7 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView query="/category/Business/limit/3" />
+            <CategoriesView query="/category/Business/limit/3/excerpt" />
           </Suspense>
           <LinkContainer to="/category/On Campus?limit=9&page=1">
             <Header>On Campus</Header>
@@ -206,7 +209,7 @@ export default function Home() {
               </div>
             }
           >
-            <CategoriesView query="/category/On Campus/limit/3" />
+            <CategoriesView query="/category/On Campus/limit/3/excerpt" />
           </Suspense>
           
         </InnerSection>

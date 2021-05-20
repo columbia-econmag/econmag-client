@@ -144,6 +144,7 @@ export default function CategoriesView(...props) {
 
   function renderRecentArticles(posts) {
     var articles = posts.data;
+    console.log(articles);
     var HTML = articles.map((post) => (
       <>
         <LinkContainer to={`/post/${post._id}`}>

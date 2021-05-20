@@ -161,8 +161,6 @@ export default function SimpleSlider(...props) {
         if (
           cachedArticles.data[0].post_title !==
             tempArticles.data[0].post_title ||
-          cachedArticles.data[0].post_content !==
-            tempArticles.data[0].post_content ||
           cachedArticles.data[0].post_excerpt !==
             tempArticles.data[0].post_excerpt ||
           cachedArticles.data[0].post_largeExcerpt !==
