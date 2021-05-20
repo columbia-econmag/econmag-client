@@ -207,7 +207,7 @@ export default function CategoriesView(...props) {
           </Col>
           <Col
             key="second"
-            md="auto"
+            md="8"
             style={{ textAlign: "left", maxWidth: "100%" }}
           >
             <LinkContainer to={`/journal/` + propIssue}>
