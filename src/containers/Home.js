@@ -151,10 +151,10 @@ export default function Home() {
                 </div>
               }
             >
-              <Issue query = "posts/category/Spring 2020 Issue" 
-              issue = "Spring 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2020/9/21-CER%20cover.jpg"
-              volume = "Volume XII"/>
+              <Issue query = "posts/category/Fall 2020 Issue" 
+              issue = "Fall 2020 Issue" 
+              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
+              volume = "Volume XIII"/>
             </Suspense>
           </InnerSection>
         </IssueSection>
