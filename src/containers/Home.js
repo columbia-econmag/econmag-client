@@ -91,7 +91,7 @@ export default function Home() {
             >
               <Issue query = "posts/category/Fall 2020 Issue" 
               issue = "Fall 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
+              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
               volume = "Volume XIII"/>
             </Suspense>
           </InnerSection>
@@ -156,7 +156,7 @@ export default function Home() {
             >
               <Issue query = "posts/category/Fall 2020 Issue" 
               issue = "Fall 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
+              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
               volume = "Volume XIII"/>
             </Suspense>
           </InnerSection>

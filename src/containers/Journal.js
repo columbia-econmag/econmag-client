@@ -92,8 +92,8 @@ const LetterButton = styled.div`
   background-color: #a0bbd3;
   cursor: pointer;
   width: fit-content;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: auto;
   margin-bottom: 30px;
   text-align: center;
@@ -275,7 +275,7 @@ export default function Journal(...props) {
               <img
                 style={{ maxHeight: "450px", maxWidth: "100%" }}
                 alt="currentissueImage"
-                src="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
+                src="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
               />
             </Col>
           </Row>
