@@ -294,18 +294,6 @@ function App() {
               </Row>
             </FooterWrap>
           </div>
-          <p
-            style={{
-              textAlign: "right",
-              fontStyle: "italic",
-              fontSize: "x-small",
-              paddingBottom: "5px",
-              margin: "0px",
-              color: "grey",
-            }}
-          >
-            Website By Ivan Barral
-          </p>
         </Footer>
       </div>
     )
