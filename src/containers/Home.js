@@ -115,6 +115,38 @@ export default function Home() {
       </Mobile>
 
       <Default key="defaultHome">
+      <IssueSection>
+          <InnerSection>
+            <Suspense
+              fallback={
+                <div style={{ height: "500px", textAlign: "center" }}>
+                  <Spinner animation="border" variant="primary" />
+                </div>
+              }
+            >
+              <Issue query = "posts/category/Fall 2020 Issue" 
+              issue = "Fall 2020 Issue" 
+              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
+              volume = "Volume XIII"/>
+            </Suspense>
+          </InnerSection>
+        </IssueSection>
+        
+        <InnerSection>
+          <LinkContainer to="/recent?limit=9&page=1">
+            <Header>Recent Articles</Header>
+          </LinkContainer>
+          <Suspense
+            fallback={
+              <div style={{ height: "600px", textAlign: "center" }}>
+                <Spinner animation="border" variant="primary" />
+              </div>
+            }
+          >
+            <RecentArticles query="" />
+          </Suspense>
+        </InnerSection>
+        
         <SliderSection>
           <InnerSection>
             <h2 style={{ fontWeight: 600, paddingTop: "25px" }}>
@@ -131,36 +163,6 @@ export default function Home() {
             </Suspense>
           </InnerSection>
         </SliderSection>
-        <InnerSection>
-          <LinkContainer to="/recent?limit=9&page=1">
-            <Header>Recent Articles</Header>
-          </LinkContainer>
-          <Suspense
-            fallback={
-              <div style={{ height: "600px", textAlign: "center" }}>
-                <Spinner animation="border" variant="primary" />
-              </div>
-            }
-          >
-            <RecentArticles query="" />
-          </Suspense>
-        </InnerSection>
-        <IssueSection>
-          <InnerSection>
-            <Suspense
-              fallback={
-                <div style={{ height: "500px", textAlign: "center" }}>
-                  <Spinner animation="border" variant="primary" />
-                </div>
-              }
-            >
-              <Issue query = "posts/category/Fall 2020 Issue" 
-              issue = "Fall 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
-              volume = "Volume XIII"/>
-            </Suspense>
-          </InnerSection>
-        </IssueSection>
 
         <InnerSection>
           <LinkContainer to="/category/World?limit=9&page=1">
