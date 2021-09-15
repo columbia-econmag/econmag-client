@@ -9,6 +9,7 @@ import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
 import { GoSearch } from "react-icons/go";
+import Announcement from 'react-announcement'
 import { HashLink as Link } from "react-router-hash-link";
 
 const Footer = styled.section`
@@ -134,7 +135,16 @@ function App() {
 
   return (
     !isAuthenticating && (
+      
       <div className="App container">
+        <Announcement
+          title="Apply to Columbia Economic Review!"
+          subtitle="If interested, please apply before 9/21 by clicking on this banner"
+          link="https://docs.google.com/forms/d/e/1FAIpQLSfYCXhYK6XCP6iX0JrLjQEcIvXZP7NBjp5WOEj17rwQagSCkg/viewform"
+          imageSource={"https://gocanvas.stanford.edu/wp-content/uploads/2019/08/announcements.png"}
+          daysToLive={0}
+          secondsBeforeBannerShows={1}
+      />
         {/* <Navbar.Brand
           style={{ width: "100%", margin: "auto", textAlign: "center" }}
         >
