@@ -130,13 +130,6 @@ const SchoolName = styled.h6`
   color: rgb(2, 33, 105);
 `;
 
-const AuthorText = styled(Card.Subtitle)`
-  display: inline-block;
-  &:hover {
-    color: #a0bbd3 !important;
-  }
-`;
-
 const LoaderDiv = styled.div`
   height: 3000px !important;
   text-align: center;

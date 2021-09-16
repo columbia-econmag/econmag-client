@@ -17,10 +17,23 @@ const Default = ({ children }) => {
   return isNotMobile ? children : null;
 };
 
-const SliderSection = styled.section`
-  padding: 5px 50px;
-  background-color: aliceblue;
-`;
+//IF ADDING NEW ISSUES CHANGE THIS 
+const prevIssues = [
+  "Fall 2020 Issue",
+  "Spring 2020 Issue"
+];
+
+//ALSO CHANGE THIS
+const prevVolumes = [
+  "Volume XIII",
+  "Volume XII"
+]
+
+//
+const backgroundColors = [
+  "rgb(160, 187, 211, 0.5)",
+  "rgba(0, 123, 255, 0.25)"
+]
 
 const IssueSection = styled.section`
   padding: 5px 50px;
@@ -36,61 +49,58 @@ const InnerSection = styled.section`
   // background-color: aliceblue;
 `;
 
-const SliderMobile = styled(SliderSection)`
-  padding: 5px 5px;
-`;
-
 const Header = styled.h2`
   padding: 30px 0px 0px 0px;
   font-weight: 600;
 `;
 
-const MobileHeader = styled.h2`
-  padding: 35px 0px 0px 0px;
-  font-weight: 600;
-  text-align: center;
-`;
+
+function renderArticlesList(prevIssue, i) {
+  var imageIss = "https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/" + prevIssue + ".jpg";
+  var quer = "posts/category/" + prevIssue
+  var color = backgroundColors[i%2]
+  console.log(color)
+  var html = (
+    <>
+      <IssueSection style = {{backgroundColor: color}} key = {prevIssue}>
+          <InnerSection>
+            <Suspense
+              fallback={
+                <div style={{ height: "500px", textAlign: "center" }}>
+                  <Spinner animation="border" variant="primary" />
+                </div>
+              }
+            >
+              <Issue query = {quer}
+              issue = {prevIssue} 
+              image = {imageIss}
+              volume = {prevVolumes[i]}
+              isPrev = {true}/>
+            </Suspense>
+          </InnerSection>
+        </IssueSection>
+    </>
+  );
+  return html;
+}
+
+function renderIssueList(prevIssues) {
+  var toR = [];
+  for (let i = 0 ; i < prevIssues.length; i++) {
+    toR.push(renderArticlesList(prevIssues[i], i));
+  }
+  return toR;
+}
 
 export default function PrevIssues() {
   return (
     <>
       <Default key="defaultHome">
         <InnerSection>
-        <Header>Previous Issues</Header>
+        <Header>Past Issues</Header>
         </InnerSection>
-          <IssueSection style = {{backgroundColor: "#a0bbd3"}}>
-          <InnerSection>
-            <Suspense
-              fallback={
-                <div style={{ height: "500px", textAlign: "center" }}>
-                  <Spinner animation="border" variant="primary" />
-                </div>
-              }
-            >
-              <Issue query = "posts/category/Spring 2020 Issue" 
-              issue = "Spring 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2020/9/21-CER%20cover.jpg"
-              volume = "Volume XII"/>
-            </Suspense>
-          </InnerSection>
-        </IssueSection>
+        {renderIssueList(prevIssues)}
         <IssueSection style = {{backgroundColor: "aliceblue"}}>
-          <InnerSection>
-            <Suspense
-              fallback={
-                <div style={{ height: "500px", textAlign: "center" }}>
-                  <Spinner animation="border" variant="primary" />
-                </div>
-              }
-            >
-              <Issue query = "posts/category/Fall 2020 Issue" 
-              issue = "Fall 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/20-CER%20-%20Fall%202020%20Cover.JPG"
-              volume = "Volume XIII"/>
-            </Suspense>
-          </InnerSection>
-        </IssueSection>
-        <IssueSection style = {{backgroundColor: "rgb(0 123 255 / 25%)"}}>
           <InnerSection>
             <Header>Older Issues</Header>
             <h4>For older issues please <a href="https://issuu.com/columbiaeconreview">click here</a></h4>

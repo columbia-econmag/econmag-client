@@ -91,8 +91,9 @@ export default function Home() {
             >
               <Issue query = "posts/category/Fall 2020 Issue" 
               issue = "Fall 2020 Issue" 
-              image ="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
-              volume = "Volume XIII"/>
+              image ="https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/Fall 2020 Issue"
+              volume = "Volume XIII"
+              isPrev = {false}/>
             </Suspense>
           </InnerSection>
         </IssueSection>

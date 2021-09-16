@@ -1,5 +1,42 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Adding a new journal issue
+
+## Step 1: Add the Category
+
+1. Go into containers/EditArticle.js and NewArticle.js
+2. find variable "const categories =..."
+3. Remove the existing issue (IE Spring 2021 Issue) and replace it with the new Issue
+   **_// remember to do this for both files_**
+4. Now that you have the new category, you should publish all the relevant articles under this new category. **You should do this before advancing to step 2**.
+
+## Step 2:
+
+1. Go to containers/Home.js and find the "IssueSection" component
+2. In this component there's another component labeled "Issue". This custom component consists of 4 attributes (if you are familiar with react you can modify this component as much as you want in "Components/HomeIssue"):
+
+- query=what is being sent to the APIs and returned. ("posts/category/Fall 2020 Issue" returns all the articles in the Fall 2020 issue category)
+- issue = This is the title that is shown to the user
+- image = This is the image shown to the user
+- volume = This is the volume shown to the user
+
+3. modify the above attributes to be in-line with the new journal you are publishing
+
+## Step 3:
+
+1. Go to App.js and change ` <LinkContainer to="/journal/Fall 2020 Issue">`
+   to match the edition of the current Issue (for example, `to="/journal/Spring 2021 Issue`)
+
+## Step 4:
+
+1. Go to containers/Journal.js. This step is a bit more involved and may take a little longer.
+2. Change the author names and schools found in lines ~250+
+3. Replace the letter to the editor using basic html, follow the same format as existing letter
+
+## Step 5:
+
+1. Now we want to store the previous issues, go to containers/PrevIssues.js and add the issue being replaced to "const prevIssues" and "const prevVolumes". You can also add more/change them background colors here but make sure to fix some of the logic below
+
 ## Available Scripts
 
 In the project directory, you can run:

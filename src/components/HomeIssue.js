@@ -55,6 +55,14 @@ const Header = styled.h2`
   // background-color: aliceblue;
 `;
 
+const HeaderPrev = styled.h2`
+  padding: 20px 0px 20px 0px;
+  font-weight: 600;
+  font-size: 40px;
+
+  // background-color: aliceblue;
+`;
+
 const CatText = styled.p`
   text-align: center;
 `;
@@ -107,6 +115,7 @@ export default function CategoriesView(...props) {
   const propIssue = props[0].issue;
   const propImage = props[0].image;
   const propVolume = props[0].volume;
+  const isPrev = props[0].isPrev;
 
   useEffect(() => {
     async function onLoad() {
@@ -192,6 +201,7 @@ export default function CategoriesView(...props) {
             key="first"
             style={{ margin: "auto", textAlign: "center", minWidth: "10%" }}
           >
+            {!isPrev && 
             <LinkContainer to={`/journal/` + propIssue}>
               <a>
                 <img
@@ -205,15 +215,29 @@ export default function CategoriesView(...props) {
                 />
               </a>
             </LinkContainer>
+            }
+            {isPrev &&
+            <img
+                  style={{
+                    maxHeight: "500px",
+                    maxWidth: "100%",
+                    minWidth: "30%",
+                  }}
+                  alt="currentissueImage"
+                  src = {propImage}
+                />
+            }
           </Col>
           <Col
             key="second"
             md="8"
             style={{ textAlign: "left", maxWidth: "100%" }}
           >
+            {!isPrev &&
             <LinkContainer to={`/journal/` + propIssue}>
               <Header>{propIssue} | {propVolume}</Header>
-            </LinkContainer>
+            </LinkContainer>}
+            {isPrev && <HeaderPrev>{propIssue} | {propVolume}</HeaderPrev>}
             <h4 style={{ marginBottom: "20px" }}>In This Issue: </h4>
             {!isLoading && renderRecentArticles(articles)}
           </Col>

@@ -34,11 +34,6 @@ const SliderSection = styled.section`
   background-color: aliceblue;
 `;
 
-const IssueSection = styled.section`
-  padding: 5px 50px;
-  background-color: #a0bbd3;
-`;
-
 const InnerSection = styled.section`
   margin: auto;
   padding: 0px 2%;
@@ -51,9 +46,6 @@ const PageDiv = styled.div`
   text-align: center;
 `;
 
-const SliderMobile = styled(SliderSection)`
-  padding: 5px 5px;
-`;
 
 const Header = styled.h2`
   padding: 30px 0px 0px 0px;
@@ -61,11 +53,6 @@ const Header = styled.h2`
   // background-color: aliceblue;
 `;
 
-const MobileHeader = styled.h2`
-  padding: 35px 0px 0px 0px;
-  font-weight: 600;
-  text-align: center;
-`;
 
 const LoaderDiv = styled.div`
   height: 3000px !important;
@@ -208,6 +195,14 @@ export default function Category(...props) {
               </Button>
             </LinkContainer>
           </Container>
+          <br/>
+          <h4>Add an image for new issue!</h4>
+          <LinkContainer key="issue" to="/issue/new">
+              <Button variant="secondary" size="sm" block>
+                New Issue Cover Image
+              </Button>
+          </LinkContainer>
+          
         </Jumbotron>
         {!isLoading && renderArticlesLists(articles)}
         <PageDiv>
@@ -225,7 +220,19 @@ export default function Category(...props) {
                   New Article
                 </Button>
               </LinkContainer>
+              <br/>
+              <h5 style = {{textAlign:"left"}}>Add an image for new issue!</h5>
+              <div style={{maxWidth: "25%", textAlign: "center"}}>
+            <LinkContainer key="issue" to="/issue/new">
+              
+              <Button variant="secondary" size="sm" block>
+                New Issue Cover Image
+              </Button>
+              
+            </LinkContainer>
+            </div>
             </Container>
+          
           </Jumbotron>
           {isLoading ? (
             <LoaderDiv>
