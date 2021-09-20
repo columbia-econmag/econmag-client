@@ -32,6 +32,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Go to containers/Journal.js. This step is a bit more involved and may take a little longer.
 2. Change the author names and schools found in lines ~250+
 3. Replace the letter to the editor using basic html, follow the same format as existing letter
+4. Go to function LoadArticles() [lines ~188] and change the old issue to the new issue, make sure to not delete the /excerpt line
+5. Below that, you will find the old link for the issue image, replace that with the new link (prob something like "https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/Spring 2021 Issue.jpg")
 
 ## Step 5:
 

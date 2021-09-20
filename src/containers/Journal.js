@@ -186,7 +186,7 @@ export default function Journal(...props) {
   }, [journal_year]);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/category/Fall 2020 Issue/excerpt");
+    var x = API.get("posts", "posts/category/Spring 2021 Issue/excerpt");
     return x;
   }
 
@@ -251,24 +251,22 @@ export default function Journal(...props) {
         <InnerSection>
           <Row>
             <Col md="auto" style={{ textAlign: "left" }}>
-              <Header>Fall 2020 Issue | Volume XIII</Header>
+              <Header>Spring 2021 Issue | Volume XIV</Header>
               <h4 style={{ marginBottom: "20px" }}>Contributions From:</h4>
-              <AuthorName>Linas Nasvytis</AuthorName>
-              <SchoolName>Columbia University</SchoolName>
-              <AuthorName>Scott Overbey</AuthorName>
+              <AuthorName>Ana Pranger</AuthorName>
               <SchoolName>Princeton University</SchoolName>
-              <AuthorName>Felicitas Koch</AuthorName>
-              <SchoolName>University Of Konstanz</SchoolName>
-              <AuthorName>Ammar Plumber</AuthorName>
-              <SchoolName>University of Pennsylvania </SchoolName>
-              <AuthorName>Tiffany P. Sun</AuthorName>
+              <AuthorName>Amy Kim</AuthorName>
+              <SchoolName>Massachusetts Institute of Technology</SchoolName>
+              <AuthorName>Santiago Roberton-Lavalle</AuthorName>
               <SchoolName>Princeton University</SchoolName>
+              <AuthorName>Jodie Bhattacharya</AuthorName>
+              <SchoolName>Stanford University</SchoolName>
             </Col>
             <Col style={{ margin: "auto", textAlign: "center" }}>
               <img
                 style={{ maxHeight: "450px", maxWidth: "100%" }}
                 alt="currentissueImage"
-                src="https://econmag-bucket.s3.amazonaws.com/public/2021/5/28-coverart2020.jpg"
+                src="https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/Spring 2021 Issue.jpg"
               />
             </Col>
           </Row>
@@ -282,8 +280,8 @@ export default function Journal(...props) {
                 <p>Dear Readers,</p>
 
                 <p style={{ textIndent: ".5in" }}>
-                It is a pleasure to present the Columbia Economic Review’s (CER) Fall 2020
-                issue. This edition marks the 11-year anniversary of the journal’s publication of
+                It is a pleasure to present the Columbia Economic Review’s (CER) Spring 2021
+                issue. This edition marks the 12-year anniversary of the journal’s publication of
                 a distinguished collection of original undergraduate research papers, on topics as
                 varied as our field.
                 </p>
