@@ -279,7 +279,7 @@ export default function Journal(...props) {
               <div style={{ padding: '5% 4%' }}>
                 <p>Dear Readers,</p>
                 <p style={{ textIndent: '.5in' }}>
-                  It is a pleasure to preset the
+                  It is a pleasure to present the
                   Spring 2021 Issue of the Columbia Economic Review. It is only
                   through the diligence and flexibility of our staff, editorial
                   board, and advisor that we were able to publish a full issue in a year of remote learning.

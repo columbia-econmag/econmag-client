@@ -39,6 +39,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1. Now we want to store the previous issues, go to containers/PrevIssues.js and add the issue being replaced to "const prevIssues" and "const prevVolumes". You can also add more/change them background colors here but make sure to fix some of the logic below
 
+## Random extra info
+
+Website publishing pipeline is through netlify.
+
 ## Available Scripts
 
 In the project directory, you can run:
