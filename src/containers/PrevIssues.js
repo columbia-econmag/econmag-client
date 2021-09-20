@@ -95,7 +95,7 @@ function renderIssueList(prevIssues) {
 export default function PrevIssues() {
   return (
     <>
-      <Default key="defaultHome">
+      <div key="defaultHome">
         <InnerSection>
         <Header>Past Issues</Header>
         </InnerSection>
@@ -108,7 +108,7 @@ export default function PrevIssues() {
           </InnerSection>
         </IssueSection>
         
-      </Default>
+      </div>
     </>
   );
 }

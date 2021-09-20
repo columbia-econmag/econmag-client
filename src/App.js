@@ -14,7 +14,6 @@ import { HashLink as Link } from "react-router-hash-link";
 
 const Footer = styled.section`
   height: 330px;
-  padding: 5px 50px;
   background-color: #1c3c75;
 `;
 
