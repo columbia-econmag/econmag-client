@@ -101,7 +101,7 @@ export default function AboutUs() {
         <div className="uglyJournal">
           <p>Editor in Chief: Jacob Kim-Sherman</p>
           <p>President: Alqaim Lalani</p>
-          <p>Managing Editor—Journal: Alqaim Lalani</p>
+          <p>Managing Editor—Journal: Jessica Li</p>
           <p>Managing Editor—Online: Zac Narimanian</p>
           <p>Managing Editor—Operations: Amina Isayeva</p>
         </div>
