@@ -97,7 +97,7 @@ export default function AboutUs() {
           </p>
         </div>
         <a id="managingBoard"></a>
-        <Header>Managing Board</Header>
+        <Header>2022–2023 Managing Board</Header>
         <div className="uglyJournal">
           <p>Editor-in-Chief: Jacob Kim-Sherman</p>
           <p>President: Alqaim Lalani</p>
