@@ -49,7 +49,7 @@ export default function AboutUs() {
         <div className="uglyJournal">
           <p>
             Founded in 2009 as the first undergraduate economics journal in the
-            United States, the Columbia Economics Review (CER) aims to promote
+            United States, the Columbia Economic Review (CER) aims to promote
             economics discourse and research at the intersection of business,
             politics, society and moreby publishing a rigorous selection of
             student essays, opinions and research papers in a print journal
