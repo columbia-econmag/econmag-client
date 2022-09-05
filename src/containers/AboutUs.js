@@ -69,15 +69,7 @@ export default function AboutUs() {
             . CER is led, organized and operated entirely by undergraduate
             students at Columbia across a diverse array of academic disciplines.
           </p>
-        </div>
-        <Header id="contactUs">Contact Us</Header>
-        <a id="contactUs" />
-        <div className="uglyJournal">
-          <p>
-            For comments, questions and submission inquiries please email us at{" "}
-            <a href="mailto:econreview@columbia.edu">econreview@columbia.edu</a>{" "}
-            or reach out via our Facebook or Instagram pages. </p>
-            <p>
+              <p>
             Journal submissions must meet the following requirements:
             <ol type="1">
             <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
@@ -87,6 +79,14 @@ export default function AboutUs() {
             <li>All manuscripts should be submitted in PDF format with 1.5 line spacing. We strongly recommend manuscripts not exceed 40 pages (not including the bibliography and extra data tables). The suggested length includes reference lists, figures, and tables. Submit the .tex file if LaTeX was used). It is the author’s responsibility to condense the thesis prior to submitting the documents.</li>
             <li>Please use 12-point Times New Roman or similar font. Margins should be 1.5 inches on the top, bottom, and sides.</li>
             <li>Include an abstract of 100 or fewer words.</li> </ol> </p>
+        </div>
+        <Header id="contactUs">Contact Us</Header>
+        <a id="contactUs" />
+        <div className="uglyJournal">
+          <p>
+            For comments, questions and submission inquiries please email us at{" "}
+            <a href="mailto:econreview@columbia.edu">econreview@columbia.edu</a>{" "}
+            or reach out via our Facebook or Instagram pages. </p>
 
           <a href="https://www.facebook.com/ColumbiaEconomicsReview">
             <FB />
