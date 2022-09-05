@@ -78,7 +78,14 @@ export default function AboutUs() {
             <a href="mailto:econreview@columbia.edu">econreview@columbia.edu</a>{" "}
             or reach out via our Facebook or Instagram pages. </p>
             
-            <p>Journal submissions must meet the following requirements:</p> <ol type="1">
+
+          <a href="https://www.facebook.com/ColumbiaEconomicsReview">
+            <FB />
+          </a>
+          <a href="https://www.instagram.com/columbiaeconreview/">
+            <Insta />
+          </a>
+              <p>Journal submissions must meet the following requirements:</p> <ol type="1">
               <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
               <li>Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g jpeg) should be submitted alongside the paper.</li>
               <li>Any spreadsheets used should also have relevant data linked.</li>
@@ -88,12 +95,6 @@ export default function AboutUs() {
               <li>Include an abstract of 100 or fewer words.</li>
 
           </p>
-          <a href="https://www.facebook.com/ColumbiaEconomicsReview">
-            <FB />
-          </a>
-          <a href="https://www.instagram.com/columbiaeconreview/">
-            <Insta />
-          </a>
         </div>
         <Header>Join Us</Header>
         <a id="joinUs"></a>
