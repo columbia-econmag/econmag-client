@@ -86,7 +86,7 @@ export default function AboutUs() {
             <li>Not have already been published in other journals. By submitting, you give CER the sole right to publish the paper and make any edits that we see fit. Please do not submit to other academic journals.</li>
             <li>All manuscripts should be submitted in PDF format with 1.5 line spacing. We strongly recommend manuscripts not exceed 40 pages (not including the bibliography and extra data tables). The suggested length includes reference lists, figures, and tables. Submit the .tex file if LaTeX was used). It is the author’s responsibility to condense the thesis prior to submitting the documents.</li>
             <li>Please use 12-point Times New Roman or similar font. Margins should be 1.5 inches on the top, bottom, and sides.</li>
-            <li>Include an abstract of 100 or fewer words.</li> </p>
+            <li>Include an abstract of 100 or fewer words.</li> </ol> </p>
 
           <a href="https://www.facebook.com/ColumbiaEconomicsReview">
             <FB />
