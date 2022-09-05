@@ -76,16 +76,16 @@ export default function AboutUs() {
           <p>
             For comments, questions and submission inquiries please email us at{" "}
             <a href="mailto:econreview@columbia.edu">econreview@columbia.edu</a>{" "}
-            or reach out via our Facebook or Instagram pages.</p>
+            or reach out via our Facebook or Instagram pages. </p>
             
-            Journal submissions must meet the following requirements:</p>
-              1. The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it. </p>
-              2. Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g jpeg) should be submitted alongside the paper. </p>
-              3. Any spreadsheets used should also have relevant data linked. </p>
-              4. Not have already been published in other journals. By submitting, you give CER the sole right to publish the paper and make any edits that we see fit. Please do not submit to other academic journals. </p>
-              5. All manuscripts should be submitted in PDF format with 1.5 line spacing. We strongly recommend manuscripts not exceed 40 pages (not including the bibliography and extra data tables). The suggested length includes reference lists, figures, and tables. Submit the .tex file if LaTeX was used). It is the author’s responsibility to condense the thesis prior to submitting the documents. </p>
-              6. Please use 12-point Times New Roman or similar font. Margins should be 1.5 inches on the top, bottom, and sides.</p>
-              7. Include an abstract of 100 or fewer words.</p>
+            <p>Journal submissions must meet the following requirements:</p> <ol type="1">
+              <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
+              <li>Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g jpeg) should be submitted alongside the paper.</li>
+              <li>Any spreadsheets used should also have relevant data linked.</li>
+              <li>Not have already been published in other journals. By submitting, you give CER the sole right to publish the paper and make any edits that we see fit. Please do not submit to other academic journals.</li>
+              <li>All manuscripts should be submitted in PDF format with 1.5 line spacing. We strongly recommend manuscripts not exceed 40 pages (not including the bibliography and extra data tables). The suggested length includes reference lists, figures, and tables. Submit the .tex file if LaTeX was used). It is the author’s responsibility to condense the thesis prior to submitting the documents.</li>
+              <li>Please use 12-point Times New Roman or similar font. Margins should be 1.5 inches on the top, bottom, and sides.</li>
+              <li>Include an abstract of 100 or fewer words.</li>
 
           </p>
           <a href="https://www.facebook.com/ColumbiaEconomicsReview">
