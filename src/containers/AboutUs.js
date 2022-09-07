@@ -70,7 +70,7 @@ export default function AboutUs() {
             students at Columbia across a diverse array of academic disciplines.
           </p>
               <p>
-            <b>Journal submissions must meet the following requirements:</b>
+            <b>Submissions for the Fall 2022 issue are due on October 1st. Journal submissions must meet the following requirements:</b>
             <ol type="1">
             <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
             <li>Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g., jpeg) should be submitted alongside the paper.</li>
