@@ -139,7 +139,7 @@ function App() {
         <Announcement
           title="Apply to Columbia Economic Review!"
           subtitle="If interested, please apply before 9/26 by clicking on this banner"
-          link="https://columbiaeconreview.com/About#aboutUs:~:text=year%2C%20please%20apply-,here,-by%2011%3A59PM"
+          link="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform"
           //imageSource={"https://gocanvas.stanford.edu/wp-content/uploads/2019/08/announcements.png"}
           daysToLive={0}
           secondsBeforeBannerShows={1}
