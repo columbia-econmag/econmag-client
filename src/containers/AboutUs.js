@@ -100,12 +100,6 @@ export default function AboutUs() {
 
         <div className="uglyJournal">
           <p>
-            We require all potential staff members to be current undergraduate
-            students at Columbia University. Students who are interested in CER
-            are recommended to attend our events through the year and follow our
-            social media accounts to learn more about recruitment each semester.
-          </p>
-          <p>
             For the 2022-2023 academic year, please apply {" "}
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform">
               here
@@ -119,6 +113,12 @@ export default function AboutUs() {
               this Zoom link
             </a>
             .
+          </p>
+          <p>
+            We require all potential staff members to be current undergraduate
+            students at Columbia University. Students who are interested in CER
+            are recommended to attend our events through the year and follow our
+            social media accounts to learn more about recruitment each semester.
           </p>
         </div>
         <a id="managingBoard"></a>
