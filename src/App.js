@@ -138,9 +138,9 @@ function App() {
       <div className="App container">
         <Announcement
           title="Apply to Columbia Economic Review!"
-          subtitle="If interested, please apply before 9/26 by clicking on this banner"
+          subtitle="If interested, please apply by 9/26 by clicking on this banner"
           link="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform"
-          //imageSource={"https://gocanvas.stanford.edu/wp-content/uploads/2019/08/announcements.png"}
+          imageSource={"https://www.nicepng.com/ourpic/u2q8i1i1i1r5i1i1_filecolumbia-crown-simple-columbia-university-logo/"}
           daysToLive={0}
           secondsBeforeBannerShows={1}
       />
