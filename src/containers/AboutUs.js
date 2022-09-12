@@ -114,10 +114,10 @@ export default function AboutUs() {
           </p>
   
             <p>
-            We will have a virtual information session on September 16th at 4PM at 
+            We will have a virtual information session on September 16th at 4PM at {" "}
             <a href="https://columbiauniversity.zoom.us/j/99593888924">
               this link
-            </a>{" "}
+            </a>
             .
           </p>
         </div>
