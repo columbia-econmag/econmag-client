@@ -105,6 +105,21 @@ export default function AboutUs() {
             are recommended to attend our events through the year and follow our
             social media accounts to learn more about recruitment each semester.
           </p>
+          <p>
+            For the 2022-2023 academic year, please apply {" "}
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform">
+              here
+            </a>{" "}
+            by 11:59PM on September 26th, 2022.
+          </p>
+  
+            <p>
+            We will have a virtual information session on September 16th at 4PM at 
+            <a href="https://columbiauniversity.zoom.us/j/99593888924">
+              this link
+            </a>{" "}
+            .
+          </p>
         </div>
         <a id="managingBoard"></a>
         <Header>2022–2023 Managing Board</Header>
