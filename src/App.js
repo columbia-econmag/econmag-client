@@ -87,6 +87,7 @@ const SearchGroup = styled.div`
   }
 `;
 
+
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
