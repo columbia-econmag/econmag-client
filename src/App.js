@@ -141,7 +141,7 @@ function App() {
           title="Apply to Columbia Economic Review!"
           subtitle="If interested, please apply by 9/26 by clicking on this banner"
           link="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform"
-          //imageSource={"~/public/android-chrome-192x192.png"}
+          imageSource={"~/public/android-chrome-192x192.png"}
           daysToLive={0}
           secondsBeforeBannerShows={1}
       />
