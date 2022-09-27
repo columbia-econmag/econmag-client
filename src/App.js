@@ -137,20 +137,20 @@ function App() {
     !isAuthenticating && (
       
       <div className="App container">
-      //Uncomment this if you want to display joining banner, might need to fix link
-//         <Announcement
-//           title="Apply to Columbia Economic Review!"
-//           subtitle="If interested, please apply by 9/26 by clicking on this banner"
-//           link="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform"
-//           imageSource={"~/public/android-chrome-192x192.png"}
-//           daysToLive={0}
-//           secondsBeforeBannerShows={1}
-//       />
-        {/* <Navbar.Brand
+      //Uncomment this if you want to display joining banner, might need to fix link to image
+      /*  <Announcement
+          title="Apply to Columbia Economic Review!"
+          subtitle="If interested, please apply by 9/26 by clicking on this banner"
+          link="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform"
+          imageSource={"~/public/android-chrome-192x192.png"}
+          daysToLive={0}
+          secondsBeforeBannerShows={1}
+      /> */
+        /* <Navbar.Brand
           style={{ width: "100%", margin: "auto", textAlign: "center" }}
         >
           Columbia Econ Review
-        </Navbar.Brand> */}
+        </Navbar.Brand> */
         <div style={{ width: "100%", textAlign: "center", padding: "1%" }}>
           <LinkContainer to="/">
             <img
