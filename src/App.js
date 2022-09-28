@@ -137,7 +137,7 @@ function App() {
     !isAuthenticating && (
       
       <div className="App container">
-        <Announcement
+      {/*<Announcement
           title="Apply to Columbia Economic Review!"
           subtitle="If interested, please apply by 9/26 by clicking on this banner"
           link="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform"
@@ -145,11 +145,11 @@ function App() {
           daysToLive={0}
           secondsBeforeBannerShows={1}
       /> 
-        /* <Navbar.Brand
+             <Navbar.Brand
           style={{ width: "100%", margin: "auto", textAlign: "center" }}
         >
           Columbia Econ Review
-        </Navbar.Brand> */
+        </Navbar.Brand> */}
         <div style={{ width: "100%", textAlign: "center", padding: "1%" }}>
           <LinkContainer to="/">
             <img
