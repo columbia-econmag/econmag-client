@@ -70,7 +70,7 @@ export default function AboutUs() {
             students at Columbia across a diverse array of academic disciplines.
           </p>
               <p>
-            <b>Submissions for the Fall 2022 issue are due on October 1st. Journal submissions must meet the following requirements:</b>
+            <b>The Columbia Economic Review is not currently taking submissions. Journal submissions must meet the following requirements:</b>
             <ol type="1">
             <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
             <li>Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g., jpeg) should be submitted alongside the paper.</li>
@@ -97,7 +97,7 @@ export default function AboutUs() {
         </div>
         <Header>Join Us</Header>
         <a id="joinUs"></a>
-
+<!--
         <div className="uglyJournal">
           <p>
             For the 2022-2023 academic year, please apply {" "}
@@ -114,6 +114,7 @@ export default function AboutUs() {
             </a>
             .
           </p>
+  -->
           <p>
             We require all potential staff members to be current undergraduate
             students at Columbia University. Students who are interested in CER
