@@ -115,7 +115,7 @@ export default function AboutUs() {
         <Header>2022–2023 Managing Board</Header>
         <div className="uglyJournal">
           <p>Editor-in-Chief: Jacob Kim-Sherman</p>
-          <img src="Jacob.jpg" alt="Jacob">
+          <img public="Jacob.jpg" alt="Jacob">
           <p>President: Alqaim Lalani</p>
           <p>Managing Editor—Journal: Jessica Li</p>
           <p>Managing Editor—Online: Zac Narimanian</p>
