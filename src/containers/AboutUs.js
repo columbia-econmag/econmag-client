@@ -100,21 +100,21 @@ export default function AboutUs() {
 
         <div className="uglyJournal">
           
-          <p>
-            For the 2022-2023 academic year, please apply {" "}
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform">
-              here
-            </a>{" "}
-            by 11:59PM on September 26th, 2022.
-          </p>
+  //        <p>
+  //          For the 2022-2023 academic year, please apply {" "}
+  //         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform">
+  //            here
+  //          </a>{" "}
+  //          by 11:59PM on September 26th, 2022.
+  //        </p>
   
-            <p>
-            We will have a virtual information session on Friday, September 16th at 4PM at {" "}
-            <a href="https://columbiauniversity.zoom.us/j/99593888924">
-              this Zoom link
-            </a>
-            .
-          </p>
+  //          <p>
+  //          We will have a virtual information session on Friday, September 16th at 4PM at {" "}
+  //          <a href="https://columbiauniversity.zoom.us/j/99593888924">
+  //            this Zoom link
+  //          </a>
+  //          .
+  //        </p>
           <p>
             We require all potential staff members to be current undergraduate
             students at Columbia University. Students who are interested in CER
