@@ -118,7 +118,7 @@ export default function AboutUs() {
           <p>Jacob Kim-Sherman (CC ’23) is a Laidlaw Scholar studying Economics and Mathematics. He is originally
           from Santa Barbara, California, and hopes to pursue a career in Economics academia. Outside of CER and
           Economics, he enjoys learning the keyboard works of Johann Sebastian Bach. After graduation, Jacob will
-          work as a Research Analyst at the Federal Reserve Bank of New York. /p>
+          work as a Research Analyst at the Federal Reserve Bank of New York. </p>
 
           <p><b>Alqaim Lalani</b>, President</p>
           <p>Alqaim Lalani (CC ‘23) is a John W. Kluge Scholar double majoring in Economics and History. He is
@@ -126,27 +126,27 @@ export default function AboutUs() {
           Cambridge. He previously served as a Contributing Writer and later as the Executive Editor. Outside
           of CER, Alqaim is the Chair of the Columbia College Senior Fund, Executive Board Member of the Columbia
           Economics Society, and a Columbia College Student-Alumni Ambassador. He is a graduate of the Aga Khan
-          Academy in Mombasa, Kenya. /p>
+          Academy in Mombasa, Kenya. </p>
           <p><b>Jessica Li</b>, Managing Editor—Journal</p>
           <p>Jessica Li is a senior (SEAS ‘23) majoring in applied math and minoring in economics. She currently
           serves as the Managing Editor of Journal for CER, and has previously served as the graphics editor for
           the Columbia Daily Spectator’s 145th Managing Board. Her hobbies include swimming, sending voice
           messages, and trying not to burn down her (very combustible) building while cooking. After graduation,
-          Jessica will work as a research analyst at the Federal Reserve Bank of New York. /p>
+          Jessica will work as a research analyst at the Federal Reserve Bank of New York. </p>
           <p><b>Zac Narimanian</b>, Managing Editor—Online</p>
           <p>Zac Narimanian (CC ‘24) is a junior in Columbia College double majoring in Economics and Computer
           Science, originally from Wilmington, Delaware. He currently serves as Managing Editor of the CER Online
           Journal, and has previously served as a Deputy Executive Editor and Contributor for the publication.
           Outside of CER, he serves as an editor for the Columbia Undergraduate Law Review, senior equity analyst
           for Mongo Fund, and a legal researcher for the New York Small Claims Advisory Service. His interests in
-          economics primarily lie at the intersection of public policy and sustainability. /p>
+          economics primarily lie at the intersection of public policy and sustainability. </p>
           <p><b>Amina Isayeva</b>, Managing Editor—Operations</p>
           <p>Amina Isayeva (CC ‘25) is a sophomore in Columbia College double majoring in Economics and Computer
           Science, originally from Baku, Azerbaijan. She currently serves as Head of Operations at CER. Outside of
           CER, she serves as Director of Consulting at Columbia Economics Society, Operational Committee Leader at
           Columbia Organization of Rising Entrepreneurs, Managing Board member at Consilience Sustainability
           Journal, and Business Development Intern at AvoMD. Her hobbies include swimming, learning new languages,
-          trying out every salad combo at Milano Market, and going to escape rooms. /p>
+          trying out every salad combo at Milano Market, and going to escape rooms. </p>
         </div>
       </OuterDiv>
     </div>
