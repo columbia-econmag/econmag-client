@@ -100,7 +100,10 @@ export default function AboutUs() {
 
         <div className="uglyJournal">
           
-
+          <p>
+            Columbia Economic Review has concluded recruiting for the Fall 2022 application 
+            cycle. Check back for more updates regarding Spring 2022 recruitment.
+          </p>
           <p>
             We require all potential staff members to be current undergraduate
             students at Columbia University. Students who are interested in CER
