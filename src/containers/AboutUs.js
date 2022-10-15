@@ -100,7 +100,6 @@ export default function AboutUs() {
 
         <div className="uglyJournal">
           
-          <!--
           <p>
             For the 2022-2023 academic year, please apply {" "}
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeijfkZGfyCvP7fqgOOfwBhLm3srFd2hIjwiHaPwO9yjfEylg/viewform">
@@ -116,7 +115,6 @@ export default function AboutUs() {
             </a>
             .
           </p>
-          -->
           <p>
             We require all potential staff members to be current undergraduate
             students at Columbia University. Students who are interested in CER
