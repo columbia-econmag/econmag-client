@@ -122,6 +122,8 @@ export default function AboutUs() {
           work as a Research Analyst at the Federal Reserve Bank of New York. </p>
 
           <p><b>Alqaim Lalani</b>, President </p>
+          <img src="/Alqaim.jpg" alt="Alqaim"/>
+
           <p>Alqaim Lalani (CC ‘23) is a John W. Kluge Scholar double majoring in Economics and History. He is
           originally from Dar es Salaam, Tanzania. Alqaim has also studied at Pembroke College, University of
           Cambridge. He previously served as a Contributing Writer and later as the Executive Editor. Outside
@@ -129,12 +131,14 @@ export default function AboutUs() {
           Economics Society, and a Columbia College Student-Alumni Ambassador. He is a graduate of the Aga Khan
           Academy in Mombasa, Kenya. </p>
           <p><b>Jessica Li</b>, Managing Editor—Journal </p>
+          <img src="/Jessica.jpg" alt="Jessica"/>
           <p>Jessica Li is a senior (SEAS ‘23) majoring in applied math and minoring in economics. She currently
           serves as the Managing Editor of Journal for CER, and has previously served as the graphics editor for
           the Columbia Daily Spectator’s 145th Managing Board. Her hobbies include swimming, sending voice
           messages, and trying not to burn down her (very combustible) building while cooking. After graduation,
           Jessica will work as a research analyst at the Federal Reserve Bank of New York. </p>
           <p><b>Zac Narimanian</b>, Managing Editor—Online </p>
+          <img src="/Zac.jpg" alt="Zac"/>
           <p>Zac Narimanian (CC ‘24) is a junior in Columbia College double majoring in Economics and Computer
           Science, originally from Wilmington, Delaware. He currently serves as Managing Editor of the CER Online
           Journal, and has previously served as a Deputy Executive Editor and Contributor for the publication.
@@ -142,6 +146,7 @@ export default function AboutUs() {
           for Mongo Fund, and a legal researcher for the New York Small Claims Advisory Service. His interests in
           economics primarily lie at the intersection of public policy and sustainability. </p>
           <p><b>Amina Isayeva</b>, Managing Editor—Operations </p>
+          <img src="/Amina.jpg" alt="Amina"/>
           <p>Amina Isayeva (CC ‘25) is a sophomore in Columbia College double majoring in Economics and Computer
           Science, originally from Baku, Azerbaijan. She currently serves as Head of Operations at CER. Outside of
           CER, she serves as Director of Consulting at Columbia Economics Society, Operational Committee Leader at
