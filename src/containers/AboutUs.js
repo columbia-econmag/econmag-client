@@ -115,6 +115,7 @@ export default function AboutUs() {
         <Header>2022–2023 Managing Board</Header>
         <div className="uglyJournal">
           <p><b>Jacob Kim-Sherman</b>, Editor-In-Chief </p>
+          <img src="public/Jacob.jpg"/>
           <p>Jacob Kim-Sherman (CC ’23) is a Laidlaw Scholar studying Economics and Mathematics. He is originally
           from Santa Barbara, California, and hopes to pursue a career in Economics academia. Outside of CER and
           Economics, he enjoys learning the keyboard works of Johann Sebastian Bach. After graduation, Jacob will
