@@ -104,7 +104,7 @@ const categories = [
   "World",
   "U.S.",
   "Competitions",
-  "Spring 2021 Issue",
+  "Spring 2023 Issue",
 ];
 
 export default function EditArticle() {
