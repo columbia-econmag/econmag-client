@@ -174,7 +174,7 @@ function App() {
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/journal/Spring 2021 Issue">
-                <Nav.Link>CurrenT Issue</Nav.Link>
+                <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to ="/previousIssues">
