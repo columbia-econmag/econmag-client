@@ -186,7 +186,7 @@ export default function Journal(...props) {
   }, [journal_year]);
 
   function loadArticles() {
-    var x = API.get("posts", "posts/category/Spring 2021 Issue/excerpt");
+    var x = API.get("posts", "posts/category/Spring 2023 Issue/excerpt");
     return x;
   }
 
