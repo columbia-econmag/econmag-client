@@ -251,7 +251,7 @@ export default function Journal(...props) {
         <InnerSection>
           <Row>
             <Col md="auto" style={{ textAlign: "left" }}>
-              <Header>Spring 2021 Issue | Volume XIV</Header>
+              <Header>Spring 2023 Issue | Volume XV</Header>
               <h4 style={{ marginBottom: "20px" }}>Contributions From:</h4>
               <AuthorName>Ana Pranger</AuthorName>
               <SchoolName>Princeton University</SchoolName>
