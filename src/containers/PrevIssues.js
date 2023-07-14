@@ -19,12 +19,14 @@ const Default = ({ children }) => {
 
 //IF ADDING NEW ISSUES CHANGE THIS 
 const prevIssues = [
+  "Spring 2021 Issue", 
   "Fall 2020 Issue",
   "Spring 2020 Issue"
 ];
 
 //ALSO CHANGE THIS
 const prevVolumes = [
+  "Volume XIV",
   "Volume XIII",
   "Volume XII"
 ]

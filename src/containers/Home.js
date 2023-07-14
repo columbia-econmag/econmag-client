@@ -89,10 +89,10 @@ export default function Home() {
                 </div>
               }
             >
-              <Issue query = "posts/category/Spring 2021 Issue" 
-              issue = "Spring 2021 Issue" 
+              <Issue query = "posts/category/Spring 2023 Issue" 
+              issue = "Spring 2023 Issue" 
               image ="https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/Spring 2021 Issue.jpg"
-              volume = "Volume XIV"
+              volume = "Volume XV"
               isPrev = {false}/>
             </Suspense>
           </InnerSection>
