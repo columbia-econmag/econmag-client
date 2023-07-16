@@ -118,7 +118,7 @@ export default function AboutUs() {
           <img src="/Jacob.jpg" alt="Jacob" width="200px"/>
           <p>Jacob Kim-Sherman (CC ’23) is a Laidlaw Scholar studying Economics and Mathematics. He is originally
           from Santa Barbara, California, and hopes to pursue a career in Economics academia. Outside of CER and
-          Economics, he enjoys learning the keyboard works of J.S. Bach. After graduation, Jacob will
+          Economics, he enjoys learning the keyboard works of Johann Sebastian Bach. After graduation, Jacob will
           work as a Research Analyst at the Federal Reserve Bank of New York. </p>
 
           <p><b>Alqaim Lalani</b>, President </p>
