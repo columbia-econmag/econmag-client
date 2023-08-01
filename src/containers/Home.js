@@ -91,7 +91,7 @@ export default function Home() {
             >
               <Issue query = "posts/category/2022-2023 Issue" 
               issue = "2022-2023 Issue" 
-              image ="https://columbiaeconreview.com/2022-2023Issue.jpg"
+              image ="https://columbiaeconreview.com/2022-2023cover.png"
               volume = "Volume XV"
               isPrev = {false}/>
             </Suspense>
@@ -127,7 +127,7 @@ export default function Home() {
             >
               <Issue query = "posts/category/2022-2023 Issue" 
               issue = "2022-2023 Issue" 
-              image ="https://columbiaeconreview.com/2022-2023Issue.jpg"
+              image ="https://columbiaeconreview.com/2022-2023cover.png"
               volume = "Volume XV"/>
             </Suspense>
           </InnerSection>
