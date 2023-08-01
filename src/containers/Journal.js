@@ -274,7 +274,7 @@ export default function Journal(...props) {
               <img
                 style={{ maxHeight: "450px", maxWidth: "100%" }}
                 alt="currentissueImage"
-                src="https://columbiaeconreview.com/2022-2023Issue.jpg"
+                src="https://columbiaeconreview.com/2022-2023cover.png"
               />
             </Col>
           </Row>
