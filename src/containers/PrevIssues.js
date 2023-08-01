@@ -26,7 +26,7 @@ const prevIssues = [
 
 //ALSO CHANGE THIS
 const prevVolumes = [
-  "Volume XIV"
+  "Volume XIV",
   "Volume XIII",
   "Volume XII"
 ]
