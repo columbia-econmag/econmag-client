@@ -91,7 +91,7 @@ export default function Home() {
             >
               <Issue query = "posts/category/2022-2023 Issue" 
               issue = "2022-2023 Issue" 
-              image ="https://drive.google.com/file/d/1EbZp54tKNOfvK1-S-fwH9tg7iBg5JM1C/view?usp=sharing"
+              image ="https://columbiaeconreview.com/2022-2023 Issue.jpg"
               volume = "Volume XV"
               isPrev = {false}/>
             </Suspense>
@@ -127,7 +127,7 @@ export default function Home() {
             >
               <Issue query = "posts/category/2022-2023 Issue" 
               issue = "2022-2023 Issue" 
-              image ="https://drive.google.com/file/d/1EbZp54tKNOfvK1-S-fwH9tg7iBg5JM1C/view?usp=sharing"
+              image ="https://columbiaeconreview.com/2022-2023 Issue.jpg"
               volume = "Volume XV"/>
             </Suspense>
           </InnerSection>
