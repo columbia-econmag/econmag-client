@@ -27,7 +27,6 @@ const categories = [
   "World",
   "U.S",
   "Competitions",
-  "Spring 2023 Issue",
   "2022-2023 Issue",
 ];
 const OuterDiv = styled.div`
