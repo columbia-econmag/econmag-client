@@ -69,16 +69,6 @@ export default function AboutUs() {
             . CER is led, organized and operated entirely by undergraduate
             students at Columbia across a diverse array of academic disciplines.
           </p>
-              <p>
-            <b>The Columbia Economic Review is not currently taking submissions. Journal submissions must meet the following requirements:</b>
-            <ol type="1">
-            <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
-            <li>Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g., jpeg) should be submitted alongside the paper.</li>
-            <li>Any spreadsheets used should also have relevant data linked.</li>
-            <li>Not have already been published in other journals. By submitting, you give CER the sole right to publish the paper and make any edits that we see fit. Please do not submit to other academic journals.</li>
-            <li>All manuscripts should be submitted in PDF format with 1.5 line spacing. We strongly recommend manuscripts not exceed 40 pages (not including the bibliography and extra data tables). The suggested length includes reference lists, figures, and tables. Submit the .tex file if LaTeX was used). It is the author’s responsibility to condense the thesis prior to submitting the documents.</li>
-            <li>Please use 12-point Times New Roman or similar font. Margins should be 1.5 inches on the top, bottom, and sides.</li>
-            <li>Include an abstract of 100 or fewer words.</li> </ol> </p>
         </div>
         <Header id="contactUs">Contact Us</Header>
         <a id="contactUs" />

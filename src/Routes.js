@@ -22,7 +22,8 @@ const AsyncJournal = asyncComponent(() => import("./containers/Journal"));
 const AsyncReset = asyncComponent(() => import("./containers/ResetPassword"));
 const AsyncAbout = asyncComponent(() => import("./containers/AboutUs"));
 const AsyncPrev = asyncComponent(() => import("./containers/PrevIssues"));
-const AsyncIssue = asyncComponent(()=> import("./containers/NewIssue"))
+const AsyncIssue = asyncComponent(()=> import("./containers/NewIssue"));
+const Announcements = asyncComponent(() => import("./containers/Announcements"));
 
 export default ({ childProps }) => (
   <Switch>
@@ -38,6 +39,7 @@ export default ({ childProps }) => (
     <Route path="/login/reset" exact component={AsyncReset} />
     <Route path="/about" exact component={AsyncAbout} />
     <Route path="/previousIssues" exact component={AsyncPrev} />
+      <Route path="/announcements" exact component={Announcements} />
 
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <AuthenticatedRoute path="/signup" exact component={AsyncSignup} />

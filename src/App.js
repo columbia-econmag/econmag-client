@@ -173,6 +173,9 @@ function App() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/announcements">
+                <Nav.Link>Announcements</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/journal/2022-2023 Issue">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
