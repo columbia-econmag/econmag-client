@@ -101,48 +101,68 @@ export default function AboutUs() {
             social media accounts to learn more about recruitment each semester.
           </p>
         </div>
+
         <a id="managingBoard"></a>
         <Header>2022–2023 Managing Board</Header>
         <div className="uglyJournal">
-          <p><b>Jacob Kim-Sherman</b>, Editor-In-Chief </p>
-          <img src="/Jacob.jpg" alt="Jacob" width="200px"/>
-          <p>Jacob Kim-Sherman (CC ’23) is a Laidlaw Scholar studying Economics and Mathematics. He is originally
-          from Santa Barbara, California, and hopes to pursue a career in Economics academia. Outside of CER and
-          Economics, he enjoys learning the keyboard works of Johann Sebastian Bach. After graduation, Jacob will
-          work as a Research Analyst at the Federal Reserve Bank of New York. </p>
+          <p><b>Zac Narimanian</b>, Editor-In-Chief </p>
+          <img src="/Zac.png" alt="Zac Narimanian" width="200px"/>
+          <p>Zac Narimanian (CC ‘24) is a rising senior in Columbia College double majoring in Economics and Computer Science,
+            originally from Wilmington, Delaware. He currently serves as the Chief Executive Editor, and has previously
+            served as Managing Editor, Deputy Executive Editor, and Contributor for the Online Journal. Outside of CER,
+            he serves as an editor for the Columbia Undergraduate Law Review, senior equity analyst for Mongo Fund,
+            and a legal researcher for the New York Small Claims Advisory Service. His interests in economics primarily
+            lie at the intersection of public policy and sustainability.
+          </p>
 
-          <p><b>Alqaim Lalani</b>, President </p>
-          <img src="/Alqaim.png" alt="Alqaim" width="200px"/>
 
-          <p>Alqaim Lalani (CC ‘23) is a John W. Kluge Scholar double majoring in Economics and History. He is
-          originally from Dar es Salaam, Tanzania. Alqaim has also studied at Pembroke College, University of
-          Cambridge. He previously served as a Contributing Writer and later as the Executive Editor. Outside
-          of CER, Alqaim is the Chair of the Columbia College Senior Fund, Executive Board Member of the Columbia
-          Economics Society, and a Columbia College Student-Alumni Ambassador. He is a graduate of the Aga Khan
-          Academy in Mombasa, Kenya. </p>
-          <p><b>Jessica Li</b>, Managing Editor—Journal </p>
-          <img src="/Jessica.jpg" alt="Jessica" width="200px"/>
-          <p>Jessica Li is a senior (SEAS ‘23) majoring in applied math and minoring in economics. She currently
-          serves as the Managing Editor of Journal for CER, and has previously served as the graphics editor for
-          the Columbia Daily Spectator’s 145th Managing Board. Her hobbies include swimming, sending voice
-          messages, and trying not to burn down her (very combustible) building while cooking. After graduation,
-          Jessica will work as a research analyst at the Federal Reserve Bank of New York. </p>
-          <p><b>Zac Narimanian</b>, Managing Editor—Online </p>
-          <img src="/Zac.png" alt="Zac" width="200px"/>
-          <p>Zac Narimanian (CC ‘24) is a junior in Columbia College double majoring in Economics and Computer
-          Science, originally from Wilmington, Delaware. He currently serves as Managing Editor of the CER Online
-          Journal, and has previously served as a Deputy Executive Editor and Contributor for the publication.
-          Outside of CER, he serves as an editor for the Columbia Undergraduate Law Review, senior equity analyst
-          for Mongo Fund, and a legal researcher for the New York Small Claims Advisory Service. His interests in
-          economics primarily lie at the intersection of public policy and sustainability. </p>
-          <p><b>Amina Isayeva</b>, Managing Editor—Operations </p>
-          <img src="/Amina.jpg" alt="Amina" width="200px"/>
-          <p>Amina Isayeva (CC ‘25) is a sophomore in Columbia College double majoring in Economics and Computer
-          Science, originally from Baku, Azerbaijan. She currently serves as Head of Operations at CER. Outside of
-          CER, she serves as Director of Consulting at Columbia Economics Society, Operational Committee Leader at
-          Columbia Organization of Rising Entrepreneurs, Managing Board member at Consilience Sustainability
-          Journal, and Business Development Intern at AvoMD. Her hobbies include swimming, learning new languages,
-          trying out every salad combo at Milano Market, and going to escape rooms. </p>
+          <p><b>Alex Zhang</b>, President </p>
+          <img src="/alex-zhang.png" alt="Alex Zhang" width="200px"/>
+          <p>Alex Zhang (GS ’24) is a rising senior from the Columbia-Sciences Po Dual BA Program majoring in
+            Economics-Mathematics, originally from Guangzhou, China and Cupertino, California. He is currently the
+            President of Columbia Economic Review, and has previously served as Deputy Editor. Outside of CER, he is an
+            economic analyst intern at the United Nations, a research assistant at Columbia’s Economics Department, and
+            has served as the Vice President of Vanguard Think Tank for Trans-Pacific Relations. His research interests
+            include international trade, international monetary and political economics, as well as economic growth and
+            development.
+          </p>
+
+          <p><b>Rizwan Kazi</b>, Managing Editor—Journal </p>
+          <img src="/rizwan-kazi.png" alt="Rizwan Kazi" width="200px"/>
+          <p>Rizwan Kazi (CC ‘24) is a rising senior double majoring in Mathematics and Economics, born and raised in
+            the Bronx, New York. Having served as Deputy Editor, he is currently the Managing Editor for the Journal
+            division. Outside of CER, he has worked as a research assistant at Columbia’s Economics Department, Yale’s
+            Research Initiative on Scale and Innovation, and the University of Chicago’s Energy & Environment Lab.
+            His research interests include probability theory, dynamical systems theory, game theory, and economic
+            growth and development.
+          </p>
+
+          <p><b>Sam Barnett</b>, Managing Editor—Online </p>
+          <img src="/sam-barnett.png" alt="Sam Barnett" width="200px"/>
+          <p>Sam Barnett (CC ’24) is originally from Seattle. An Economics-Mathematics major, he is currently the
+            Managing Editor for the Online division. Previously, he served as Deputy Executive Editor. Outside of CER,
+            he has worked as a reporter for the Puget Sound Business Journal through the Dow Jones News Fund and as a
+            research assistant at Harvard Business School. His research interests include wealth and income inequality,
+            education, behavioral economics, and market design.
+          </p>
+
+          <p><b>Anna Bezhanishvili</b>, Chief of Programming </p>
+          <img src="/anna-bezhanishvili.png" alt="Anna Bezhanishvili" width="200px"/>
+          <p>Anna Bezhanishvili (BC '25) is a rising junior majoring in Economics with a minor in Psychology. Born and
+            raised in Baltimore, Maryland, she is originally from Tbilisi, Georgia. She currently serves as the Chief
+            of Programming, and previously started as a podcaster in its launch. Outside of CER, she serves as the
+            Director-General of CMUNNY, a intercollegiate MUN conference hosted by CIRCA, and works at Amity Hall! Her
+            research interests are mainly within applied micro theory and behavioral economics, as she focuses on
+            consumer decision making.
+          </p>
+
+          <p><b>Emma Liu</b>, Director of Technology, Podcast Director </p>
+          <img src="/emma-liu.png" alt="Emma Liu" width="200px"/>
+          <p>Emma Liu (CC ‘25) attended high school at an international school in Beijing. At the College, she is
+            majoring in Economics-Math and concentrating in Physics. She has contributed to CER as a staff writer and
+            podcast producer in previous semesters. Outside of the journal, she is also VP initiatives in CWAVE and an
+            avid baker 🍞
+          </p>
         </div>
       </OuterDiv>
     </div>
