@@ -103,7 +103,7 @@ export default function AboutUs() {
         </div>
 
         <a id="managingBoard"></a>
-        <Header>2022–2023 Managing Board</Header>
+        <Header>2023–2024 Managing Board</Header>
         <div className="uglyJournal">
           <p><b>Zac Narimanian</b>, Editor-In-Chief </p>
           <img src="/Zac.png" alt="Zac Narimanian" width="200px"/>
