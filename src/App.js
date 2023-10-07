@@ -176,13 +176,28 @@ function App() {
               <LinkContainer to="/announcements">
                 <Nav.Link>Announcements</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/journal/2022-2023 Issue">
+
+              <NavDropdown
+                  className="rightMost"
+                  title="Issues"
+                  id="collasible-nav-dropdown"
+              >
+                <NavDropdown.Item href="/journal/2022-2023 Issue">
+                  Current Issue
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/previousIssues">
+                  Past Issues
+                </NavDropdown.Item>
+              </NavDropdown>
+
+              {/*<LinkContainer to="/journal/2022-2023 Issue">
                 <Nav.Link>Current Issue</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to ="/previousIssues">
                <Nav.Link>Past Issues</Nav.Link>
-              </LinkContainer>
+              </LinkContainer>*/}
+
               <LinkContainer to="/category/World?limit=9&page=1">
                 <Nav.Link>World</Nav.Link>
               </LinkContainer>
@@ -198,6 +213,9 @@ function App() {
               </LinkContainer> */}
               <LinkContainer to="/category/Competitions?limit=9&page=1">
                 <Nav.Link>Competitions</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/podcast">
+                <Nav.Link>Podcast</Nav.Link>
               </LinkContainer>
               <NavDropdown
                 className="rightMost"

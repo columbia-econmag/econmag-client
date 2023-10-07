@@ -24,6 +24,8 @@ const AsyncAbout = asyncComponent(() => import("./containers/AboutUs"));
 const AsyncPrev = asyncComponent(() => import("./containers/PrevIssues"));
 const AsyncIssue = asyncComponent(()=> import("./containers/NewIssue"));
 const Announcements = asyncComponent(() => import("./containers/Announcements"));
+const Podcast = asyncComponent(() => import("./containers/Podcast"));
+
 
 export default ({ childProps }) => (
   <Switch>
@@ -40,6 +42,7 @@ export default ({ childProps }) => (
     <Route path="/about" exact component={AsyncAbout} />
     <Route path="/previousIssues" exact component={AsyncPrev} />
       <Route path="/announcements" exact component={Announcements} />
+      <Route path="/podcast" exact component={Podcast} />
 
     <UnauthenticatedRoute path="/login" exact component={AsyncLogin} />
     <AuthenticatedRoute path="/signup" exact component={AsyncSignup} />
