@@ -48,10 +48,10 @@ export default function Announcements() {
         </Header>
         <div className="uglyJournal">
               <p>
-            <b>The Columbia Economic Review is currently taking submissions until 10/16. Journal submissions must meet the following requirements and be emailed to{" "}
+            <b>The Columbia Economic Review is currently taking high school essay submissions until 2/1. Submissions must meet the following requirements and be emailed to{" "}
                 <a href="mailto:econreview@columbia.edu">econreview@columbia.edu</a>:</b>
             <ol type="1">
-            <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 40 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
+            <li>The content of the paper (not including the bibliography and extra data tables) must not exceed 5 pages. It is the author’s responsibility to trim down their work prior to submitting it.</li>
             <li>Include the author’s name and university, acknowledgements (if relevant), and image files of all graphics or tables used in the paper. All images should be included in the paper and separate files (e.g., jpeg) should be submitted alongside the paper.</li>
             <li>Any spreadsheets used should also have relevant data linked.</li>
             <li>Not have already been published in other journals. By submitting, you give CER the sole right to publish the paper and make any edits that we see fit. Please do not submit to other academic journals.</li>
