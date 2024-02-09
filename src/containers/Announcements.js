@@ -91,6 +91,25 @@ export default function Announcements() {
                 </p>
             </div>
 
+            <div className={`uglyJournal`}>
+                <h3 className={`font-weight-bold text-xl-center`}>Call for Submissions – Columbia Economic Review</h3>
+                <p>
+                    The Columbia Economic Review is inviting undergraduates and recent graduates (class of 2023) to
+                    submit their independent work. We welcome seminar papers, research papers and/or theses from all
+                    areas of economics. <br/> <br/>
+
+                    For consideration in the Spring 2024 issue, please email your paper to <a
+                    href="mailto:econreview@columbia.edu">econreview@columbia.edu</a> by
+                    February 16th along with your full name, contact information and a short academic bio. Please note
+                    we will review submissions as soon as possible then move forward in the editing process for
+                    designated papers. We may also reach out for datasets and code for replication purposes. <br/> <br/>
+
+
+                    Prior issues of the journal can be found <a href={`/previousIssues`}>here</a>.
+                </p>
+
+            </div>
+
         </OuterDiv>
     </div>
   );
