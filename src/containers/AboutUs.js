@@ -103,65 +103,59 @@ export default function AboutUs() {
         </div>
 
         <a id="managingBoard"></a>
-        <Header>2023–2024 Managing Board</Header>
+        <Header>2024–2025 Managing Board</Header>
         <div className="uglyJournal">
-          <p><b>Zac Narimanian</b>, Editor-In-Chief </p>
-          <img src="/Zac.png" alt="Zac Narimanian" width="200px"/>
-          <p>Zac Narimanian (CC ‘24) is a rising senior in Columbia College double majoring in Economics and Computer Science,
-            originally from Wilmington, Delaware. He currently serves as the Chief Executive Editor, and has previously
-            served as Managing Editor, Deputy Executive Editor, and Contributor for the Online Journal. Outside of CER,
-            he serves as an editor for the Columbia Undergraduate Law Review, senior equity analyst for Mongo Fund,
-            and a legal researcher for the New York Small Claims Advisory Service. His interests in economics primarily
-            lie at the intersection of public policy and sustainability.
+          <p><b>Alex Zhang</b>, Editor-In-Chief </p>
+          <img src="/alex-zhang.png" alt="Alex" width="200px"/>
+          <p>Alex H. Zhang (GS ’25) is a rising senior from the Columbia-Sciences Po
+            Dual BA Program majoring in Economics-Mathematics, originally from Guangzhou, China and
+            Cupertino, California. He is currently the Editor-in-Chief of Columbia Economic Review,
+            and has previously served as Deputy Editor and President. Outside of CER, he is a research
+            assistant at Columbia’s Economics Department, and has served as an economic analyst intern
+            at the United Nations and as the Vice President of Vanguard Think Tank for Trans-Pacific Relations.
+            His research interests include behavioral macroeconomics, international political economics
+            and monetary economics.
           </p>
 
 
-          <p><b>Alex Zhang</b>, President </p>
-          <img src="/alex-zhang.png" alt="Alex Zhang" width="200px"/>
-          <p>Alex Zhang (GS ’24) is a rising senior from the Columbia-Sciences Po Dual BA Program majoring in
-            Economics-Mathematics, originally from Guangzhou, China and Cupertino, California. He is currently the
-            President of Columbia Economic Review, and has previously served as Deputy Editor. Outside of CER, he is an
-            economic analyst intern at the United Nations, a research assistant at Columbia’s Economics Department, and
-            has served as the Vice President of Vanguard Think Tank for Trans-Pacific Relations. His research interests
-            include international trade, international monetary and political economics, as well as economic growth and
-            development.
+          <p><b>Anna Bezhanishvili</b>, Co-President </p>
+          <img src="/anna.png" alt="Anna Bezhanishvili" width="200px"/>
+          <p>Anna Bezhanishvili (Bez) is a rising senior at Barnard College studying Economics,
+            with minors in Psychology and Mathematics. She is originally from The Republic of
+            Georgia, but grew up in Baltimore Maryland (go Ravens). She is currently the
+            Co-President and has previously served as the Chief of Programming and a podcast
+            producer. Outside of CER, Anna is a research assistant at Columbia Business School,
+            SIPA, and Columbia University Economics Department. Her research interests include
+            applied microeconomic theory, behavioral economics, labor, and development.
           </p>
 
-          <p><b>Rizwan Kazi</b>, Managing Editor—Journal </p>
-          <img src="/rizwan-kazi.png" alt="Rizwan Kazi" width="200px"/>
-          <p>Rizwan Kazi (CC ‘24) is a rising senior double majoring in Mathematics and Economics, born and raised in
-            the Bronx, New York. Having served as Deputy Editor, he is currently the Managing Editor for the Journal
-            division. Outside of CER, he has worked as a research assistant at Columbia’s Economics Department, Yale’s
-            Research Initiative on Scale and Innovation, and the University of Chicago’s Energy & Environment Lab.
-            His research interests include probability theory, dynamical systems theory, game theory, and economic
-            growth and development.
+          <p><b>Emma Liu</b>, Co-President </p>
+          <img src="/emma.png" alt="Emma Liu" width="200px"/>
+          <p>Emma Liu is studying Economics-Math and concentrating in Physics.
+            She attended high school in Beijing. She has served a number of roles
+            throughout her time in CER beginning in freshman year, including Staff Writer,
+            Podcast Producer, and Director of Technology.
           </p>
 
-          <p><b>Sam Barnett</b>, Managing Editor—Online </p>
-          <img src="/sam-barnett.png" alt="Sam Barnett" width="200px"/>
-          <p>Sam Barnett (CC ’24) is originally from Seattle. An Economics-Mathematics major, he is currently the
-            Managing Editor for the Online division. Previously, he served as Deputy Executive Editor. Outside of CER,
-            he has worked as a reporter for the Puget Sound Business Journal through the Dow Jones News Fund and as a
-            research assistant at Harvard Business School. His research interests include wealth and income inequality,
-            education, behavioral economics, and market design.
+          <p><b>Devon Hunter</b>, Managing Editor—Online </p>
+          <img src="/devon.png" alt="Devon Hunter" width="200px"/>
+          <p>Devon is a senior studying economics and American studies, and is currently
+            serving as Managing Editor of the Journal. He has also previously been a deputy
+            editor in the division. He intends to pursue a career in law, and is researching
+            decision-making in small-scale voting for his thesis. Outside of CER, he is
+            also involved in the Columbia Undergraduate Law Review, where he serves as the
+            Executive Editor of the Online division.
           </p>
 
-          <p><b>Anna Bezhanishvili</b>, Chief of Programming </p>
-          <img src="/anna-bezhanishvili.png" alt="Anna Bezhanishvili" width="200px"/>
-          <p>Anna Bezhanishvili (BC '25) is a rising junior majoring in Economics with a minor in Psychology. Born and
-            raised in Baltimore, Maryland, she is originally from Tbilisi, Georgia. She currently serves as the Chief
-            of Programming, and previously started as a podcaster in its launch. Outside of CER, she serves as the
-            Director-General of CMUNNY, a intercollegiate MUN conference hosted by CIRCA, and works at Amity Hall! Her
-            research interests are mainly within applied micro theory and behavioral economics, as she focuses on
-            consumer decision making.
-          </p>
-
-          <p><b>Emma Liu</b>, Director of Technology, Podcast Director </p>
-          <img src="/emma-liu.png" alt="Emma Liu" width="200px"/>
-          <p>Emma Liu (CC ‘25) attended high school at an international school in Beijing. At the College, she is
-            majoring in Economics-Math and concentrating in Physics. She has contributed to CER as a staff writer and
-            podcast producer in previous semesters. Outside of the journal, she is also VP initiatives in CWAVE and an
-            avid baker 🍞
+          <p><b>Zaheer Abbas</b>, Managing Editor – Journal </p>
+          <img src="/zaheer.png" alt="Zaheer Abbas" width="200px"/>
+          <p>Zaheer Abbas (GS ‘25) is a senior from the Columbia-SciencesPo Dual BA, majoring
+            in Economics. He was born and raised in Dhaka, Bangladesh. He is currently
+            Managing Editor for the Online division. Beyond CER, he has been a part of
+            e-boards for Columbia Economics Society, as well as Club Bangla. He works for
+            Youth Policy Forum, a policy organization back in Bangladesh, and has worked
+            as a research assistant for Columbia Business School. His research interests
+            include economic development, macroeconomics, and public policy.
           </p>
         </div>
       </OuterDiv>
