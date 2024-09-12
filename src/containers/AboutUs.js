@@ -75,13 +75,13 @@ export default function AboutUs() {
         <div className="uglyJournal">
           <p>
             For comments, questions and submission inquiries please email us at{" "}
-            <a href="mailto:econreview@columbia.edu">econreview@columbia.edu</a>{" "}
+            <a href="mailto:columbiaeconreview1754@gmail.com">columbiaeconreview1754@gmail.com</a>{" "}
             or reach out via our Facebook or Instagram pages. </p>
 
           <a href="https://www.facebook.com/ColumbiaEconomicsReview">
             <FB />
           </a>
-          <a href="https://www.instagram.com/columbiaeconreview/">
+          <a href="https://www.instagram.com/columbiaeconomicreview?igsh=NGN4eTIzOTFqMG00">
             <Insta />
           </a>
         </div>
