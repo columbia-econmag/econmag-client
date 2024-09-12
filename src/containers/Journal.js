@@ -251,30 +251,32 @@ export default function Journal(...props) {
         <InnerSection>
           <Row>
             <Col md="auto" style={{ textAlign: "left" }}>
-              <Header>2022-2023 Issue | Volume XV</Header>
+              <Header>2023-2024 Issue | Volume XVI</Header>
               <h4 style={{ marginBottom: "20px" }}>Contributions From:</h4>
-              <AuthorName>Ilina Logani</AuthorName>
+              <AuthorName>Ariana Gamero</AuthorName>
               <SchoolName>Columbia University</SchoolName>
-              <AuthorName>Ignacio Lopez Gaffney Jr.</AuthorName>
-              <SchoolName>Columbia University</SchoolName>
-              <AuthorName>Bennett Smith-Worthington</AuthorName>
-              <SchoolName>Columbia University</SchoolName>
-              <AuthorName>Abhimanyu Banerjee</AuthorName>
-              <SchoolName>Princeton University</SchoolName> 
-              <AuthorName>Solveig Baylor</AuthorName>
-              <SchoolName>Georgetown University</SchoolName>
-              <AuthorName>Steele Schoeberl</AuthorName>
-              <SchoolName>Georgetown University</SchoolName>
-              <AuthorName>Zhang Zhi</AuthorName>
+              <AuthorName>Ariel Wang</AuthorName>
               <SchoolName>University of Chicago</SchoolName>
-              <AuthorName>Rayna Zhou</AuthorName>
-              <SchoolName>Georgetown University</SchoolName>
+              <AuthorName>Bofan Ji</AuthorName>
+              <SchoolName>Princeton University</SchoolName>
+              <AuthorName>Elior Waskow</AuthorName>
+              <SchoolName>University of Michigan</SchoolName>
+              <AuthorName>Fasih Zulfiqar</AuthorName>
+              <SchoolName>Institute of Business Administration, Karachi</SchoolName>
+              <AuthorName>Finnie Zhao</AuthorName>
+              <SchoolName>Duke University</SchoolName>
+              <AuthorName>Matthew Xu</AuthorName>
+              <SchoolName>Columbia University</SchoolName>
+              <AuthorName>Roy Long</AuthorName>
+              <SchoolName>University of Chicago</SchoolName>
+              <AuthorName>Stuti Saria</AuthorName>
+              <SchoolName>New York University</SchoolName>
             </Col>
             <Col style={{ margin: "auto", textAlign: "center" }}>
               <img
                 style={{ maxHeight: "450px", maxWidth: "100%" }}
                 alt="currentissueImage"
-                src="https://columbiaeconreview.com/2022-2023cover.png"
+                src="/spring2024cover.jpeg"
               />
             </Col>
           </Row>
@@ -285,67 +287,67 @@ export default function Journal(...props) {
           <Letter id="letters">
             <InnerSection>
               <div style={{ padding: '5% 4%' }}>
-                <p>Dear Readers,</p>
-                <p style={{ textIndent: '.5in' }}>
-                  The editorial leadership of the Columbia Economic Review is very excited to 
-                  present our 2022–2023 volume, Volume XV. The past few years have ushered in 
-                  a new set of societal and economic changes that have disrupted many of the 
-                  ways in which the world works—many short-term policy changes were made to 
-                  adjust to immediate crises. Nevertheless, these changes have presented numerous 
-                  new opportunities in which to explore and test novel economic questions relating 
-                  to said policy changes, the focus of some of the papers featured in this volume here.
+                {/*<p>Dear Readers,</p>*/}
+                {/*<p style={{ textIndent: '.5in' }}>*/}
+                {/*  The editorial leadership of the Columbia Economic Review is very excited to */}
+                {/*  present our 2022–2023 volume, Volume XV. The past few years have ushered in */}
+                {/*  a new set of societal and economic changes that have disrupted many of the */}
+                {/*  ways in which the world works—many short-term policy changes were made to */}
+                {/*  adjust to immediate crises. Nevertheless, these changes have presented numerous */}
+                {/*  new opportunities in which to explore and test novel economic questions relating */}
+                {/*  to said policy changes, the focus of some of the papers featured in this volume here.*/}
 
-                </p>
-                <p style={{ textIndent: '.5in' }}>
-                  The Columbia Economic Review has also discovered new ways to adjust to the 
-                  changes of the era. This volume presents premiering our new entirely online 
-                  format and layout, and for the first time highlights the senior theses written by the 
-                  2022 Columbia University Department of Economics undergraduate prizewinners. 
-                  Nevertheless, it maintains continuity with the previous fourteen years of the 
-                  Columbia Economic Review’s existence, featuring a select group of excellent senior 
-                  theses and other papers submitted by students at a wide range of undergraduate institutions.
-                </p>
-                <p style={{ textIndent: '.5in' }}>
-                  In this volume, we feature three papers written by the top graduating seniors 
-                  from the Columbia College Class of 2022—the theses written by Ignacio Lopez Gaffney 
-                  and Bennett Smith Worthington, the two 2022 winners of the Sanford S. Parker Prize, 
-                  and Ilina Logani, the 2022 winner of the David Estabrook Romine Prize for the Best 
-                  Senior Thesis. These three students’ exemplary papers cover numerous topics: education 
-                  economics, urban economics, and labor economics, respectively.
-                </p>
-                <p style={{ textIndent: '.5in' }}>
-                  We are also grateful to have received a large set of submissions by current undergraduates 
-                    and graduating seniors of the class of 2022 from a wide range of institutions around 
-                      the country and world. From this body, we feature a select five papers, written by 
-                        Abhimanyu Banerjee, Solveig Baylor, Steele Schoeberl, Zhi Zhang, and Rayna Zhou. The 
-                          papers featured in this volume span a range of areas, including healthcare economics, 
-                            labor economics, and macroeconomics. Despite their wide range in topics, the eight 
-                            papers featured in this volume share in their originality and intellectual rigor.
+                {/*</p>*/}
+                {/*<p style={{ textIndent: '.5in' }}>*/}
+                {/*  The Columbia Economic Review has also discovered new ways to adjust to the */}
+                {/*  changes of the era. This volume presents premiering our new entirely online */}
+                {/*  format and layout, and for the first time highlights the senior theses written by the */}
+                {/*  2022 Columbia University Department of Economics undergraduate prizewinners. */}
+                {/*  Nevertheless, it maintains continuity with the previous fourteen years of the */}
+                {/*  Columbia Economic Review’s existence, featuring a select group of excellent senior */}
+                {/*  theses and other papers submitted by students at a wide range of undergraduate institutions.*/}
+                {/*</p>*/}
+                {/*<p style={{ textIndent: '.5in' }}>*/}
+                {/*  In this volume, we feature three papers written by the top graduating seniors */}
+                {/*  from the Columbia College Class of 2022—the theses written by Ignacio Lopez Gaffney */}
+                {/*  and Bennett Smith Worthington, the two 2022 winners of the Sanford S. Parker Prize, */}
+                {/*  and Ilina Logani, the 2022 winner of the David Estabrook Romine Prize for the Best */}
+                {/*  Senior Thesis. These three students’ exemplary papers cover numerous topics: education */}
+                {/*  economics, urban economics, and labor economics, respectively.*/}
+                {/*</p>*/}
+                {/*<p style={{ textIndent: '.5in' }}>*/}
+                {/*  We are also grateful to have received a large set of submissions by current undergraduates */}
+                {/*    and graduating seniors of the class of 2022 from a wide range of institutions around */}
+                {/*      the country and world. From this body, we feature a select five papers, written by */}
+                {/*        Abhimanyu Banerjee, Solveig Baylor, Steele Schoeberl, Zhi Zhang, and Rayna Zhou. The */}
+                {/*          papers featured in this volume span a range of areas, including healthcare economics, */}
+                {/*            labor economics, and macroeconomics. Despite their wide range in topics, the eight */}
+                {/*            papers featured in this volume share in their originality and intellectual rigor.*/}
 
-                 </p>
-                <p style={{ textIndent: '.5in' }}>
-                 We are extremely grateful for the extensive academic and financial support granted 
-                   by the Columbia University Department of Economics and the Program for Economic 
-                     Research. Additionally, producing this volume took a tremendous amount of work 
-                       done by our extensive team of staff and deputy editors.
-              
-                </p>
-                <p style={{ textIndent: '.5in' }}>
-                  In producing this volume, we hope that we have contributed to the rich world 
-                    of academic inquiry in the field of Economics while providing opportunities 
-                      for current students to gain experience contributing in a variety of ways 
-                        to the body of economic knowledge. As we move forward, we are excited to 
-                          transition the Columbia Economic Review in its new online format to a 
-                            new team of incoming leaders, who we hope will share in our lasting 
-                              commitment to feature original academic work, and in doing so spread 
-                                the insights of a new rising generation of economists, selected and edited 
-                                  by Columbia University undergraduate students.
+                {/* </p>*/}
+                {/*<p style={{ textIndent: '.5in' }}>*/}
+                {/* We are extremely grateful for the extensive academic and financial support granted */}
+                {/*   by the Columbia University Department of Economics and the Program for Economic */}
+                {/*     Research. Additionally, producing this volume took a tremendous amount of work */}
+                {/*       done by our extensive team of staff and deputy editors.*/}
 
-                </p>
-                <p style={{ marginBottom: '2px' }}>Sincerely,</p>
-                <p style={{ paddingBottom: '5px', marginBottom: '0px' }}>
-                  Jacob Kim-Sherman, <i>Editor-in-Chief </i>, and Jessica Li, <i>Managing Editor</i>
-                </p>
+                {/*</p>*/}
+                {/*<p style={{ textIndent: '.5in' }}>*/}
+                {/*  In producing this volume, we hope that we have contributed to the rich world */}
+                {/*    of academic inquiry in the field of Economics while providing opportunities */}
+                {/*      for current students to gain experience contributing in a variety of ways */}
+                {/*        to the body of economic knowledge. As we move forward, we are excited to */}
+                {/*          transition the Columbia Economic Review in its new online format to a */}
+                {/*            new team of incoming leaders, who we hope will share in our lasting */}
+                {/*              commitment to feature original academic work, and in doing so spread */}
+                {/*                the insights of a new rising generation of economists, selected and edited */}
+                {/*                  by Columbia University undergraduate students.*/}
+
+                {/*</p>*/}
+                {/*<p style={{ marginBottom: '2px' }}>Sincerely,</p>*/}
+                {/*<p style={{ paddingBottom: '5px', marginBottom: '0px' }}>*/}
+                {/*  Jacob Kim-Sherman, <i>Editor-in-Chief </i>, and Jessica Li, <i>Managing Editor</i>*/}
+                {/*</p>*/}
               </div>
             </InnerSection>
           </Letter>
