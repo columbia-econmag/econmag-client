@@ -182,7 +182,7 @@ function App() {
                   title="Issues"
                   id="collasible-nav-dropdown"
               >
-                <NavDropdown.Item href="/journal/2022-2023 Issue">
+                <NavDropdown.Item href="/journal/2023-2024 Issue">
                   Current Issue
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/previousIssues">
