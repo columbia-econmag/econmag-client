@@ -27,7 +27,7 @@ const categories = [
   "World",
   "U.S",
   "Competitions",
-  "2022-2023 Issue",
+  "2023-2024 Issue",
 ];
 const OuterDiv = styled.div`
   margin: 20px 10%;
