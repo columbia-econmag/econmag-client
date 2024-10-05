@@ -89,10 +89,10 @@ export default function Home() {
                 </div>
               }
             >
-              <Issue query = "posts/category/2022-2023 Issue" 
-              issue = "2022-2023 Issue" 
-              image ="https://columbiaeconreview.com/2022-2023cover.png"
-              volume = "Volume XV"
+              <Issue query = "posts/category/2023-2024 Issue" 
+              issue = "2023-2024 Issue"
+              image ="/spring2024cover.jpeg"
+              volume = "Volume XVI"
               isPrev = {false}/>
             </Suspense>
           </InnerSection>
@@ -125,10 +125,10 @@ export default function Home() {
                 </div>
               }
             >
-              <Issue query = "posts/category/2022-2023 Issue" 
-              issue = "2022-2023 Issue" 
-              image ="https://columbiaeconreview.com/2022-2023cover.png"
-              volume = "Volume XV"/>
+              <Issue query = "posts/category/2023-2024 Issue"
+              issue = "2023-2024 Issue"
+              image ="/spring2024cover.jpeg"
+              volume = "Volume XVI"/>
             </Suspense>
           </InnerSection>
         </IssueSection>
