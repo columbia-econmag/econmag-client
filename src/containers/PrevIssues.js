@@ -19,7 +19,6 @@ const Default = ({ children }) => {
 
 //IF ADDING NEW ISSUES CHANGE THIS 
 const prevIssues = [
-  /// "2022-2023 Issue",
   "Spring 2021 Issue",
   "Fall 2020 Issue",
   "Spring 2020 Issue"
@@ -27,7 +26,6 @@ const prevIssues = [
 
 //ALSO CHANGE THIS
 const prevVolumes = [
-  // "Volume XV",
   "Volume XIV",
   "Volume XIII",
   "Volume XII"
@@ -60,13 +58,7 @@ const Header = styled.h2`
 
 
 function renderArticlesList(prevIssue, i) {
-  // TEMPORARY TO ACCOUNT FOR 2022-2023
-  if (prevIssue == "2022-2023 Issue") {
-    var imageIss = "/2022-2023Issue.jpg";
-  } else {
-    var imageIss = "https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/" + prevIssue + ".jpg";
-
-  }
+  var imageIss = "https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/" + prevIssue + ".jpg";
   var quer = "posts/category/" + prevIssue
   var color = backgroundColors[i%2]
   console.log(color)
