@@ -63,7 +63,7 @@ const Header = styled.h2`
 function renderArticlesList(prevIssue, i) {
   // TEMPORARY TO ACCOUNT FOR 2022-2023
   if (prevIssue == "2022-2023 Issue") {
-    var imageIss = "/2022-2023Issue.jpg";
+    var imageIss = "/2022-2023Cover.png";
   } else {
     var imageIss = "https://econmag-bucket.s3.amazonaws.com/public/ImageIssue/" + prevIssue + ".jpg";
 
